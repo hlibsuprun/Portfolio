@@ -17,7 +17,7 @@ npm start
 ```
 3) Enter the data that the script will ask
 
-After that, the script will start working and will write all ids to the file ```all-checked-ids.txt``` and links to the profile of filtered users to the file ```filtered-users.txt```
+After that, the script will start working and will write all ids to the file `all-checked-ids.txt` and links to the profile of filtered users to the file `filtered-users.txt`
 
 ### Pros:
 - speed
