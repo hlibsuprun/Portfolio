@@ -30,3 +30,5 @@ After that, the script will start working and will write all ids to the file `al
 ### Technologies:
 - JavaScript
 - Node.js
+
+By [Gleb Suprun](https://github.com/glebsuprun), [MIT License](https://github.com/glebsuprun/Portfolio/blob/main/steam-accounts-filter/LICENSE)
