@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator JS</title>
+  <link rel="icon" type="image/x-icon" href="./favicon.ico"/>
+  <link rel="stylesheet" class="themeStylesheetLink" href="./css/themes/dark.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <script type="module" src="./js/index.js" defer></script>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="calculator__container">
+      <div class="calculator__screen screen">
+        <div class="screen__themes themes">
+          <button class="themes__button light">
+            <svg class="themes__icon">
+              <use href="icons.svg#light"/>
+            </svg>
+          </button>
+          <button class="themes__button dark">
+            <svg class="themes__icon">
+              <use href="icons.svg#dark"/>
+            </svg>
+          </button>
+        </div>
+        <div class="screen__problem problem"></div>
+        <div class="screen__solution">0</div>
+      </div>
+      <div class="calculator__numpad numpad">
+        <table>
+          <tr>
+            <td>
+              <button class="numpad__button ac">
+                <svg class="numpad__icon">
+                  <use href="icons.svg#ac"/>
+                </svg>
+              </button>
+            </td>
+            <td>
+              <button class="numpad__button invert">
+                <svg class="numpad__icon">
+                  <use href="icons.svg#plus-slash-minus"/>
+                </svg>
+              </button>
+            </td>
+            </td>
+            <td>
+              <button class="numpad__button percent">
+                <svg class="numpad__icon">
+                  <use href="icons.svg#percent"/>
+                </svg>
+              </button>
+            </td>
+            </td>
+            <td>
+              <button class="numpad__button division">
+                <svg class="numpad__icon">
+                  <use href="icons.svg#division"/>
+                </svg>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="numpad__button number">7</button>
+            </td>
+            <td>
+              <button class="numpad__button number">8</button>
+            </td>
+            </td>
+            <td>
+              <button class="numpad__button number">9</button>
+            </td>
+            </td>
+            <td>
+              <button class="numpad__button multiplication">
+                <svg class="numpad__icon">
+                  <use href="icons.svg#multiplication"/>
+                </svg>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="numpad__button number">4</button>
+            </td>
+            <td>
+              <button class="numpad__button number">5</button>
+            </td>
+            </td>
+            <td>
+              <button class="numpad__button number">6</button>
+            </td>
+            </td>
+            <td>
+              <button class="numpad__button minus">
+                <svg class="numpad__icon">
+                  <use href="icons.svg#minus"/>
+                </svg>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="numpad__button number">1</button>
+            </td>
+            <td>
+              <button class="numpad__button number">2</button>
+            </td>
+            </td>
+            <td>
+              <button class="numpad__button number">3</button>
+            </td>
+            </td>
+            <td>
+              <button class="numpad__button plus">
+                <svg class="numpad__icon">
+                  <use href="icons.svg#plus"/>
+                </svg>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="numpad__button back">
+                <svg class="numpad__icon">
+                  <use href="icons.svg#back"/>
+                </svg>
+              </button>
+            </td>
+            <td>
+              <button class="numpad__button number">0</button>
+            </td>
+            </td>
+            <td>
+              <button class="numpad__button point">
+                <svg class="numpad__icon">
+                  <use href="icons.svg#point"/>
+                </svg>
+              </button>
+            </td>
+            </td>
+            <td>
+              <button class="numpad__button equals">
+                <svg class="numpad__icon">
+                  <use href="icons.svg#equals"/>
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
