@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
 
 :root {
   --bg-global: antiquewhite;
@@ -114,7 +114,7 @@
 
   font-size: 44px;
   font-family: "Inter", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--number-color);
 }
 
@@ -205,7 +205,7 @@ table {
 
   /* themes */
   .screen__themes {
-    margin: 0px auto 30px auto;
+    margin: 0px auto 10vh auto;
   }
 
   .screen__themes.themes {
@@ -213,8 +213,8 @@ table {
   }
 
   .themes__icon {
-    width: 40px;
-    height: 30px;
+    width: 45px;
+    height: 35px;
   }
 
   /* problem */
