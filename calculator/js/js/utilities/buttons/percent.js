@@ -11,7 +11,7 @@ percentButton.addEventListener('click', () => {
     ? number.includes('%')
       ? number.replace('%', '')
       : number.concat('%')
-    : number;
+    : number
 
   const expression = 
     secondNumber || sign 
@@ -27,4 +27,3 @@ document.addEventListener('keydown', (event) => {
       percentButton.click()
   }
 })
-

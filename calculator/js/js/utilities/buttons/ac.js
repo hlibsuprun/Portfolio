@@ -1,4 +1,4 @@
-import { assignExpressionValues } from "./helpers/expression.js"
+import { assignExpressionValues } from './helpers/expression.js'
 
 const acButton = document.querySelector('.numpad__button.ac')
 

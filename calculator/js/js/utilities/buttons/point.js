@@ -1,5 +1,5 @@
-import { definitionOfNumber } from "./helpers/definitionOfNumber.js"
-import { assignExpressionValues, expressionObject } from "./helpers/expression.js"
+import { definitionOfNumber } from './helpers/definitionOfNumber.js'
+import { assignExpressionValues, expressionObject } from './helpers/expression.js'
 
 const pointButton = document.querySelector('.numpad__button.point')
 
@@ -16,7 +16,7 @@ pointButton.addEventListener('click', () => {
         ? number.replace('%', '').concat('.%')
         : number
         ? number.concat('.')
-        : number;
+        : number
 
     const expression = 
       secondNumber || sign 

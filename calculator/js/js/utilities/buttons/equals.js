@@ -1,5 +1,5 @@
-import { assignExpressionValues } from "./helpers/expression.js"
-import { solutionValue } from "./helpers/solutionValue.js"
+import { assignExpressionValues } from './helpers/expression.js'
+import { solutionValue } from './helpers/solutionValue.js'
 
 const equalsButton = document.querySelector('.numpad__button.equals')
 

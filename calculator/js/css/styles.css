@@ -55,8 +55,11 @@
 
 .themes__button {
   transition: all .3s ease;
+
   border: 0px;
+
   padding: 0px;
+
   background-color: transparent;
 }
 
@@ -77,11 +80,11 @@
 }
 
 .screen__problem.problem {
-  overflow: auto;
   display: flex;
   justify-content: right;
   align-items: center;
 
+  overflow: auto;
   transition: all .3s ease;
 
   max-width: 206px;
@@ -154,18 +157,16 @@ table {
 
 .numpad__button:hover {
   transition: all .3s ease;
-  
   box-shadow: 0px 4px 4px var(--button-hover);
-
   cursor: pointer;
 }
 
 .numpad__button.number {
-  transition: all .3s ease;
-  
   display: flex;
   justify-content: center;
   align-items: center;
+
+  transition: all .3s ease;
 
   width: 45px;
   height: 45px;
@@ -182,13 +183,234 @@ table {
 }
 
 .numpad__button.point svg {
-  transition: all .3s ease;
-
   fill: var(--number-color);
+  transition: all .3s ease;
 }
 
 .numpad__button.back svg {
-  transition: all .3s ease;
-  
   stroke: var(--number-color);
+  transition: all .3s ease;
+}
+
+/**
+ * LITTLE ADAPTABILITY
+ */
+@media only screen and (min-width: 1440px) {
+  /**
+   * SCREEN
+   */
+  .calculator__screen {
+    padding: 30px 25px 25px 25px;
+  }
+
+  /* themes */
+  .screen__themes {
+    margin: 0px auto 30px auto;
+  }
+
+  .screen__themes.themes {
+    border-radius: 10px;
+  }
+
+  .themes__icon {
+    width: 40px;
+    height: 30px;
+  }
+
+  /* problem */
+  .screen__problem {
+    margin: 0px 0px 5px 0px;
+  }
+
+  .screen__problem.problem {
+    max-width: 186px;
+    height: 25px;
+
+    font-size: 20px;
+  }
+
+  /* solution */
+  .screen__solution {
+    max-width: 186px;
+
+    font-size: 40px;
+  }
+
+  .screen__solution::-webkit-scrollbar {
+    width: 368px;
+    height: 2.5px;
+  }
+
+  /**
+   * NUMPAD
+   */
+  table {
+    border-spacing: 10px;
+  }
+
+  .numpad__button {
+    border-radius: 5px;
+  }
+
+  .numpad__button.number {  
+    width: 40px;
+    height: 40px;
+  
+    font-size: 14px;
+  }
+  
+  .numpad__icon {
+    max-width: 40px;
+    max-height: 40px;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  /**
+   * SCREEN
+   */
+  .calculator__screen {
+    padding: 30px 25px 25px 25px;
+  }
+
+  /* themes */
+  .screen__themes {
+    margin: 0px auto 60px auto;
+  }
+  
+  .screen__themes.themes {
+    border-radius: 15px;
+  }
+
+  .themes__icon {
+    width: 45px;
+    height: 35px;
+  }
+
+  /* problem */
+  .screen__problem {
+    margin: 0px 0px 5px 0px;
+  }
+
+  .screen__problem.problem {
+    max-width: 186px;
+    height: 25px;
+
+    font-size: 20px;
+  }
+
+  /* solution */
+  .screen__solution {
+    max-width: 186px;
+
+    font-size: 40px;
+  }
+
+  .screen__solution::-webkit-scrollbar {
+    width: 368px;
+    height: 2.5px;
+  }
+
+  /**
+   * NUMPAD
+   */
+  table {
+    border-spacing: 10px;
+  }
+  
+  .numpad__button {
+    border-radius: 10px;
+  }
+
+  .numpad__button.number {  
+    width: 40px;
+    height: 40px;
+  
+    font-size: 16px;
+  }
+  
+  .numpad__icon {
+    max-width: 40px;
+    max-height: 40px;
+  }
+}
+
+@media only screen and (min-width: 2560px) {
+  /**
+   * CONTAINER
+   */
+  .calculator__container {
+    border-radius: 50px;
+  }
+  
+  /**
+   * SCREEN
+   */
+  .calculator__screen {
+    padding: 40px 25px 25px 25px;
+  }
+
+  /* themes */
+  .screen__themes {
+    margin: 0px auto 120px auto;
+  }
+  
+  .screen__themes.themes {
+    border-radius: 20px;
+  }
+
+  .themes__icon {
+    width: 75px;
+    height: 65px;
+  }
+
+  /* problem */
+  .screen__problem {
+    margin: 0px 0px 10px 0px;
+  }
+
+  .screen__problem.problem {
+    max-width: 358px;
+    height: 25px;
+
+    font-size: 25px;
+  }
+
+  /* solution */
+  .screen__solution {
+    max-width: 358px;
+
+    font-size: 45px;
+  }
+
+  .screen__solution::-webkit-scrollbar {
+    width: 368px;
+    height: 5px;
+  }
+
+  /**
+   * NUMPAD
+   */
+  table {
+    border-spacing: 20px;
+  }
+  .calculator__numpad {
+    border-radius: 60px 60px 50px 50px;
+  }
+  
+  .numpad__button {
+    border-radius: 20px;
+  }
+
+  .numpad__button.number {  
+    width: 70px;
+    height: 70px;
+  
+    font-size: 25px;
+  }
+  
+  .numpad__icon {
+    max-width: 70px;
+    max-height: 70px;
+  }
 }
