@@ -1,6 +1,6 @@
 import { devServer } from './utilities/devServer.js'
 import { PATHS } from './utilities/helpers/paths.js'
-import { dev, prod } from './utilities/helpers/versions.js'
+import { isDev, isProd } from './utilities/helpers/versions.js'
 import { module } from './utilities/module.js'
 import { optimization } from './utilities/optimization.js'
 import { plugins } from './utilities/plugins.js'
@@ -14,9 +14,9 @@ export default {
     publicPath: '/'
   },
 
-  devtool: dev ? 'inline-source-map' : false,
+  devtool: isDev ? 'inline-source-map' : false,
 
-  target: dev ? 'web' : 'browserslist',
+  target: isDev ? 'web' : 'browserslist',
 
   devServer,
 
@@ -26,7 +26,7 @@ export default {
 
   optimization,
 
-  performance: prod
+  performance: isProd
     ? {
         hints: false,
         maxEntrypointSize: 512000,

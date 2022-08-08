@@ -1,6 +1,6 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
-import { dev } from './helpers/versions.js'
+import { isDev } from './helpers/versions.js'
 
 const html = {
   test: /\.html$/i,
@@ -10,17 +10,17 @@ const html = {
 const styles = {
   test: /\.(s[ac]|c)ss$/i,
   use: [
-    dev ? 'style-loader' : MiniCssExtractPlugin.loader,
+    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
     {
       loader: 'css-loader',
       options: {
-        importLoaders: dev ? 1 : 2,
-        sourceMap: dev,
+        importLoaders: isDev ? 1 : 2,
+        sourceMap: isDev,
         modules: false
       }
     },
-    { loader: 'postcss-loader', options: { sourceMap: dev } },
-    { loader: 'sass-loader', options: { sourceMap: dev } }
+    { loader: 'postcss-loader', options: { sourceMap: isDev } },
+    { loader: 'sass-loader', options: { sourceMap: isDev } }
   ]
 }
 
@@ -40,7 +40,7 @@ const images = {
   test: /\.(png|jpe?g|gif|svg|ico)$/i,
   type: 'asset/resource',
   generator: {
-    filename: 'public/images/[name].[hash].[ext]'
+    filename: 'images/[name].[hash].[ext]'
   }
 }
 

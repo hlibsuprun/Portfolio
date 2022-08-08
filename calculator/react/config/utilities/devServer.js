@@ -1,10 +1,10 @@
-import { dev } from './helpers/versions.js'
+import { isDev } from './helpers/versions.js'
 
 export const devServer = {
   port: 'auto',
-  open: dev,
-  hot: dev,
+  open: isDev,
+  hot: isDev,
   client: {
-    progress: dev
+    progress: isDev
   }
 }

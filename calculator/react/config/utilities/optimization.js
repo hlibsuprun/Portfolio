@@ -2,19 +2,26 @@ import CssMinimizerWebpackPlugin from 'css-minimizer-webpack-plugin'
 import HtmlMinimizerWebpackPlugin from 'html-minimizer-webpack-plugin'
 import TerserWebpackPlugin from 'terser-webpack-plugin'
 
-import { prod } from './helpers/versions.js'
+import { isProd } from './helpers/versions.js'
 
 export const optimization = {
   splitChunks: { chunks: 'all' },
-  minimize: prod,
-  minimizer: prod
+  minimize: isProd,
+  minimizer: isProd
     ? [
-        new TerserWebpackPlugin(),
+        new TerserWebpackPlugin({
+          extractComments: false,
+          terserOptions: {
+            format: {
+              comments: false
+            }
+          }
+        }),
         new HtmlMinimizerWebpackPlugin(),
         new CssMinimizerWebpackPlugin()
       ]
     : [],
-  runtimeChunk: prod
+  runtimeChunk: isProd
     ? {
         name: 'runtime'
       }

@@ -4,7 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 import { PATHS } from './helpers/paths.js'
-import { prod } from './helpers/versions.js'
+import { isProd } from './helpers/versions.js'
 
 export const plugins = [
   new CleanWebpackPlugin(),
@@ -14,7 +14,7 @@ export const plugins = [
     filename: 'index.html'
   }),
 
-  prod
+  isProd
     ? new MiniCssExtractPlugin({
         filename: '[name].[contenthash].css',
         chunkFilename: '[id].css'
