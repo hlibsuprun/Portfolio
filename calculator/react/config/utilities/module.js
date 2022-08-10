@@ -48,7 +48,7 @@ const fonts = {
   test: /\.(woff(2)?|ttf|eot|otf)$/i,
   type: 'asset/resource',
   generator: {
-    filename: 'public/fonts/[name][ext]'
+    filename: 'fonts/[name][ext]'
   }
 }
 
