@@ -26,14 +26,14 @@ export const StyledThemeSwitcher = styled.div`
       &.light {
         stroke: ${({ theme }) => theme.lightTheme};
         &:hover {
-          stroke: ${({ theme }) => theme.themeHover};
+          stroke: ${({ theme }) => theme.hoverTheme};
         }
       }
 
       &.dark {
         fill: ${({ theme }) => theme.darkTheme};
         &:hover {
-          fill: ${({ theme }) => theme.themeHover};
+          fill: ${({ theme }) => theme.hoverTheme};
         }
       }
     }

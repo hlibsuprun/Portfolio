@@ -13,7 +13,7 @@ export const StyledSolution = styled.div`
   font-size: 44px;
   font-family: 'Inter', sans-serif;
   font-weight: 500;
-  color: ${({ theme }) => theme.numberdColor};
+  color: ${({ theme }) => theme.numberColor};
 
   &::-webkit-scrollbar {
     width: 206px;
@@ -21,6 +21,6 @@ export const StyledSolution = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--number-color);
+    background-color: ${({ theme }) => theme.numberColor};
   }
 `

@@ -16,7 +16,7 @@ export const StyledProblem = styled.div`
   font-size: 21px;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
-  color: ${({ theme }) => theme.numberdColor};
+  color: ${({ theme }) => theme.numberColor};
 
   & > svg {
     width: 25px;

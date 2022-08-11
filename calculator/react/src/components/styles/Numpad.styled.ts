@@ -1,14 +1,17 @@
 import styled from 'styled-components'
 
 export const StyledNumpad = styled.div`
-  transition: all 0.3s ease;
-  border-radius: 40px 40px 25px 25px;
-  padding: 30px 10px;
-  background-color: ${({ theme }) => theme.numpadBackground};
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  & > table {
-    border-spacing: 10px;
-  }
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 15px;
+
+  border-radius: 40px 40px 25px 25px;
+
+  padding: 45px 25px;
+
+  background-color: ${({ theme }) => theme.numpadBackground};
 
   & > button {
     transition: all 0.3s ease;
@@ -38,22 +41,22 @@ export const StyledNumpad = styled.div`
       font-size: 18px;
       font-family: 'Inter', sans-serif;
       font-weight: 400;
-      color: ${({ theme }) => theme.numberdColor};
+      color: ${({ theme }) => theme.numberColor};
     }
 
     &.point svg {
-      fill: ${({ theme }) => theme.numberdColor};
+      fill: ${({ theme }) => theme.numberColor};
       transition: all 0.3s ease;
     }
 
     &.back svg {
-      stroke: ${({ theme }) => theme.numberdColor};
+      stroke: ${({ theme }) => theme.numberColor};
       transition: all 0.3s ease;
     }
-  }
 
-  & > svg {
-    max-width: 45px;
-    max-height: 45px;
+    & > svg {
+      width: 45px;
+      height: 45px;
+    }
   }
 `
