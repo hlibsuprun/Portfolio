@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 
@@ -9,16 +9,30 @@ import { StyledContainer } from './components/styles/Container.styled'
 import { GlobalStyled } from './components/styles/Global.styled'
 import { dark, light } from './components/styles/helpers/themes'
 
+export type Expression = {
+  firstNumber: string
+  sign: '/' | '*' | '-' | '+' | ''
+  secondNumber: string
+  solution: number
+}
+
 export default function App() {
   const darkTheme = useSelector((state: RootState) => state.theme.dark)
+
+  const [expression, setExpression] = useState<Expression>({
+    firstNumber: '',
+    sign: '',
+    secondNumber: '',
+    solution: 1
+  })
 
   return (
     <>
       <ThemeProvider theme={darkTheme ? dark : light}>
         <GlobalStyled />
         <StyledContainer>
-          <Screen />
-          <Numpad />
+          <Screen expression={expression} />
+          <Numpad expression={expression} setExpression={setExpression} />
         </StyledContainer>
       </ThemeProvider>
     </>

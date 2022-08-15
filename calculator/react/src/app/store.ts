@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import expressionReducer from './slices/expressionSlice'
 import themeReducer from './slices/themeSlice'
 
 const store = configureStore({
   reducer: {
-    theme: themeReducer,
-    expression: expressionReducer
+    theme: themeReducer
   }
 })
 export default store

@@ -9,6 +9,7 @@ type IconProps = {
 
 export const Icon = (props: IconProps): JSX.Element => {
   const { className, iconName } = props
+
   return (
     <svg className={className}>
       <use href={`${icons}#${iconName}`} />
