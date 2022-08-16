@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 
 import { Expression } from '../App'
+import { solutionCalculation } from './helpers/solutionCalculation'
 import { Icon } from './Icon'
 import { StyledProblem } from './styles/Problem.styled'
 import { StyledScreen } from './styles/Screen.styled'
@@ -11,9 +12,7 @@ type ScreenProps = {
   expression: Expression
 }
 
-export const Screen: FC<ScreenProps> = ({
-  expression: { firstNumber, sign, secondNumber, solution }
-}) => {
+export const Screen: FC<ScreenProps> = ({ expression }) => {
   const signs = {
     '/': <Icon iconName='division' />,
     '*': <Icon iconName='multiplication' />,
@@ -26,11 +25,11 @@ export const Screen: FC<ScreenProps> = ({
     <StyledScreen>
       <ThemeSwitcher />
       <StyledProblem>
-        {firstNumber}
-        {signs[sign]}
-        {secondNumber}
+        {expression.firstNumber}
+        {signs[expression.sign]}
+        {expression.secondNumber}
       </StyledProblem>
-      <StyledSolution>{solution}</StyledSolution>
+      <StyledSolution>{solutionCalculation(expression)}</StyledSolution>
     </StyledScreen>
   )
 }

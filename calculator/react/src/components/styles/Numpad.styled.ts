@@ -49,7 +49,7 @@ export const StyledNumpad = styled.div`
       transition: all 0.3s ease;
     }
 
-    &.back svg {
+    &.backspace svg {
       stroke: ${({ theme }) => theme.numberColor};
       transition: all 0.3s ease;
     }

@@ -13,7 +13,6 @@ export type Expression = {
   firstNumber: string
   sign: '/' | '*' | '-' | '+' | ''
   secondNumber: string
-  solution: number
 }
 
 export default function App() {
@@ -22,8 +21,7 @@ export default function App() {
   const [expression, setExpression] = useState<Expression>({
     firstNumber: '',
     sign: '',
-    secondNumber: '',
-    solution: 1
+    secondNumber: ''
   })
 
   return (
