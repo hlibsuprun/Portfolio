@@ -1,7 +1,7 @@
 {
   "name": "webpack-5",
   "description": "Webpack 5",
-  "author": "Gleb Suprun <hlib.oleksandrovych@gmail.com>",
+  "author": "Gleb Suprun <hlibsuprun@gmail.com>",
   "type": "module",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config ./config/webpack.config.js --mode development",
