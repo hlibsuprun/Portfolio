@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction } from 'react'
+import React, { Dispatch, FC, MouseEvent, SetStateAction } from 'react'
 
 import { Expression } from '../App'
 import { Ac } from '../models/Ac'
@@ -82,7 +82,7 @@ export const Numpad: FC<NumpadProps> = ({ expression, setExpression }) => {
         <button
           key={index}
           className={typeof value === 'string' ? 'number' : className}
-          onClick={() =>
+          onClick={(event: MouseEvent<HTMLButtonElement>) =>
             setExpression(
               onClick
                 ? onClick

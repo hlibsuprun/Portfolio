@@ -1,6 +1,8 @@
+import { MouseEvent } from 'react'
+
 import { Expression } from '../App'
 import { Button } from './Button'
-import { dotAfterZero } from './helpers/dotAfterZero'
+import { dotAfterZero } from './helper/dotAfterZero'
 
 export class Number extends Button {
   expression: Expression
@@ -13,7 +15,7 @@ export class Number extends Button {
   /**
    * numberClickHandler
    */
-  public numberClickHandler(event: Event) {
+  public numberClickHandler(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault()
     const value = (event.target as HTMLTextAreaElement).innerHTML
 

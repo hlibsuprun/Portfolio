@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import { Expression } from '../App'
-import { solutionCalculation } from './helpers/solutionCalculation'
+import { solutionCalculation } from '../helpers/solutionCalculation'
 import { Icon } from './Icon'
 import { StyledProblem } from './styles/Problem.styled'
 import { StyledScreen } from './styles/Screen.styled'

@@ -1,5 +1,5 @@
 import { Expression } from '../App'
-import { solutionCalculation } from '../components/helpers/solutionCalculation'
+import { solutionCalculation } from '../helpers/solutionCalculation'
 import { Button } from './Button'
 
 export class Division extends Button {

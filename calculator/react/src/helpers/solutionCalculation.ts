@@ -1,5 +1,5 @@
-import { Expression } from '../../App'
-import { percentCalculation } from '../../models/helpers/percentCalculation'
+import { Expression } from '../App'
+import { percentCalculation } from './percentCalculation'
 
 export const solutionCalculation = ({
   firstNumber,

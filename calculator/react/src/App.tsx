@@ -7,7 +7,7 @@ import { Numpad } from './components/Numpad'
 import { Screen } from './components/Screen'
 import { StyledContainer } from './components/styles/Container.styled'
 import { GlobalStyled } from './components/styles/Global.styled'
-import { dark, light } from './components/styles/helpers/themes'
+import { dark, light } from './components/styles/helper/themes'
 
 export type Expression = {
   firstNumber: string
