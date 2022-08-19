@@ -11,9 +11,9 @@ export class Plus extends Button {
   }
 
   /**
-   * plusClickHandler
+   * clickHandler
    */
-  public plusClickHandler() {
+  public clickHandler() {
     const expression: Expression = this.expression.secondNumber
       ? {
           firstNumber: String(solutionCalculation(this.expression)),

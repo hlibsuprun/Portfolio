@@ -11,9 +11,9 @@ export class Equals extends Button {
   }
 
   /**
-   * equalsClickHandler
+   * clickHandler
    */
-  public equalsClickHandler() {
+  public clickHandler() {
     const expression: Expression = {
       firstNumber: solutionCalculation(this.expression)
         ? String(solutionCalculation(this.expression))

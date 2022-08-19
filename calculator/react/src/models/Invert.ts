@@ -10,9 +10,9 @@ export class Invert extends Button {
   }
 
   /**
-   * invertClickHandler
+   * clickHandler
    */
-  public invertClickHandler() {
+  public clickHandler() {
     let number = this.currentNumber(this.expression)
     number =
       number.length && number.includes('%')

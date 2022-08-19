@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const StyledThemeSwitcher = styled.div`
   transition: all 0.3s ease;
-  margin: 0px auto 50px auto;
-  border-radius: 15px;
+  margin: 0px auto 10vh auto;
+  border-radius: 10px;
   width: fit-content;
   background-color: ${({ theme }) => theme.numpadBackground};
 
@@ -20,8 +20,8 @@ export const StyledThemeSwitcher = styled.div`
     & > svg {
       transition: all 0.3s ease;
 
-      width: 45px;
-      height: 35px;
+      max-width: 45px;
+      max-height: 35px;
 
       &.light {
         stroke: ${({ theme }) => theme.lightTheme};
@@ -35,6 +35,23 @@ export const StyledThemeSwitcher = styled.div`
         &:hover {
           fill: ${({ theme }) => theme.hoverTheme};
         }
+      }
+    }
+  }
+
+  @media (min-width: 1600px) {
+    margin: 0px auto 60px auto;
+    border-radius: 15px;
+  }
+
+  @media (min-width: 2560px) {
+    margin: 0px auto 120px auto;
+    border-radius: 20px;
+
+    & > button {
+      & > svg {
+        max-width: 75px;
+        max-height: 65px;
       }
     }
   }

@@ -2,9 +2,9 @@ import { Expression } from '../App'
 
 export class Ac {
   /**
-   * acClickHandler
+   * clickHandler
    */
-  public acClickHandler() {
+  public clickHandler() {
     const expression: Expression = {
       firstNumber: '',
       sign: '',

@@ -11,9 +11,9 @@ export class Minus extends Button {
   }
 
   /**
-   * minusClickHandler
+   * clickHandler
    */
-  public minusClickHandler() {
+  public clickHandler() {
     const expression: Expression = this.expression.secondNumber
       ? {
           firstNumber: String(solutionCalculation(this.expression)),

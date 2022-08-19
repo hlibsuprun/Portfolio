@@ -11,9 +11,9 @@ export class Multiplication extends Button {
   }
 
   /**
-   * multiplicationClickHandler
+   * clickHandler
    */
-  public multiplicationClickHandler() {
+  public clickHandler() {
     const expression: Expression = this.expression.secondNumber
       ? {
           firstNumber: String(solutionCalculation(this.expression)),

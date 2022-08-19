@@ -10,9 +10,9 @@ export class Backspace extends Button {
   }
 
   /**
-   * backspaceClickHandler
+   * clickHandler
    */
-  public backspaceClickHandler() {
+  public clickHandler() {
     let number = this.currentNumber(this.expression)
     number =
       isNaN(+number[number.length - 2]) && number[number.length - 2] !== '.'

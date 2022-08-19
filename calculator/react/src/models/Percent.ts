@@ -10,9 +10,9 @@ export class Percent extends Button {
   }
 
   /**
-   * percentClickHandler
+   * clickHandler
    */
-  public percentClickHandler() {
+  public clickHandler() {
     let number = this.currentNumber(this.expression)
     number = number
       ? number.includes('%')

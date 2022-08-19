@@ -5,7 +5,7 @@ export const StyledNumpad = styled.div`
 
   display: grid;
   grid-template-columns: repeat(4, auto);
-  grid-gap: 15px;
+  grid-gap: 10px;
 
   border-radius: 40px 40px 25px 25px;
 
@@ -17,7 +17,7 @@ export const StyledNumpad = styled.div`
     transition: all 0.3s ease;
 
     border: 0px;
-    border-radius: 10px;
+    border-radius: 5px;
 
     padding: 0px;
 
@@ -35,10 +35,10 @@ export const StyledNumpad = styled.div`
 
       transition: all 0.3s ease;
 
-      width: 45px;
-      height: 45px;
+      width: 40px;
+      height: 40px;
 
-      font-size: 18px;
+      font-size: 14px;
       font-family: 'Inter', sans-serif;
       font-weight: 400;
       color: ${({ theme }) => theme.numberColor};
@@ -55,8 +55,40 @@ export const StyledNumpad = styled.div`
     }
 
     & > svg {
-      width: 45px;
-      height: 45px;
+      max-width: 40px;
+      max-height: 40px;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    & > button {
+      border-radius: 10px;
+
+      &.number {
+        font-size: 16px;
+      }
+    }
+  }
+
+  @media (min-width: 2560px) {
+    grid-gap: 20px;
+
+    border-radius: 60px 60px 50px 50px;
+
+    & > button {
+      border-radius: 20px;
+
+      &.number {
+        width: 70px;
+        height: 70px;
+
+        font-size: 25px;
+      }
+
+      & > svg {
+        max-width: 70px;
+        max-height: 70px;
+      }
     }
   }
 `

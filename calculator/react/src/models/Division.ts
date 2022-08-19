@@ -11,9 +11,9 @@ export class Division extends Button {
   }
 
   /**
-   * divisionClickHandler
+   * clickHandler
    */
-  public divisionClickHandler() {
+  public clickHandler() {
     const expression: Expression = this.expression.secondNumber
       ? {
           firstNumber: String(solutionCalculation(this.expression)),

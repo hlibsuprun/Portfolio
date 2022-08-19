@@ -10,9 +10,9 @@ export class Point extends Button {
   }
 
   /**
-   * pointClickHandler
+   * clickHandler
    */
-  public pointClickHandler() {
+  public clickHandler() {
     let number = this.currentNumber(this.expression)
     number = number.slice(-1).includes('.')
       ? number.slice(0, -1)

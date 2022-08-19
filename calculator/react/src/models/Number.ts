@@ -13,9 +13,9 @@ export class Number extends Button {
   }
 
   /**
-   * numberClickHandler
+   * clickHandler
    */
-  public numberClickHandler(event: MouseEvent<HTMLButtonElement>) {
+  public clickHandler(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault()
     const value = (event.target as HTMLTextAreaElement).innerHTML
 
