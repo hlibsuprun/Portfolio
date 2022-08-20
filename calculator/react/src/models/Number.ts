@@ -21,7 +21,7 @@ export class Number extends Button {
 
     let number = this.currentNumber(this.expression)
 
-    if (number.length < 4) {
+    if (number.length <= 10) {
       number =
         number.length && (number === '0' || number === '0%')
           ? dotAfterZero(number, value)

@@ -20,8 +20,7 @@ export class Division extends Button {
           sign: '/',
           secondNumber: ''
         }
-      : Math.round(+this.expression.firstNumber) !== 0 &&
-        this.expression.firstNumber
+      : +this.expression.firstNumber !== 0 && this.expression.firstNumber
       ? { ...this.expression, sign: '/' }
       : this.expression
 

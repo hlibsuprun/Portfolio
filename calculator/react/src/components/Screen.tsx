@@ -24,12 +24,14 @@ export const Screen: FC<ScreenProps> = ({ expression }) => {
   return (
     <StyledScreen>
       <ThemeSwitcher />
-      <StyledProblem>
+      <StyledProblem data-testid='problem'>
         {expression.firstNumber}
         {signs[expression.sign]}
         {expression.secondNumber}
       </StyledProblem>
-      <StyledSolution>{solutionCalculation(expression)}</StyledSolution>
+      <StyledSolution data-testid='solution'>
+        {solutionCalculation(expression)}
+      </StyledSolution>
     </StyledScreen>
   )
 }
