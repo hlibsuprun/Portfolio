@@ -7,11 +7,11 @@ A simple calculator, the first practice of modern web development.
 
 ### How to use?
 - JavaScript:
-  - Install [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) for Visual Studio Code
-  - run HTML
-- Frameworks:
-   - `npm install`
-   - `npm start`
+  1) Install [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) for Visual Studio Code
+  2) run HTML
+- React:
+   1) `npm install`
+   2) `npm start`
 
 ### Technologies:
 - HTML
