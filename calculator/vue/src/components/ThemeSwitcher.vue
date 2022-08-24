@@ -1,10 +1,10 @@
 <template>
   <div :style="variables">
-    <button>
-      <Icon name="light" @click="toggleLightTheme" />
+    <button @click="toggleLightTheme">
+      <Icon name="light" />
     </button>
-    <button>
-      <Icon name="dark" @click="toggleDarkTheme" />
+    <button @click="toggleDarkTheme">
+      <Icon name="dark" />
     </button>
   </div>
 </template>
@@ -12,27 +12,20 @@
 <script lang="ts">
 import { mapActions, mapGetters } from 'vuex'
 
-import Icon from './Icon.vue'
-
-type Vriables = {
-  '--blocksBackgroundColor': string
-  '--hoverTheme': string
-  '--lightTheme': string
-  '--darkTheme': string
-}
+import Icon from '@/components/Icon.vue'
+import { cssVariables } from '@/types'
 
 export default {
   name: 'ThemeSwitcher',
   components: { Icon },
   computed: {
     ...mapGetters(['theme']),
-    variables(): Vriables {
+    variables(): cssVariables {
       return {
-        '--blocksBackgroundColor':
-          this.$store.getters.theme.blocksBackgroundColor,
-        '--hoverTheme': this.$store.getters.theme.hoverTheme,
-        '--lightTheme': this.$store.getters.theme.lightTheme,
-        '--darkTheme': this.$store.getters.theme.darkTheme
+        '--blocksBackgroundColor': this.theme.blocksBackgroundColor,
+        '--hoverTheme': this.theme.hoverTheme,
+        '--lightTheme': this.theme.lightTheme,
+        '--darkTheme': this.theme.darkTheme
       }
     }
   },

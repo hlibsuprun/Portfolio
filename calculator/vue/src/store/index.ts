@@ -1,9 +1,11 @@
 import { createStore } from 'vuex'
 
-import theme from './modules/theme'
+import expression from '@/store/modules/expression'
+import theme from '@/store/modules/theme'
 
 export default createStore({
   modules: {
+    expression,
     theme
   }
 })
