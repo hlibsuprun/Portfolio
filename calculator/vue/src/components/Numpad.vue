@@ -1,6 +1,11 @@
 <template>
   <div class="numpad" :style="variables">
-    <button class="number" v-for="button in buttons" :key="button.value">
+    <button
+      class="number"
+      @click="button.onClick"
+      v-for="button in buttons"
+      :key="button.value"
+    >
       {{ /^\d+$/.test(button.value) ? button.value : '' }}
       <Icon :name="button.value" />
     </button>
@@ -8,36 +13,44 @@
 </template>
 
 <script lang="ts">
-import { mapGetters } from 'vuex'
+import { ActionMethod, mapActions, mapGetters } from 'vuex'
 
 import Icon from '@/components/Icon.vue'
-import { cssVariables } from '@/types'
+import { cssVariables } from '@/types/cssVariables'
+
+type Data = {
+  buttons: {
+    value: string
+    onClick: ActionMethod
+  }[]
+}
 
 export default {
   name: 'Numpad',
-  data() {
+  components: { Icon },
+  data(): Data {
     return {
       buttons: [
-        { value: 'ac' },
-        { value: 'invert' },
-        { value: '%' },
-        { value: '/' },
-        { value: '7' },
-        { value: '8' },
-        { value: '9' },
-        { value: '*' },
-        { value: '4' },
-        { value: '5' },
-        { value: '6' },
-        { value: '-' },
-        { value: '1' },
-        { value: '2' },
-        { value: '3' },
-        { value: '+' },
-        { value: 'backspace' },
-        { value: '0' },
-        { value: '.' },
-        { value: '=' }
+        { value: 'ac', onClick: (this as any).getters.acClickHandler },
+        { value: 'invert', onClick: (this as any).invertClickHandler },
+        { value: '%', onClick: (this as any).percentClickHandler },
+        { value: '/', onClick: (this as any).divisionClickHandler },
+        { value: '7', onClick: (this as any).number },
+        { value: '8', onClick: (this as any).number },
+        { value: '9', onClick: (this as any).number },
+        { value: '*', onClick: (this as any).multiplicationClickHandler },
+        { value: '4', onClick: (this as any).number },
+        { value: '5', onClick: (this as any).number },
+        { value: '6', onClick: (this as any).number },
+        { value: '-', onClick: (this as any).minusClickHandler },
+        { value: '1', onClick: (this as any).number },
+        { value: '2', onClick: (this as any).number },
+        { value: '3', onClick: (this as any).number },
+        { value: '+', onClick: (this as any).plusClickHandler },
+        { value: 'backspace', onClick: (this as any).backspaceClickHandler },
+        { value: '0', onClick: (this as any).number },
+        { value: '.', onClick: (this as any).pointClickHandler },
+        { value: '=', onClick: (this as any).equalsClickHandler }
       ]
     }
   },
@@ -45,14 +58,36 @@ export default {
     ...mapGetters(['theme']),
     variables(): cssVariables {
       return {
-        '--blocksBackgroundColor': this.theme.blocksBackgroundColor,
-        '--buttonBackgroundColor': this.theme.buttonBackgroundColor,
-        '--hoverButton': this.theme.hoverButton,
-        '--numberColor': this.theme.numberColor
+        '--blocksBackgroundColor': (this as any).theme.blocksBackgroundColor,
+        '--buttonBackgroundColor': (this as any).theme.buttonBackgroundColor,
+        '--hoverButton': (this as any).theme.hoverButton,
+        '--numberColor': (this as any).theme.numberColor
       }
     }
   },
-  components: { Icon }
+  methods: {
+    ...mapActions([
+      'acClickHandler',
+      'backspaceClickHandler',
+      'divisionClickHandler',
+      'equalsClickHandler',
+      'invertClickHandler',
+      'minusClickHandler',
+      'multiplicationClickHandler',
+      'numberClickHandler',
+      'percentClickHandler',
+      'plusClickHandler',
+      'pointClickHandler'
+    ]),
+    number(event: MouseEvent) {
+      event.preventDefault()
+
+      const innerHTML = (event.target as HTMLTextAreaElement).innerHTML
+      const number = innerHTML.match(/^\d/)
+
+      this.numberClickHandler(number)
+    }
+  }
 }
 </script>
 
@@ -100,10 +135,5 @@ button {
 #backspace {
   stroke: var(--numberColor);
   transition: all 0.3s ease;
-}
-
-svg {
-  max-width: 40px;
-  max-height: 40px;
 }
 </style>

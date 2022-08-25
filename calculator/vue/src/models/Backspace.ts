@@ -1,5 +1,5 @@
-import { Expression } from '../App'
-import { Button } from './Button'
+import { Button } from '@/models/Button'
+import { Expression } from '@/types/store/expression'
 
 export class Backspace extends Button {
   expression: Expression

@@ -1,4 +1,4 @@
-import { Expression } from '../App'
+import { Expression } from '@/types/store/expression'
 
 export class Ac {
   /**

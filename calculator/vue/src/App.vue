@@ -13,18 +13,17 @@ import Numpad from '@/components/Numpad.vue'
 import Screen from '@/components/Screen.vue'
 import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
 
-type Vriables = {
-  '--containerBackgroundColor': string
-}
+import { cssVariables } from './types/cssVariables'
 
 export default {
   name: 'App',
   components: { ThemeSwitcher, Screen, Numpad },
   computed: {
     ...mapGetters(['theme']),
-    variables(): Vriables {
+    variables(): cssVariables {
       return {
-        '--containerBackgroundColor': this.theme.containerBackgroundColor
+        '--containerBackgroundColor': (this as any).theme
+          .containerBackgroundColor
       }
     }
   }

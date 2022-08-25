@@ -13,7 +13,7 @@
 import { mapActions, mapGetters } from 'vuex'
 
 import Icon from '@/components/Icon.vue'
-import { cssVariables } from '@/types'
+import { cssVariables } from '@/types/cssVariables'
 
 export default {
   name: 'ThemeSwitcher',
@@ -22,10 +22,10 @@ export default {
     ...mapGetters(['theme']),
     variables(): cssVariables {
       return {
-        '--blocksBackgroundColor': this.theme.blocksBackgroundColor,
-        '--hoverTheme': this.theme.hoverTheme,
-        '--lightTheme': this.theme.lightTheme,
-        '--darkTheme': this.theme.darkTheme
+        '--blocksBackgroundColor': (this as any).theme.blocksBackgroundColor,
+        '--hoverTheme': (this as any).theme.hoverTheme,
+        '--lightTheme': (this as any).theme.lightTheme,
+        '--darkTheme': (this as any).theme.darkTheme
       }
     }
   },

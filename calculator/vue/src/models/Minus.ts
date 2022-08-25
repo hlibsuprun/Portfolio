@@ -1,6 +1,6 @@
-import { Expression } from '../App'
-import { solutionCalculation } from '../helpers/solutionCalculation'
-import { Button } from './Button'
+import { solution } from '@/helpers/solution'
+import { Button } from '@/models/Button'
+import { Expression } from '@/types/store/expression'
 
 export class Minus extends Button {
   expression: Expression
@@ -16,7 +16,7 @@ export class Minus extends Button {
   public clickHandler() {
     const expression: Expression = this.expression.secondNumber
       ? {
-          firstNumber: String(solutionCalculation(this.expression)),
+          firstNumber: String(solution(this.expression)),
           sign: '-',
           secondNumber: ''
         }

@@ -1,6 +1,6 @@
-import { Expression } from '../App'
-import { solutionCalculation } from '../helpers/solutionCalculation'
-import { Button } from './Button'
+import { solution } from '@/helpers/solution'
+import { Button } from '@/models/Button'
+import { Expression } from '@/types/store/expression'
 
 export class Equals extends Button {
   expression: Expression
@@ -15,8 +15,8 @@ export class Equals extends Button {
    */
   public clickHandler() {
     const expression: Expression = {
-      firstNumber: solutionCalculation(this.expression)
-        ? String(solutionCalculation(this.expression))
+      firstNumber: solution(this.expression)
+        ? String(solution(this.expression))
         : '',
       sign: '',
       secondNumber: ''

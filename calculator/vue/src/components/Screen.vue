@@ -14,7 +14,8 @@ import { mapGetters } from 'vuex'
 
 import Icon from '@/components/Icon.vue'
 import { solution } from '@/helpers/solution'
-import { cssVariables, Expression } from '@/types'
+import { cssVariables } from '@/types/cssVariables'
+import { Expression } from '@/types/store/expression'
 
 export default {
   name: 'Screen',
@@ -23,7 +24,7 @@ export default {
     ...mapGetters(['theme', 'expression']),
     variables(): cssVariables {
       return {
-        '--numberColor': this.theme.numberColor
+        '--numberColor': (this as any).theme.numberColor
       }
     }
   },

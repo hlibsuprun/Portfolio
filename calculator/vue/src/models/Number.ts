@@ -1,8 +1,6 @@
-import { MouseEvent } from 'react'
-
-import { Expression } from '../App'
-import { Button } from './Button'
-import { dotAfterZero } from './helper/dotAfterZero'
+import { Button } from '@/models/Button'
+import { dotAfterZero } from '@/models/helper/dotAfterZero'
+import { Expression } from '@/types/store/expression'
 
 export class Number extends Button {
   expression: Expression
@@ -15,10 +13,7 @@ export class Number extends Button {
   /**
    * clickHandler
    */
-  public clickHandler(event: MouseEvent<HTMLButtonElement>) {
-    event.preventDefault()
-    const value = (event.target as HTMLTextAreaElement).innerHTML
-
+  public clickHandler(value: string) {
     let number = this.currentNumber(this.expression)
 
     if (number.length <= 10) {

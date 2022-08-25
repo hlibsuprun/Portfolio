@@ -1,6 +1,6 @@
 import { Commit } from 'vuex'
 
-import { State, Themes } from '@/types'
+import { Actions, Getters, Mutations, State, Themes } from '@/types/store/theme'
 
 const themes: Themes = {
   dark: {
@@ -33,11 +33,11 @@ const state: State = {
     ]
 }
 
-const getters = {
-  theme: (state: State) => state.theme
+const getters: Getters = {
+  theme: state => state.theme
 }
 
-const actions = {
+const actions: Actions = {
   toggleDarkTheme({ commit }: { commit: Commit }) {
     commit('toggleDarkTheme')
   },
@@ -46,9 +46,9 @@ const actions = {
   }
 }
 
-const mutations = {
-  toggleDarkTheme: (state: State) => (state.theme = themes['dark']),
-  toggleLightTheme: (state: State) => (state.theme = themes['light'])
+const mutations: Mutations = {
+  toggleDarkTheme: state => (state.theme = themes['dark']),
+  toggleLightTheme: state => (state.theme = themes['light'])
 }
 
 export default {
