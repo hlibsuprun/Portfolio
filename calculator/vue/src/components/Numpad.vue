@@ -12,82 +12,63 @@
   </div>
 </template>
 
-<script lang="ts">
-import { ActionMethod, mapActions, mapGetters } from 'vuex'
+<script lang="ts" setup>
+import { computed } from 'vue'
 
-import Icon from '@/components/Icon.vue'
-import { cssVariables } from '@/types/cssVariables'
+import { useExpressionStore } from '@/stores/expression'
+import { useThemeStore } from '@/stores/theme'
+import { cssVariables } from '@/types'
 
-type Data = {
-  buttons: {
-    value: string
-    onClick: ActionMethod
-  }[]
+const themeStore = useThemeStore()
+const expressionStore = useExpressionStore()
+
+const variables = computed(
+  (): cssVariables => ({
+    '--blocksBackgroundColor': themeStore.theme.blocksBackgroundColor,
+    '--buttonBackgroundColor': themeStore.theme.buttonBackgroundColor,
+    '--hoverButton': themeStore.theme.hoverButton,
+    '--numberColor': themeStore.theme.numberColor
+  })
+)
+
+const numberClickHandler = (event: MouseEvent) => {
+  event.preventDefault()
+
+  const innerHTML = (event.target as HTMLTextAreaElement).innerHTML
+  const number = String(innerHTML.match(/^\d/))
+
+  expressionStore.numberClickHandler(number)
 }
 
+const buttons = [
+  { value: 'ac', onClick: expressionStore.acClickHandler },
+  { value: 'invert', onClick: expressionStore.invertClickHandler },
+  { value: '%', onClick: expressionStore.percentClickHandler },
+  { value: '/', onClick: expressionStore.divisionClickHandler },
+  { value: '7', onClick: numberClickHandler },
+  { value: '8', onClick: numberClickHandler },
+  { value: '9', onClick: numberClickHandler },
+  { value: '*', onClick: expressionStore.multiplicationClickHandler },
+  { value: '4', onClick: numberClickHandler },
+  { value: '5', onClick: numberClickHandler },
+  { value: '6', onClick: numberClickHandler },
+  { value: '-', onClick: expressionStore.minusClickHandler },
+  { value: '1', onClick: numberClickHandler },
+  { value: '2', onClick: numberClickHandler },
+  { value: '3', onClick: numberClickHandler },
+  { value: '+', onClick: expressionStore.plusClickHandler },
+  { value: 'backspace', onClick: expressionStore.backspaceClickHandler },
+  { value: '0', onClick: numberClickHandler },
+  { value: '.', onClick: expressionStore.pointClickHandler },
+  { value: '=', onClick: expressionStore.equalsClickHandler }
+]
+</script>
+
+<script lang="ts">
+import Icon from '@/components/Icon.vue'
+
 export default {
-  name: 'Numpad',
-  components: { Icon },
-  data(): Data {
-    return {
-      buttons: [
-        { value: 'ac', onClick: (this as any).getters.acClickHandler },
-        { value: 'invert', onClick: (this as any).invertClickHandler },
-        { value: '%', onClick: (this as any).percentClickHandler },
-        { value: '/', onClick: (this as any).divisionClickHandler },
-        { value: '7', onClick: (this as any).number },
-        { value: '8', onClick: (this as any).number },
-        { value: '9', onClick: (this as any).number },
-        { value: '*', onClick: (this as any).multiplicationClickHandler },
-        { value: '4', onClick: (this as any).number },
-        { value: '5', onClick: (this as any).number },
-        { value: '6', onClick: (this as any).number },
-        { value: '-', onClick: (this as any).minusClickHandler },
-        { value: '1', onClick: (this as any).number },
-        { value: '2', onClick: (this as any).number },
-        { value: '3', onClick: (this as any).number },
-        { value: '+', onClick: (this as any).plusClickHandler },
-        { value: 'backspace', onClick: (this as any).backspaceClickHandler },
-        { value: '0', onClick: (this as any).number },
-        { value: '.', onClick: (this as any).pointClickHandler },
-        { value: '=', onClick: (this as any).equalsClickHandler }
-      ]
-    }
-  },
-  computed: {
-    ...mapGetters(['theme']),
-    variables(): cssVariables {
-      return {
-        '--blocksBackgroundColor': (this as any).theme.blocksBackgroundColor,
-        '--buttonBackgroundColor': (this as any).theme.buttonBackgroundColor,
-        '--hoverButton': (this as any).theme.hoverButton,
-        '--numberColor': (this as any).theme.numberColor
-      }
-    }
-  },
-  methods: {
-    ...mapActions([
-      'acClickHandler',
-      'backspaceClickHandler',
-      'divisionClickHandler',
-      'equalsClickHandler',
-      'invertClickHandler',
-      'minusClickHandler',
-      'multiplicationClickHandler',
-      'numberClickHandler',
-      'percentClickHandler',
-      'plusClickHandler',
-      'pointClickHandler'
-    ]),
-    number(event: MouseEvent) {
-      event.preventDefault()
-
-      const innerHTML = (event.target as HTMLTextAreaElement).innerHTML
-      const number = innerHTML.match(/^\d/)
-
-      this.numberClickHandler(number)
-    }
-  }
+  components: { Icon }
 }
 </script>
 
@@ -104,12 +85,12 @@ export default {
 
 button {
   transition: all 0.3s ease;
-  border: 0px;
+  border: 0;
   border-radius: 5px;
-  padding: 0px;
+  padding: 0;
   background-color: var(--buttonBackgroundColor);
   &:hover {
-    box-shadow: 0px 4px 4px var(--hoverButton);
+    box-shadow: 0 4px 4px var(--hoverButton);
     cursor: pointer;
   }
 }

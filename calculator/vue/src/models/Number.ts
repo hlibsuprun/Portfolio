@@ -1,6 +1,6 @@
 import { Button } from '@/models/Button'
-import { dotAfterZero } from '@/models/helper/dotAfterZero'
-import { Expression } from '@/types/store/expression'
+import { pointAfterZero } from '@/models/helper/pointAfterZero'
+import { Expression } from '@/types'
 
 export class Number extends Button {
   expression: Expression
@@ -19,7 +19,7 @@ export class Number extends Button {
     if (number.length <= 10) {
       number =
         number.length && (number === '0' || number === '0%')
-          ? dotAfterZero(number, value)
+          ? pointAfterZero(number, value)
           : number.includes('%')
           ? number.replace('%', '').concat(value, '%')
           : number.concat(value)

@@ -1,6 +1,6 @@
 import { solution } from '@/helpers/solution'
 import { Button } from '@/models/Button'
-import { Expression } from '@/types/store/expression'
+import { Expression } from '@/types'
 
 export class Division extends Button {
   expression: Expression

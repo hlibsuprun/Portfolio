@@ -1,4 +1,4 @@
-export const dotAfterZero = (string: string, value: string): string =>
+export const pointAfterZero = (string: string, value: string): string =>
   string
     .split('')
     .map(character =>

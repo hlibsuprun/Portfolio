@@ -11,8 +11,8 @@
     "lint": "eslint src --ext .ts,.vue --fix"
   },
   "dependencies": {
-    "vue": "^3.2.37",
-    "vuex": "^4.0.2"
+    "pinia": "^2.0.21",
+    "vue": "^3.2.37"
   },
   "devDependencies": {
     "@types/node": "^18.7.13",

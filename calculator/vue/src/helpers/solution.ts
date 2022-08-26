@@ -15,7 +15,7 @@ export const solution = (expression: Expression): number => {
   const fNum =
     firstNumber.includes('%') && secondNumber.includes('%')
       ? +percent(firstNumber).toFixed(3)
-      : (sign === '*' || sign === '/') && firstNumber.includes('%')
+      : sign.match(/^[*/]+$/) && firstNumber.includes('%')
       ? +percent(firstNumber).toFixed(3)
       : firstNumber.includes('%')
       ? +percent(firstNumber, secondNumber).toFixed(3)
@@ -24,7 +24,7 @@ export const solution = (expression: Expression): number => {
   const sNum =
     firstNumber.includes('%') && secondNumber.includes('%')
       ? +percent(secondNumber).toFixed(3)
-      : (sign === '*' || sign === '/') && secondNumber.includes('%')
+      : sign.match(/^[*/]+$/) && secondNumber.includes('%')
       ? +percent(secondNumber).toFixed(3)
       : secondNumber.includes('%')
       ? +percent(firstNumber, secondNumber).toFixed(3)

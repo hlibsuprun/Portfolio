@@ -1,44 +1,44 @@
 <template>
   <div :style="variables">
-    <button @click="toggleLightTheme">
+    <button @click="themeStore.toggleLightTheme">
       <Icon name="light" />
     </button>
-    <button @click="toggleDarkTheme">
+    <button @click="themeStore.toggleDarkTheme">
       <Icon name="dark" />
     </button>
   </div>
 </template>
 
-<script lang="ts">
-import { mapActions, mapGetters } from 'vuex'
+<script lang="ts" setup>
+import { computed } from 'vue'
 
+import { useThemeStore } from '@/stores/theme'
+import { cssVariables } from '@/types'
+
+const themeStore = useThemeStore()
+
+const variables = computed(
+  (): cssVariables => ({
+    '--blocksBackgroundColor': themeStore.theme.blocksBackgroundColor,
+    '--hoverTheme': themeStore.theme.hoverTheme,
+    '--lightTheme': themeStore.theme.lightTheme,
+    '--darkTheme': themeStore.theme.darkTheme
+  })
+)
+</script>
+
+<script lang="ts">
 import Icon from '@/components/Icon.vue'
-import { cssVariables } from '@/types/cssVariables'
 
 export default {
-  name: 'ThemeSwitcher',
-  components: { Icon },
-  computed: {
-    ...mapGetters(['theme']),
-    variables(): cssVariables {
-      return {
-        '--blocksBackgroundColor': (this as any).theme.blocksBackgroundColor,
-        '--hoverTheme': (this as any).theme.hoverTheme,
-        '--lightTheme': (this as any).theme.lightTheme,
-        '--darkTheme': (this as any).theme.darkTheme
-      }
-    }
-  },
-  methods: {
-    ...mapActions(['toggleDarkTheme', 'toggleLightTheme'])
-  }
+  components: { Icon }
 }
 </script>
 
 <style lang="scss" scoped>
 div {
   transition: all 0.3s ease;
-  margin: 0px auto 10vh auto;
+  margin: 0 auto 10vh auto;
   border-radius: 10px;
   width: fit-content;
   background-color: var(--blocksBackgroundColor);
@@ -46,8 +46,8 @@ div {
 
 button {
   transition: all 0.3s ease;
-  border: 0px;
-  padding: 0px;
+  border: 0;
+  padding: 0;
   background-color: transparent;
   &:hover {
     cursor: pointer;

@@ -1,44 +1,43 @@
 <template>
   <div class="screen" :style="variables">
     <div class="problem">
-      {{ expression.firstNumber }}
-      <Icon :name="expression.sign" />
-      {{ expression.secondNumber }}
+      {{ expressionStore.expression.firstNumber }}
+      <Icon :name="expressionStore.expression.sign" />
+      {{ expressionStore.expression.secondNumber }}
     </div>
-    <div class="solution">{{ solution(expression) }}</div>
+    <div class="solution">{{ solution(expressionStore.expression) }}</div>
   </div>
 </template>
 
-<script lang="ts">
-import { mapGetters } from 'vuex'
+<script lang="ts" setup>
+import { computed } from 'vue'
 
-import Icon from '@/components/Icon.vue'
 import { solution } from '@/helpers/solution'
-import { cssVariables } from '@/types/cssVariables'
-import { Expression } from '@/types/store/expression'
+import { useExpressionStore } from '@/stores/expression'
+import { useThemeStore } from '@/stores/theme'
+import { cssVariables } from '@/types'
+
+const themeStore = useThemeStore()
+const expressionStore = useExpressionStore()
+
+const variables = computed(
+  (): cssVariables => ({
+    '--numberColor': themeStore.theme.numberColor
+  })
+)
+</script>
+
+<script lang="ts">
+import Icon from '@/components/Icon.vue'
 
 export default {
-  name: 'Screen',
-  components: { Icon },
-  computed: {
-    ...mapGetters(['theme', 'expression']),
-    variables(): cssVariables {
-      return {
-        '--numberColor': (this as any).theme.numberColor
-      }
-    }
-  },
-  methods: {
-    solution(expression: Expression) {
-      return solution(expression)
-    }
-  }
+  components: { Icon }
 }
 </script>
 
 <style lang="scss" scoped>
 .screen {
-  padding: 0px 25px 25px 25px;
+  padding: 0 25px 25px 25px;
 }
 
 .problem {
@@ -47,7 +46,7 @@ export default {
   align-items: center;
   overflow: auto;
   transition: all 0.3s ease;
-  margin: 0px 0px 5px 0px;
+  margin: 0 0 5px 0;
   max-width: 186px;
   height: 25px;
   font-size: 20px;

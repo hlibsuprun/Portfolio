@@ -1,5 +1,5 @@
 import { Button } from '@/models/Button'
-import { Expression } from '@/types/store/expression'
+import { Expression } from '@/types'
 
 export class Percent extends Button {
   expression: Expression
