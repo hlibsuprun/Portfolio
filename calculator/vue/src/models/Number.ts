@@ -1,6 +1,6 @@
 import { Button } from '@/models/Button'
 import { pointAfterZero } from '@/models/helper/pointAfterZero'
-import { Expression } from '@/types'
+import { Expression } from '@/stores/expression'
 
 export class Number extends Button {
   expression: Expression
@@ -13,16 +13,16 @@ export class Number extends Button {
   /**
    * clickHandler
    */
-  public clickHandler(value: string) {
+  public clickHandler(num: string) {
     let number = this.currentNumber(this.expression)
 
-    if (number.length <= 10) {
+    if (String(number.match(/\d/)).length < 5) {
       number =
-        number.length && (number === '0' || number === '0%')
-          ? pointAfterZero(number, value)
+        number.length && number.match(/^[0%]+$/)
+          ? pointAfterZero(number, num)
           : number.includes('%')
-          ? number.replace('%', '').concat(value, '%')
-          : number.concat(value)
+          ? number.replace('%', '').concat(num, '%')
+          : number.concat(num)
 
       const expression: Expression =
         this.expression.secondNumber || this.expression.sign

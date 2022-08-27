@@ -1,4 +1,4 @@
-import { Expression } from '@/types'
+import { Expression } from '@/stores/expression'
 
 export class Button {
   public currentNumber(expression: Expression): string {

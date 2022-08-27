@@ -8,9 +8,3 @@ export type cssVariables = {
   '--darkTheme'?: string
   '--hoverTheme'?: string
 }
-
-export type Expression = {
-  firstNumber: string
-  sign: string
-  secondNumber: string
-}

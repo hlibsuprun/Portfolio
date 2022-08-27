@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
+    "test": "vitest",
     "lint": "eslint src --ext .ts,.vue --fix"
   },
   "dependencies": {
@@ -29,6 +30,7 @@
     "sass": "^1.54.5",
     "typescript": "^4.7.4",
     "vite": "^3.0.9",
+    "vitest": "^0.22.1",
     "vue-eslint-parser": "^9.0.3",
     "vue-tsc": "^0.39.5"
   }

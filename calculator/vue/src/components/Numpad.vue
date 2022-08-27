@@ -1,7 +1,7 @@
 <template>
   <div class="numpad" :style="variables">
     <button
-      class="number"
+      class="numpad__button"
       @click="button.onClick"
       v-for="button in buttons"
       :key="button.value"
@@ -19,8 +19,8 @@ import { useExpressionStore } from '@/stores/expression'
 import { useThemeStore } from '@/stores/theme'
 import { cssVariables } from '@/types'
 
-const themeStore = useThemeStore()
 const expressionStore = useExpressionStore()
+const themeStore = useThemeStore()
 
 const variables = computed(
   (): cssVariables => ({
@@ -81,40 +81,59 @@ export default {
   border-radius: 40px 40px 25px 25px;
   padding: 45px 25px;
   background-color: var(--blocksBackgroundColor);
-}
 
-button {
-  transition: all 0.3s ease;
-  border: 0;
-  border-radius: 5px;
-  padding: 0;
-  background-color: var(--buttonBackgroundColor);
-  &:hover {
-    box-shadow: 0 4px 4px var(--hoverButton);
-    cursor: pointer;
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 5px;
+    padding: 0;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: var(--numberColor);
+    background-color: var(--buttonBackgroundColor);
+    &:hover {
+      box-shadow: 0 4px 4px var(--hoverButton);
+      cursor: pointer;
+    }
   }
 }
 
-.number {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
-  width: 40px;
-  height: 40px;
-  font-size: 14px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  color: var(--numberColor);
-}
-
 #point {
-  fill: var(--numberColor);
   transition: all 0.3s ease;
+  fill: var(--numberColor);
 }
 
 #backspace {
-  stroke: var(--numberColor);
   transition: all 0.3s ease;
+  stroke: var(--numberColor);
+}
+
+@media (min-width: 1600px) {
+  .numpad {
+    &__button {
+      border-radius: 10px;
+      font-size: 16px;
+    }
+  }
+}
+
+@media (min-width: 1900px) {
+  .numpad {
+    grid-gap: 20px;
+    border-radius: 60px 60px 50px 50px;
+
+    &__button {
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      font-size: 25px;
+    }
+  }
 }
 </style>

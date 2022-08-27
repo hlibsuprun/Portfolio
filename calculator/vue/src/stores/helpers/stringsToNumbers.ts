@@ -1,16 +1,8 @@
-import { percent } from '@/helpers/percent'
-import { Expression } from '@/types'
+import { Expression } from '@/stores/expression'
+import { percent } from '@/stores/helpers/percent'
 
-export const solution = (expression: Expression): number => {
+export const stringsToNumbers = (expression: Expression) => {
   const { firstNumber, sign, secondNumber } = expression
-
-  if (!firstNumber) return 0
-
-  if (!secondNumber) {
-    return firstNumber.includes('%')
-      ? +percent(firstNumber).toFixed(3)
-      : +firstNumber
-  }
 
   const fNum =
     firstNumber.includes('%') && secondNumber.includes('%')
@@ -18,7 +10,7 @@ export const solution = (expression: Expression): number => {
       : sign.match(/^[*/]+$/) && firstNumber.includes('%')
       ? +percent(firstNumber).toFixed(3)
       : firstNumber.includes('%')
-      ? +percent(firstNumber, secondNumber).toFixed(3)
+      ? +percent(firstNumber).toFixed(3)
       : +firstNumber
 
   const sNum =
@@ -30,14 +22,5 @@ export const solution = (expression: Expression): number => {
       ? +percent(firstNumber, secondNumber).toFixed(3)
       : +secondNumber
 
-  const solution =
-    sign === '+'
-      ? fNum + sNum
-      : sign === '-'
-      ? fNum - sNum
-      : sign === '*'
-      ? fNum * sNum
-      : fNum / sNum
-
-  return +solution.toFixed(3)
+  return { fNum, sNum }
 }

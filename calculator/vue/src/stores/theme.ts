@@ -23,15 +23,32 @@ const themes = {
   }
 }
 
+export type Theme = {
+  containerBackgroundColor: string
+  blocksBackgroundColor: string
+  buttonBackgroundColor: string
+  hoverButton: string
+  numberColor: string
+  lightTheme: string
+  darkTheme: string
+  hoverTheme: string
+}
+
+type State = {
+  theme: Theme
+}
+
 export const useThemeStore = defineStore({
   id: 'theme',
-  state: () => ({
-    theme:
-      themes[
-        (window.matchMedia('(prefers-color-scheme: dark)').matches && 'dark') ||
-          'light'
-      ]
-  }),
+  state: () =>
+    ({
+      theme:
+        themes[
+          (window.matchMedia('(prefers-color-scheme: dark)').matches &&
+            'dark') ||
+            'light'
+        ]
+    } as State),
   actions: {
     toggleDarkTheme() {
       this.theme = themes['dark']
