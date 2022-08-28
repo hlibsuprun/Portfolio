@@ -1,7 +1,7 @@
 import { Button } from '@/models/Button'
 import { Expression } from '@/stores/expression'
 
-export class Point extends Button {
+export class Inverse extends Button {
   expression: Expression
 
   constructor(expression: Expression) {
@@ -14,15 +14,11 @@ export class Point extends Button {
    */
   public clickHandler() {
     let strNumber: string = this.currentNumber(this.expression)
-    strNumber = strNumber.slice(-1).includes('.')
-      ? strNumber.slice(0, -1)
-      : strNumber.includes('.')
-      ? strNumber
-      : strNumber.includes('%')
-      ? strNumber.replace('%', '').concat('.%')
-      : strNumber
-      ? strNumber.concat('.')
-      : strNumber
+    strNumber = strNumber.length && strNumber.includes('%')
+        ? `${parseFloat(strNumber) * -1}%`
+        : strNumber.length
+        ? String(+strNumber * -1)
+        : strNumber
 
     const expression: Expression =
       this.expression.strSecondNumber || this.expression.sign

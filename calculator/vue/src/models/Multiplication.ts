@@ -15,13 +15,13 @@ export class Multiplication extends Button {
    * clickHandler
    */
   public clickHandler() {
-    const expression: Expression = this.expression.secondNumber
+    const expression: Expression = this.expression.strSecondNumber
       ? {
-          firstNumber: String(this.solution),
+          strFirstNumber: String(this.solution),
           sign: '*',
-          secondNumber: ''
+          strSecondNumber: ''
         }
-      : this.expression.firstNumber
+      : this.expression.strFirstNumber
       ? { ...this.expression, sign: '*' }
       : this.expression
 

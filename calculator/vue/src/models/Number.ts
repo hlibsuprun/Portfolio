@@ -13,21 +13,20 @@ export class Number extends Button {
   /**
    * clickHandler
    */
-  public clickHandler(num: string) {
-    let number = this.currentNumber(this.expression)
+  public clickHandler(strEnteredNumber: string) {
+    let strNumber: string = this.currentNumber(this.expression)
 
-    if (String(number.match(/\d/)).length < 5) {
-      number =
-        number.length && number.match(/^[0%]+$/)
-          ? pointAfterZero(number, num)
-          : number.includes('%')
-          ? number.replace('%', '').concat(num, '%')
-          : number.concat(num)
+    if (strNumber.replace(/\D+/g, '').length < 5) {
+      strNumber = strNumber.length && strNumber.match(/^[0%]+$/)
+        ? pointAfterZero(strNumber, strEnteredNumber)
+        : strNumber.includes('%')
+        ? strNumber.replace('%', '').concat(strEnteredNumber, '%')
+        : strNumber.concat(strEnteredNumber)
 
       const expression: Expression =
-        this.expression.secondNumber || this.expression.sign
-          ? { ...this.expression, secondNumber: number }
-          : { ...this.expression, firstNumber: number }
+        this.expression.strSecondNumber || this.expression.sign
+          ? { ...this.expression, strSecondNumber: strNumber }
+          : { ...this.expression, strFirstNumber: strNumber }
 
       return expression
     }

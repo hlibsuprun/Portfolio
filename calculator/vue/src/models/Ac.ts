@@ -5,11 +5,7 @@ export class Ac {
    * clickHandler
    */
   public clickHandler() {
-    const expression: Expression = {
-      firstNumber: '',
-      sign: '',
-      secondNumber: ''
-    }
+    const expression: Expression = { strFirstNumber: '', sign: '', strSecondNumber: '' }
 
     return expression
   }

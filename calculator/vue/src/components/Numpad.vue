@@ -2,9 +2,10 @@
   <div class="numpad" :style="variables">
     <button
       class="numpad__button"
-      @click="button.onClick"
       v-for="button in buttons"
       :key="button.value"
+      :data-testid="button.value"
+      @click="button.onClick"
     >
       {{ /^\d+$/.test(button.value) ? button.value : '' }}
       <Icon :name="button.value" />
@@ -31,18 +32,18 @@ const variables = computed(
   })
 )
 
-const numberClickHandler = (event: MouseEvent) => {
+const numberClickHandler = (event: MouseEvent): void => {
   event.preventDefault()
 
-  const innerHTML = (event.target as HTMLTextAreaElement).innerHTML
-  const number = String(innerHTML.match(/^\d/))
+  const innerHTML: string = (event.target as HTMLTextAreaElement).innerHTML
+  const strEnteredNumber = String(innerHTML.match(/^\d+/))
 
-  expressionStore.numberClickHandler(number)
+  expressionStore.numberClickHandler(strEnteredNumber)
 }
 
 const buttons = [
   { value: 'ac', onClick: expressionStore.acClickHandler },
-  { value: 'invert', onClick: expressionStore.invertClickHandler },
+  { value: 'inverse', onClick: expressionStore.invertClickHandler },
   { value: '%', onClick: expressionStore.percentClickHandler },
   { value: '/', onClick: expressionStore.divisionClickHandler },
   { value: '7', onClick: numberClickHandler },

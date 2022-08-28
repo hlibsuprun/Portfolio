@@ -15,11 +15,7 @@ describe('Expression Store', () => {
     it('initial state', () => {
       const expressionStore = useExpressionStore()
 
-      expect(expressionStore.expression).toEqual({
-        firstNumber: '',
-        sign: '',
-        secondNumber: ''
-      })
+      expect(expressionStore.expression).toEqual({ strFirstNumber: '', sign: '', strSecondNumber: '' })
     })
 
     /*
@@ -27,7 +23,8 @@ describe('Expression Store', () => {
      */
     it('direct state change', () => {
       const expressionStore = useExpressionStore()
-      const expression = { firstNumber: '1', sign: '/', secondNumber: '1' }
+      const expression = { strFirstNumber: '1', sign: '/', strSecondNumber: '1' }
+
       expressionStore.expression = expression
 
       expect(expressionStore.expression).toEqual(expression)
@@ -39,39 +36,78 @@ describe('Expression Store', () => {
      * SOLUTION
      */
     describe('solution', () => {
-      it.each([['/'], ['*'], ['-'], ['+']])('calculation with a %i', sign => {
+      it.each([
+        ['/', 1],
+        ['*', 9],
+        ['-', 0],
+        ['+', 6]
+      ])('calculation with a %s', (sign, expected) => {
         const expressionStore = useExpressionStore()
-        expressionStore.expression = {
-          firstNumber: String(Math.random()),
-          sign,
-          secondNumber: String(Math.random())
-        }
+        const expression = { strFirstNumber: '3', sign, strSecondNumber: '3' }
 
-        let solution
-        switch (sign) {
-          case '/':
-            solution =
-              +expressionStore.expression.firstNumber /
-              +expressionStore.expression.secondNumber
-            break
-          case '*':
-            solution =
-              +expressionStore.expression.firstNumber *
-              +expressionStore.expression.secondNumber
-            break
-          case '-':
-            solution =
-              +expressionStore.expression.firstNumber -
-              +expressionStore.expression.secondNumber
-            break
-          default:
-            solution =
-              +expressionStore.expression.firstNumber +
-              +expressionStore.expression.secondNumber
-        }
+        expressionStore.expression = expression
 
-        expect(expressionStore.solution).toBe(+solution.toFixed(3))
+        expect(expressionStore.solution).toBe(expected)
       })
+
+      it.each([
+        ['/', -1],
+        ['*', -9],
+        ['-', -6],
+        ['+', 0]
+      ])('calculations with a negative number with a %s', (sign, expected) => {
+        const expressionStore = useExpressionStore()
+        const expression = { strFirstNumber: '-3', sign, strSecondNumber: '3' }
+
+        expressionStore.expression = expression
+
+        expect(expressionStore.solution).toBe(expected)
+      })
+
+      it.each([
+        ['/', 100],
+        ['*', 0.09],
+        ['-', 2.91],
+        ['+', 3.09]
+      ])('calculations with a percent with a %s', (sign, expected) => {
+        const expressionStore = useExpressionStore()
+        const expression = { strFirstNumber: '3', sign, strSecondNumber: '3%' }
+
+        expressionStore.expression = expression
+
+        expect(expressionStore.solution).toBe(expected)
+      })
+
+      it.each([['/'], ['*'], ['-'], ['+']])(
+        'calculation of non-integer numbers with a %s',
+        sign => {
+          const expressionStore = useExpressionStore()
+          const expression = {
+            strFirstNumber: String(Math.random()),
+            sign,
+            strSecondNumber: String(Math.random())
+          }
+
+          expressionStore.expression = expression
+
+          let solution
+          switch (sign) {
+            case '/':
+              solution = +expression.strFirstNumber / +expression.strSecondNumber
+              break
+            case '-':
+              solution = +expression.strFirstNumber - +expression.strSecondNumber
+              break
+            case '*':
+              solution = +expression.strFirstNumber * +expression.strSecondNumber
+              break
+            default:
+              solution = +expression.strFirstNumber + +expression.strSecondNumber
+          }
+
+          expect(expressionStore.solution).toBe(+solution.toFixed(3))
+        }
+      )
     })
   })
 
@@ -81,71 +117,40 @@ describe('Expression Store', () => {
      */
     it('acClickHandler', () => {
       const expressionStore = useExpressionStore()
-      expressionStore.expression = {
-        firstNumber: '1',
-        sign: '/',
-        secondNumber: '1'
-      }
+      expressionStore.expression = { strFirstNumber: '1', sign: '/', strSecondNumber: '1' }
 
       expressionStore.acClickHandler()
 
-      expect(expressionStore.expression).toEqual({
-        firstNumber: '',
-        sign: '',
-        secondNumber: ''
-      })
+      expect(expressionStore.expression).toEqual({ strFirstNumber: '', sign: '', strSecondNumber: '' })
     })
 
     /*
      * backspaceClickHandler
      */
-    it('backspaceClickHandler', () => {
+    it('backspaceClickHandler', () =>{
       const expressionStore = useExpressionStore()
-      const expression = {
-        firstNumber: '-1.%',
-        sign: '/',
-        secondNumber: '1'
-      }
+      const expression = { strFirstNumber: '-1.%', sign: '/', strSecondNumber: '1' }
       expressionStore.expression = expression
 
       expressionStore.backspaceClickHandler()
 
-      expect(expressionStore.expression).toEqual({
-        ...expression,
-        secondNumber: ''
-      })
+      expect(expressionStore.expression).toEqual({ ...expression, strSecondNumber: '' })
 
       expressionStore.backspaceClickHandler()
 
-      expect(expressionStore.expression).toEqual({
-        ...expression,
-        sign: '',
-        secondNumber: ''
-      })
+      expect(expressionStore.expression).toEqual({ ...expression, sign: '', strSecondNumber: '' })
 
       expressionStore.backspaceClickHandler()
 
-      expect(expressionStore.expression).toEqual({
-        firstNumber: '-1.',
-        sign: '',
-        secondNumber: ''
-      })
+      expect(expressionStore.expression).toEqual({ strFirstNumber: '-1.', sign: '', strSecondNumber: '' })
 
       expressionStore.backspaceClickHandler()
 
-      expect(expressionStore.expression).toEqual({
-        firstNumber: '-1',
-        sign: '',
-        secondNumber: ''
-      })
+      expect(expressionStore.expression).toEqual({ strFirstNumber: '-1', sign: '', strSecondNumber: '' })
 
       expressionStore.backspaceClickHandler()
 
-      expect(expressionStore.expression).toEqual({
-        firstNumber: '',
-        sign: '',
-        secondNumber: ''
-      })
+      expect(expressionStore.expression).toEqual({ strFirstNumber: '', sign: '', strSecondNumber: '' })
     })
 
     /*
@@ -163,7 +168,7 @@ describe('Expression Store', () => {
 
       it('when there is one number', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, firstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.divisionClickHandler()
@@ -173,7 +178,7 @@ describe('Expression Store', () => {
 
       it('when there is a sign', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, firstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.divisionClickHandler()
@@ -184,19 +189,12 @@ describe('Expression Store', () => {
 
       it('when there is full expression', () => {
         const expressionStore = useExpressionStore()
-        const expression = {
-          firstNumber: '1',
-          sign: '/',
-          secondNumber: '1'
-        }
+        const expression = { strFirstNumber: '1', sign: '/', strSecondNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.divisionClickHandler()
 
-        expect(expressionStore.expression).toEqual({
-          ...expression,
-          secondNumber: ''
-        })
+        expect(expressionStore.expression).toEqual({ ...expression, strSecondNumber: '' })
       })
     })
 
@@ -205,16 +203,12 @@ describe('Expression Store', () => {
      */
     it('equalsClickHandler', () => {
       const expressionStore = useExpressionStore()
-      const expression = { firstNumber: '1', sign: '/', secondNumber: '1' }
+      const expression = { strFirstNumber: '1', sign: '/', strSecondNumber: '1' }
       expressionStore.expression = expression
 
       expressionStore.equalsClickHandler()
 
-      expect(expressionStore.expression).toEqual({
-        ...expression,
-        sign: '',
-        secondNumber: ''
-      })
+      expect(expressionStore.expression).toEqual({ ...expression, sign: '', strSecondNumber: '' })
     })
 
     /*
@@ -223,20 +217,17 @@ describe('Expression Store', () => {
     describe('invertClickHandler', () => {
       it('one call when there is a number', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, firstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.invertClickHandler()
 
-        expect(expressionStore.expression).toEqual({
-          ...expression,
-          firstNumber: '-1'
-        })
+        expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '-1' })
       })
 
       it('two calls when there is a number', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, firstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.invertClickHandler()
@@ -261,7 +252,7 @@ describe('Expression Store', () => {
 
       it('when there is one number', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, firstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.minusClickHandler()
@@ -271,7 +262,7 @@ describe('Expression Store', () => {
 
       it('when there is a sign', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, firstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.minusClickHandler()
@@ -282,20 +273,12 @@ describe('Expression Store', () => {
 
       it('when there is full expression', () => {
         const expressionStore = useExpressionStore()
-        const expression = {
-          firstNumber: '1',
-          sign: '-',
-          secondNumber: '1'
-        }
+        const expression = { strFirstNumber: '1', sign: '-', strSecondNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.minusClickHandler()
 
-        expect(expressionStore.expression).toEqual({
-          ...expression,
-          firstNumber: '0',
-          secondNumber: ''
-        })
+        expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '0', strSecondNumber: '' })
       })
     })
 
@@ -314,7 +297,7 @@ describe('Expression Store', () => {
 
       it('when there is one number', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, firstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.multiplicationClickHandler()
@@ -324,7 +307,7 @@ describe('Expression Store', () => {
 
       it('when there is a sign', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, firstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.multiplicationClickHandler()
@@ -335,20 +318,12 @@ describe('Expression Store', () => {
 
       it('when there is full expression', () => {
         const expressionStore = useExpressionStore()
-        const expression = {
-          firstNumber: '1',
-          sign: '*',
-          secondNumber: '1'
-        }
+        const expression = { strFirstNumber: '1', sign: '*', strSecondNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.multiplicationClickHandler()
 
-        expect(expressionStore.expression).toEqual({
-          ...expression,
-          firstNumber: '1',
-          secondNumber: ''
-        })
+        expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '1', strSecondNumber: '' })
       })
     })
 
@@ -362,57 +337,37 @@ describe('Expression Store', () => {
 
         expressionStore.numberClickHandler('1')
 
-        expect(expressionStore.expression).toEqual({
-          ...expression,
-          firstNumber: '1'
-        })
+        expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '1' })
       })
 
       it('when there is one number', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, firstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.numberClickHandler('1')
 
-        expect(expressionStore.expression).toEqual({
-          ...expression,
-          firstNumber: '11'
-        })
+        expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '11' })
       })
 
       it('when there is a sign', () => {
         const expressionStore = useExpressionStore()
-        const expression = {
-          ...expressionStore.expression,
-          firstNumber: '1',
-          sign: '*'
-        }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1', sign: '*' }
         expressionStore.expression = expression
 
         expressionStore.numberClickHandler('1')
 
-        expect(expressionStore.expression).toEqual({
-          ...expression,
-          secondNumber: '1'
-        })
+        expect(expressionStore.expression).toEqual({ ...expression, strSecondNumber: '1' })
       })
 
       it('when there is full expression', () => {
         const expressionStore = useExpressionStore()
-        const expression = {
-          firstNumber: '1',
-          sign: '*',
-          secondNumber: '1'
-        }
+        const expression = { strFirstNumber: '1', sign: '*', strSecondNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.numberClickHandler('1')
 
-        expect(expressionStore.expression).toEqual({
-          ...expression,
-          secondNumber: '11'
-        })
+        expect(expressionStore.expression).toEqual({ ...expression, strSecondNumber: '11' })
       })
     })
 
@@ -431,24 +386,19 @@ describe('Expression Store', () => {
 
       it('when there is one number', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, firstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1'
+        }
         expressionStore.expression = expression
 
         expressionStore.percentClickHandler()
 
-        expect(expressionStore.expression).toEqual({
-          ...expression,
-          firstNumber: '1%'
+        expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '1%'
         })
       })
 
       it('when there is a sign', () => {
         const expressionStore = useExpressionStore()
-        const expression = {
-          ...expressionStore.expression,
-          firstNumber: '1',
-          sign: '*'
-        }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1', sign: '*' }
         expressionStore.expression = expression
 
         expressionStore.percentClickHandler()
@@ -458,24 +408,17 @@ describe('Expression Store', () => {
 
       it('when there is full expression', () => {
         const expressionStore = useExpressionStore()
-        const expression = {
-          firstNumber: '1',
-          sign: '*',
-          secondNumber: '1'
-        }
+        const expression = { strFirstNumber: '1', sign: '*', strSecondNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.percentClickHandler()
 
-        expect(expressionStore.expression).toEqual({
-          ...expression,
-          secondNumber: '1%'
-        })
+        expect(expressionStore.expression).toEqual({ ...expression, strSecondNumber: '1%' })
       })
 
       it('two calls when there is a number', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, firstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.percentClickHandler()
@@ -500,7 +443,7 @@ describe('Expression Store', () => {
 
       it('when there is one number', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, firstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.plusClickHandler()
@@ -510,7 +453,7 @@ describe('Expression Store', () => {
 
       it('when there is a sign', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, firstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.plusClickHandler()
@@ -521,20 +464,12 @@ describe('Expression Store', () => {
 
       it('when there is full expression', () => {
         const expressionStore = useExpressionStore()
-        const expression = {
-          firstNumber: '1',
-          sign: '+',
-          secondNumber: '1'
-        }
+        const expression = { strFirstNumber: '1', sign: '+', strSecondNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.plusClickHandler()
 
-        expect(expressionStore.expression).toEqual({
-          ...expression,
-          firstNumber: '2',
-          secondNumber: ''
-        })
+        expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '2', strSecondNumber: '' })
       })
     })
 
@@ -553,24 +488,17 @@ describe('Expression Store', () => {
 
       it('when there is one number', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, firstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.pointClickHandler()
 
-        expect(expressionStore.expression).toEqual({
-          ...expression,
-          firstNumber: '1.'
-        })
+        expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '1.' })
       })
 
       it('when there is a sign', () => {
         const expressionStore = useExpressionStore()
-        const expression = {
-          ...expressionStore.expression,
-          firstNumber: '1',
-          sign: '+'
-        }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1', sign: '+' }
         expressionStore.expression = expression
 
         expressionStore.pointClickHandler()
@@ -580,24 +508,17 @@ describe('Expression Store', () => {
 
       it('when there is full expression', () => {
         const expressionStore = useExpressionStore()
-        const expression = {
-          firstNumber: '1',
-          sign: '+',
-          secondNumber: '1'
-        }
+        const expression = { strFirstNumber: '1', sign: '+', strSecondNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.pointClickHandler()
 
-        expect(expressionStore.expression).toEqual({
-          ...expression,
-          secondNumber: '1.'
-        })
+        expect(expressionStore.expression).toEqual({ ...expression, strSecondNumber: '1.' })
       })
 
       it('two calls when there is a number', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, firstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
         expressionStore.pointClickHandler()

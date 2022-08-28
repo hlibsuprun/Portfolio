@@ -13,17 +13,17 @@ export class Percent extends Button {
    * clickHandler
    */
   public clickHandler() {
-    let number = this.currentNumber(this.expression)
-    number = number
-      ? number.includes('%')
-        ? number.replace('%', '')
-        : number.concat('%')
-      : number
+    let strNumber: string = this.currentNumber(this.expression)
+    strNumber = strNumber
+      ? strNumber.includes('%')
+        ? strNumber.replace('%', '')
+        : strNumber.concat('%')
+      : strNumber
 
     const expression: Expression =
-      this.expression.secondNumber || this.expression.sign
-        ? { ...this.expression, secondNumber: number }
-        : { ...this.expression, firstNumber: number }
+      this.expression.strSecondNumber || this.expression.sign
+        ? { ...this.expression, strSecondNumber: strNumber }
+        : { ...this.expression, strFirstNumber: strNumber }
 
     return expression
   }

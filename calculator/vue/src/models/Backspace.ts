@@ -13,19 +13,18 @@ export class Backspace extends Button {
    * clickHandler
    */
   public clickHandler() {
-    let number = this.currentNumber(this.expression)
-    number =
-      isNaN(+number[number.length - 2]) && number[number.length - 2] !== '.'
+    let strNumber: string = this.currentNumber(this.expression)
+    strNumber = isNaN(+strNumber[strNumber.length - 2]) && strNumber[strNumber.length - 2] !== '.'
         ? ''
-        : number.length
-        ? number.slice(0, -1)
+        : strNumber.length
+        ? strNumber.slice(0, -1)
         : ''
 
-    const expression: Expression = this.expression.secondNumber
-      ? { ...this.expression, secondNumber: number }
-      : this.expression.sign && this.expression.secondNumber === ''
+    const expression: Expression = this.expression.strSecondNumber
+      ? { ...this.expression, strSecondNumber: strNumber }
+      : this.expression.sign && this.expression.strSecondNumber === ''
       ? { ...this.expression, sign: '' }
-      : { ...this.expression, firstNumber: number }
+      : { ...this.expression, strFirstNumber: strNumber }
 
     return expression
   }

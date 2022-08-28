@@ -2,8 +2,8 @@ import { Expression } from '@/stores/expression'
 
 export class Button {
   public currentNumber(expression: Expression): string {
-    const { firstNumber, sign, secondNumber } = expression
+    const { strFirstNumber, sign, strSecondNumber } = expression
 
-    return secondNumber ? secondNumber : sign ? '' : firstNumber
+    return strSecondNumber ? strSecondNumber : sign ? '' : strFirstNumber
   }
 }

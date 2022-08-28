@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const themes = {
+export const themes = {
   dark: {
     containerBackgroundColor: 'rgb(34,37,45)',
     blocksBackgroundColor: 'rgb(42,45,55)',
@@ -44,16 +44,15 @@ export const useThemeStore = defineStore({
     ({
       theme:
         themes[
-          (window.matchMedia('(prefers-color-scheme: dark)').matches &&
-            'dark') ||
-            'light'
+          (window.matchMedia('(prefers-color-scheme: dark)').matches && 'dark') ||
+          'light'
         ]
     } as State),
   actions: {
-    toggleDarkTheme() {
+    toggleDarkTheme(): void {
       this.theme = themes['dark']
     },
-    toggleLightTheme() {
+    toggleLightTheme(): void {
       this.theme = themes['light']
     }
   }

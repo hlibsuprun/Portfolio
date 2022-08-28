@@ -1,7 +1,8 @@
-export const pointAfterZero = (number: string, num: string): string =>
-  number
+export function pointAfterZero(strNumberBeforeZero: string, strNumberAfterZero: string): string {
+  const strNumber = strNumberBeforeZero
     .split('')
-    .map(character =>
-      character === '0' ? character.concat('.', num) : character
-    )
+    .map(character => character === '0' ? character.concat('.', strNumberAfterZero) : character)
     .join('')
+
+  return strNumber
+}

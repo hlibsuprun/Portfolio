@@ -16,9 +16,9 @@ export class Equals extends Button {
    */
   public clickHandler() {
     const expression: Expression = {
-      firstNumber: this.solution ? String(this.solution) : '',
+      strFirstNumber: this.solution ? String(this.solution) : '',
       sign: '',
-      secondNumber: ''
+      strSecondNumber: ''
     }
 
     return expression

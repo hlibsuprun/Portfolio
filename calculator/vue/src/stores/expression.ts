@@ -4,7 +4,7 @@ import { Ac } from '@/models/Ac'
 import { Backspace } from '@/models/Backspace'
 import { Division } from '@/models/Division'
 import { Equals } from '@/models/Equals'
-import { Invert } from '@/models/Invert'
+import { Inverse } from '@/models/Inverse'
 import { Minus } from '@/models/Minus'
 import { Multiplication } from '@/models/Multiplication'
 import { Number } from '@/models/Number'
@@ -15,9 +15,9 @@ import { percent } from '@/stores/helpers/percent'
 import { stringsToNumbers } from '@/stores/helpers/stringsToNumbers'
 
 export type Expression = {
-  firstNumber: string
+  strFirstNumber: string
   sign: string
-  secondNumber: string
+  strSecondNumber: string
 }
 
 type State = {
@@ -29,84 +29,73 @@ export const useExpressionStore = defineStore({
   state: () =>
     ({
       expression: {
-        firstNumber: '',
+        strFirstNumber: '',
         sign: '',
-        secondNumber: ''
+        strSecondNumber: ''
       }
     } as State),
   getters: {
     solution: (state): number => {
-      const { firstNumber, sign, secondNumber } = state.expression
+      const { strFirstNumber, sign, strSecondNumber } = state.expression
 
-      if (!secondNumber || (sign === '/' && secondNumber.match(/^[0.%]+$/))) {
-        return firstNumber.includes('%')
-          ? +percent(firstNumber).toFixed(3)
-          : +firstNumber
+      if (!strSecondNumber || (sign === '/' && strSecondNumber.match(/^[0.%]+$/))) {
+        return strFirstNumber.includes('%')
+          ? +percent(strFirstNumber).toFixed(3)
+          : +strFirstNumber
       }
 
-      const { fNum, sNum } = stringsToNumbers(state.expression)
+      const { firstNumber, secondNumber } = stringsToNumbers(state.expression)
 
-      let solution = 0
-
+      let solution: number
       switch (sign) {
-        case '+':
-          solution = fNum + sNum
+        case '/':
+          solution = firstNumber / secondNumber
           break
         case '-':
-          solution = fNum - sNum
+          solution = firstNumber - secondNumber
           break
         case '*':
-          solution = fNum * sNum
+          solution = firstNumber * secondNumber
           break
-        case '/':
-          solution = fNum / sNum
-          break
+        default:
+          solution = firstNumber + secondNumber
       }
 
       return +solution.toFixed(3)
     }
   },
   actions: {
-    acClickHandler() {
+    acClickHandler(): void {
       this.expression = new Ac().clickHandler()
     },
-    backspaceClickHandler() {
+    backspaceClickHandler(): void {
       this.expression = new Backspace(this.expression).clickHandler()
     },
-    divisionClickHandler() {
-      this.expression = new Division(
-        this.expression,
-        this.solution
-      ).clickHandler()
+    divisionClickHandler(): void {
+      this.expression = new Division(this.expression, this.solution).clickHandler()
     },
-    equalsClickHandler() {
-      this.expression = new Equals(
-        this.expression,
-        this.solution
-      ).clickHandler()
+    equalsClickHandler(): void {
+      this.expression = new Equals(this.expression, this.solution).clickHandler()
     },
-    invertClickHandler() {
-      this.expression = new Invert(this.expression).clickHandler()
+    invertClickHandler(): void {
+      this.expression = new Inverse(this.expression).clickHandler()
     },
-    minusClickHandler() {
+    minusClickHandler(): void {
       this.expression = new Minus(this.expression, this.solution).clickHandler()
     },
-    multiplicationClickHandler() {
-      this.expression = new Multiplication(
-        this.expression,
-        this.solution
-      ).clickHandler()
+    multiplicationClickHandler(): void {
+      this.expression = new Multiplication(this.expression, this.solution).clickHandler()
     },
-    numberClickHandler(number: string) {
-      this.expression = new Number(this.expression).clickHandler(number)
+    numberClickHandler(strEnteredNumber: string): void {
+      this.expression = new Number(this.expression).clickHandler(strEnteredNumber)
     },
-    percentClickHandler() {
+    percentClickHandler(): void {
       this.expression = new Percent(this.expression).clickHandler()
     },
-    plusClickHandler() {
+    plusClickHandler(): void {
       this.expression = new Plus(this.expression, this.solution).clickHandler()
     },
-    pointClickHandler() {
+    pointClickHandler(): void {
       this.expression = new Point(this.expression).clickHandler()
     }
   }

@@ -15,13 +15,9 @@ export class Division extends Button {
    * clickHandler
    */
   public clickHandler() {
-    const expression: Expression = this.expression.secondNumber
-      ? {
-          firstNumber: String(this.solution),
-          sign: '/',
-          secondNumber: ''
-        }
-      : this.expression.firstNumber !== '0' && this.expression.firstNumber
+    const expression: Expression = this.expression.strSecondNumber
+      ? { strFirstNumber: String(this.solution), sign: '/', strSecondNumber: '' }
+      : this.expression.strFirstNumber !== '0' && this.expression.strFirstNumber
       ? { ...this.expression, sign: '/' }
       : this.expression
 

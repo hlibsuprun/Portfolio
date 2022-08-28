@@ -1,11 +1,11 @@
 <template>
   <div class="screen" :style="variables">
-    <div class="screen__problem">
-      {{ expressionStore.expression.firstNumber }}
+    <div class="screen__problem" data-testid="problem">
+      {{ expressionStore.expression.strFirstNumber }}
       <Icon class="screen__icon" :name="expressionStore.expression.sign" />
-      {{ expressionStore.expression.secondNumber }}
+      {{ expressionStore.expression.strSecondNumber }}
     </div>
-    <div class="screen__solution">
+    <div class="screen__solution" data-testid="solution">
       {{ expressionStore.solution }}
     </div>
   </div>

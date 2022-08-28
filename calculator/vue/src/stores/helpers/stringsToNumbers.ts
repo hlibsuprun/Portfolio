@@ -1,26 +1,23 @@
 import { Expression } from '@/stores/expression'
 import { percent } from '@/stores/helpers/percent'
 
-export const stringsToNumbers = (expression: Expression) => {
-  const { firstNumber, sign, secondNumber } = expression
+export function stringsToNumbers(expression: Expression) {
+  const { strFirstNumber, sign, strSecondNumber } = expression
 
-  const fNum =
-    firstNumber.includes('%') && secondNumber.includes('%')
-      ? +percent(firstNumber).toFixed(3)
-      : sign.match(/^[*/]+$/) && firstNumber.includes('%')
-      ? +percent(firstNumber).toFixed(3)
-      : firstNumber.includes('%')
-      ? +percent(firstNumber).toFixed(3)
-      : +firstNumber
+  const firstNumber: number =
+    (strFirstNumber.includes('%') && strSecondNumber.includes('%')) ||
+    (sign.match(/^[*/]+$/) && strFirstNumber.includes('%')) ||
+    strFirstNumber.includes('%')
+      ? percent(strFirstNumber)
+      : +strFirstNumber
 
-  const sNum =
-    firstNumber.includes('%') && secondNumber.includes('%')
-      ? +percent(secondNumber).toFixed(3)
-      : sign.match(/^[*/]+$/) && secondNumber.includes('%')
-      ? +percent(secondNumber).toFixed(3)
-      : secondNumber.includes('%')
-      ? +percent(firstNumber, secondNumber).toFixed(3)
-      : +secondNumber
+  const secondNumber: number =
+    (strFirstNumber.includes('%') && strSecondNumber.includes('%')) ||
+    (sign.match(/^[*/]+$/) && strSecondNumber.includes('%'))
+      ? percent(strSecondNumber)
+      : strSecondNumber.includes('%')
+      ? percent(strFirstNumber, strSecondNumber)
+      : +strSecondNumber
 
-  return { fNum, sNum }
+  return { firstNumber, secondNumber }
 }
