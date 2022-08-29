@@ -13,7 +13,7 @@ export class Backspace extends Button {
    * clickHandler
    */
   public clickHandler() {
-    let strNumber: string = this.currentNumber(this.expression)
+    let strNumber: string = this.currentStrNumber(this.expression)
     strNumber = isNaN(+strNumber[strNumber.length - 2]) && strNumber[strNumber.length - 2] !== '.'
         ? ''
         : strNumber.length

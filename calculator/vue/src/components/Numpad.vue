@@ -4,10 +4,9 @@
       class="numpad__button"
       v-for="button in buttons"
       :key="button.value"
-      :data-testid="button.value"
       @click="button.onClick"
     >
-      {{ /^\d+$/.test(button.value) ? button.value : '' }}
+      <span>{{ /^\d+$/.test(button.value) ? button.value : '' }}</span>
       <Icon :name="button.value" />
     </button>
   </div>
@@ -28,7 +27,7 @@ const variables = computed(
     '--blocksBackgroundColor': themeStore.theme.blocksBackgroundColor,
     '--buttonBackgroundColor': themeStore.theme.buttonBackgroundColor,
     '--hoverButton': themeStore.theme.hoverButton,
-    '--numberColor': themeStore.theme.numberColor
+    '--textColor': themeStore.theme.textColor
   })
 )
 
@@ -43,7 +42,7 @@ const numberClickHandler = (event: MouseEvent): void => {
 
 const buttons = [
   { value: 'ac', onClick: expressionStore.acClickHandler },
-  { value: 'inverse', onClick: expressionStore.invertClickHandler },
+  { value: 'reverse', onClick: expressionStore.reverseClickHandler },
   { value: '%', onClick: expressionStore.percentClickHandler },
   { value: '/', onClick: expressionStore.divisionClickHandler },
   { value: '7', onClick: numberClickHandler },
@@ -96,7 +95,7 @@ export default {
     font-size: 14px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    color: var(--numberColor);
+    color: var(--textColor);
     background-color: var(--buttonBackgroundColor);
     &:hover {
       box-shadow: 0 4px 4px var(--hoverButton);
@@ -105,14 +104,14 @@ export default {
   }
 }
 
-#point {
-  transition: all 0.3s ease;
-  fill: var(--numberColor);
-}
-
 #backspace {
   transition: all 0.3s ease;
-  stroke: var(--numberColor);
+  stroke: var(--textColor);
+}
+
+#point {
+  transition: all 0.3s ease;
+  fill: var(--textColor);
 }
 
 @media (min-width: 1600px) {

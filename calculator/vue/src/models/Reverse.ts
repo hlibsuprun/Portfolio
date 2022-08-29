@@ -1,7 +1,7 @@
 import { Button } from '@/models/Button'
 import { Expression } from '@/stores/expression'
 
-export class Inverse extends Button {
+export class Reverse extends Button {
   expression: Expression
 
   constructor(expression: Expression) {
@@ -13,7 +13,7 @@ export class Inverse extends Button {
    * clickHandler
    */
   public clickHandler() {
-    let strNumber: string = this.currentNumber(this.expression)
+    let strNumber: string = this.currentStrNumber(this.expression)
     strNumber = strNumber.length && strNumber.includes('%')
         ? `${parseFloat(strNumber) * -1}%`
         : strNumber.length

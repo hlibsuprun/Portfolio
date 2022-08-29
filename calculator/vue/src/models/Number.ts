@@ -14,9 +14,9 @@ export class Number extends Button {
    * clickHandler
    */
   public clickHandler(strEnteredNumber: string) {
-    let strNumber: string = this.currentNumber(this.expression)
+    let strNumber: string = this.currentStrNumber(this.expression)
 
-    if (strNumber.replace(/\D+/g, '').length < 5) {
+    if (strNumber.replace(/\D+/g, '').length < 10) {
       strNumber = strNumber.length && strNumber.match(/^[0%]+$/)
         ? pointAfterZero(strNumber, strEnteredNumber)
         : strNumber.includes('%')

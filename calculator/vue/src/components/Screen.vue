@@ -1,9 +1,9 @@
 <template>
   <div class="screen" :style="variables">
     <div class="screen__problem" data-testid="problem">
-      {{ expressionStore.expression.strFirstNumber }}
+      <span data-testid="strFirstNumber">{{ expressionStore.expression.strFirstNumber }}</span>
       <Icon class="screen__icon" :name="expressionStore.expression.sign" />
-      {{ expressionStore.expression.strSecondNumber }}
+      <span data-testid="strSecondNumber">{{ expressionStore.expression.strSecondNumber }}</span>
     </div>
     <div class="screen__solution" data-testid="solution">
       {{ expressionStore.solution }}
@@ -23,7 +23,7 @@ const themeStore = useThemeStore()
 
 const variables = computed(
   (): cssVariables => ({
-    '--numberColor': themeStore.theme.numberColor
+    '--textColor': themeStore.theme.textColor
   })
 )
 </script>
@@ -52,7 +52,7 @@ export default {
     font-size: 20px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    color: var(--numberColor);
+    color: var(--textColor);
   }
 
   &__solution {
@@ -65,7 +65,7 @@ export default {
     font-size: 40px;
     font-family: 'Inter', sans-serif;
     font-weight: 500;
-    color: var(--numberColor);
+    color: var(--textColor);
 
     &::-webkit-scrollbar {
       width: 368px;
@@ -73,7 +73,7 @@ export default {
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: var(--numberColor);
+      background-color: var(--textColor);
     }
   }
 

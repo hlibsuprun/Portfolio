@@ -13,7 +13,7 @@ export class Point extends Button {
    * clickHandler
    */
   public clickHandler() {
-    let strNumber: string = this.currentNumber(this.expression)
+    let strNumber: string = this.currentStrNumber(this.expression)
     strNumber = strNumber.slice(-1).includes('.')
       ? strNumber.slice(0, -1)
       : strNumber.includes('.')

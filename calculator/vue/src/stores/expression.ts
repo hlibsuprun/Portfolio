@@ -4,7 +4,7 @@ import { Ac } from '@/models/Ac'
 import { Backspace } from '@/models/Backspace'
 import { Division } from '@/models/Division'
 import { Equals } from '@/models/Equals'
-import { Inverse } from '@/models/Inverse'
+import { Reverse } from '@/models/Reverse'
 import { Minus } from '@/models/Minus'
 import { Multiplication } from '@/models/Multiplication'
 import { Number } from '@/models/Number'
@@ -77,9 +77,6 @@ export const useExpressionStore = defineStore({
     equalsClickHandler(): void {
       this.expression = new Equals(this.expression, this.solution).clickHandler()
     },
-    invertClickHandler(): void {
-      this.expression = new Inverse(this.expression).clickHandler()
-    },
     minusClickHandler(): void {
       this.expression = new Minus(this.expression, this.solution).clickHandler()
     },
@@ -97,6 +94,9 @@ export const useExpressionStore = defineStore({
     },
     pointClickHandler(): void {
       this.expression = new Point(this.expression).clickHandler()
+    },
+    reverseClickHandler(): void {
+      this.expression = new Reverse(this.expression).clickHandler()
     }
   }
 })

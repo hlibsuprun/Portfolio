@@ -212,32 +212,6 @@ describe('Expression Store', () => {
     })
 
     /*
-     * invertClickHandler
-     */
-    describe('invertClickHandler', () => {
-      it('one call when there is a number', () => {
-        const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
-        expressionStore.expression = expression
-
-        expressionStore.invertClickHandler()
-
-        expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '-1' })
-      })
-
-      it('two calls when there is a number', () => {
-        const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
-        expressionStore.expression = expression
-
-        expressionStore.invertClickHandler()
-        expressionStore.invertClickHandler()
-
-        expect(expressionStore.expression).toEqual(expression)
-      })
-    })
-
-    /*
      * minusClickHandler
      */
     describe('minusClickHandler', () => {
@@ -392,8 +366,7 @@ describe('Expression Store', () => {
 
         expressionStore.percentClickHandler()
 
-        expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '1%'
-        })
+        expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '1%' })
       })
 
       it('when there is a sign', () => {
@@ -416,15 +389,14 @@ describe('Expression Store', () => {
         expect(expressionStore.expression).toEqual({ ...expression, strSecondNumber: '1%' })
       })
 
-      it('two calls when there is a number', () => {
+      it('when there is a number percent', () => {
         const expressionStore = useExpressionStore()
-        const expression = { ...expressionStore.expression, strFirstNumber: '1' }
+        const expression = { ...expressionStore.expression, strFirstNumber: '1%' }
         expressionStore.expression = expression
 
         expressionStore.percentClickHandler()
-        expressionStore.percentClickHandler()
 
-        expect(expressionStore.expression).toEqual(expression)
+        expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '1' })
       })
     })
 
@@ -516,15 +488,39 @@ describe('Expression Store', () => {
         expect(expressionStore.expression).toEqual({ ...expression, strSecondNumber: '1.' })
       })
 
-      it('two calls when there is a number', () => {
+      it('when there is a number with a point', () => {
+        const expressionStore = useExpressionStore()
+        const expression = { ...expressionStore.expression, strFirstNumber: '1.' }
+        expressionStore.expression = expression
+
+        expressionStore.pointClickHandler()
+
+        expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '1' })
+      })
+    })
+
+    /*
+     * reverseClickHandler
+     */
+    describe('reverseClickHandler', () => {
+      it('one call when there is a number', () => {
         const expressionStore = useExpressionStore()
         const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
-        expressionStore.pointClickHandler()
-        expressionStore.pointClickHandler()
+        expressionStore.reverseClickHandler()
 
-        expect(expressionStore.expression).toEqual(expression)
+        expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '-1' })
+      })
+
+      it('when there is a number with a minus', () => {
+        const expressionStore = useExpressionStore()
+        const expression = { ...expressionStore.expression, strFirstNumber: '-1' }
+        expressionStore.expression = expression
+
+        expressionStore.reverseClickHandler()
+
+        expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '1' })
       })
     })
   })

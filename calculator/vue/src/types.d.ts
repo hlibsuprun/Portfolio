@@ -3,7 +3,7 @@ export type cssVariables = {
   '--blocksBackgroundColor'?: string
   '--buttonBackgroundColor'?: string
   '--hoverButton'?: string
-  '--numberColor'?: string
+  '--textColor'?: string
   '--lightTheme'?: string
   '--darkTheme'?: string
   '--hoverTheme'?: string

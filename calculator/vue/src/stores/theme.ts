@@ -6,7 +6,7 @@ export const themes = {
     blocksBackgroundColor: 'rgb(42,45,55)',
     buttonBackgroundColor: 'rgb(40,43,51)',
     hoverButton: 'rgba(0, 0, 0, 0.1)',
-    numberColor: 'rgb(255,255,255)',
+    textColor: 'rgb(255,255,255)',
     lightTheme: 'rgb(115,119,127)',
     darkTheme: 'rgb(255,255,255)',
     hoverTheme: 'rgb(255,255,255)'
@@ -16,7 +16,7 @@ export const themes = {
     blocksBackgroundColor: 'rgb(249,249,249)',
     buttonBackgroundColor: 'rgb(247,247,247)',
     hoverButton: 'rgba(8, 8, 8, 0.1)',
-    numberColor: 'rgb(52,54,60)',
+    textColor: 'rgb(52,54,60)',
     lightTheme: 'rgb(60,61,68)',
     darkTheme: 'rgb(223,223,223)',
     hoverTheme: 'rgb(60,61,68)'
@@ -28,7 +28,7 @@ export type Theme = {
   blocksBackgroundColor: string
   buttonBackgroundColor: string
   hoverButton: string
-  numberColor: string
+  textColor: string
   lightTheme: string
   darkTheme: string
   hoverTheme: string
