@@ -1,26 +1,23 @@
-import { Expression } from '../App'
-import { solutionCalculation } from '../helpers/solutionCalculation'
+import { Expression } from '../app/slices/expressionSlice'
 import { Button } from './Button'
 
 export class Division extends Button {
   expression: Expression
+  solution: number
 
-  constructor(expression: Expression) {
+  constructor(expression: Expression, solution: number) {
     super()
     this.expression = expression
+    this.solution = solution
   }
 
   /**
    * clickHandler
    */
   public clickHandler() {
-    const expression: Expression = this.expression.secondNumber
-      ? {
-          firstNumber: String(solutionCalculation(this.expression)),
-          sign: '/',
-          secondNumber: ''
-        }
-      : +this.expression.firstNumber !== 0 && this.expression.firstNumber
+    const expression: Expression = this.expression.strSecondNumber
+      ? { strFirstNumber: String(this.solution), sign: '/', strSecondNumber: '' }
+      : this.expression.strFirstNumber !== '0' && this.expression.strFirstNumber
       ? { ...this.expression, sign: '/' }
       : this.expression
 

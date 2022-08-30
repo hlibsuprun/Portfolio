@@ -11,7 +11,7 @@ export const StyledNumpad = styled.div`
 
   padding: 45px 25px;
 
-  background-color: ${({ theme }) => theme.numpadBackground};
+  background-color: ${({ theme }) => theme.blocksBackgroundColor};
 
   & > button {
     transition: all 0.3s ease;
@@ -21,39 +21,36 @@ export const StyledNumpad = styled.div`
 
     padding: 0px;
 
-    background-color: ${({ theme }) => theme.buttonBackground};
+    background-color: ${({ theme }) => theme.buttonBackgroundColor};
 
     &:hover {
       box-shadow: 0px 4px 4px ${({ theme }) => theme.hoverButton};
       cursor: pointer;
     }
 
-    &.number {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-      transition: all 0.3s ease;
+    max-width: 40px;
+    max-height: 40px;
 
-      width: 40px;
-      height: 40px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: ${({ theme }) => theme.textColor};
+  
 
-      font-size: 14px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-      color: ${({ theme }) => theme.numberColor};
-    }
-
-    &.point svg {
-      fill: ${({ theme }) => theme.numberColor};
+    &#point {
+      fill: ${({ theme }) => theme.textColor};
       transition: all 0.3s ease;
     }
 
-    &.backspace svg {
-      stroke: ${({ theme }) => theme.numberColor};
+    &#backspace {
+      stroke: ${({ theme }) => theme.textColor};
       transition: all 0.3s ease;
     }
-
+    
     & > svg {
       max-width: 40px;
       max-height: 40px;

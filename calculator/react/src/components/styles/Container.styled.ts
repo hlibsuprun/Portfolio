@@ -6,7 +6,7 @@ export const StyledContainer = styled.div`
 
   border-radius: 25px;
 
-  background-color: ${({ theme }) => theme.calculatorBackground};
+  background-color: ${({ theme }) => theme.containerBackgroundColor};
 
   @media (min-width: 2560px) {
     border-radius: 50px;

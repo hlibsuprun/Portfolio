@@ -7,10 +7,9 @@
     "start": "cross-env NODE_ENV=development webpack serve --config ./config/webpack.config.js --mode development",
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.js --mode production",
     "prod": "npm run build && http-server ./dist -a localhost -p 8000 -c-1",
-    "test": "react-scripts test",
-    "lint:fix": "eslint ./src --ext .js,.jsx,.ts,.tsx --quiet --fix",
-    "lint:format": "prettier --config .prettierrc --write .",
-    "lint": "npm run lint:format && npm run lint:fix"
+    "test:unit": "jest 'src/__tests__/unit/**/*.spec.ts' --watch",
+    "test:e2e": "cypress open -b chrome --e2e",
+    "lint": "eslint src --ext .ts,.vue --fix"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
@@ -41,6 +40,7 @@
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.0.0",
+    "cypress": "^10.6.0",
     "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
@@ -60,7 +60,6 @@
     "postcss-loader": "^7.0.1",
     "postcss-preset-env": "^7.7.2",
     "prettier": "^2.7.1",
-    "react-scripts": "^5.0.1",
     "sass": "^1.54.0",
     "sass-loader": "^13.0.2",
     "style-loader": "^3.3.1",

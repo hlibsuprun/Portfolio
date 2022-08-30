@@ -1,4 +1,4 @@
-import { Expression } from '../App'
+import { Expression } from '../app/slices/expressionSlice'
 import { Button } from './Button'
 
 export class Point extends Button {
@@ -13,21 +13,21 @@ export class Point extends Button {
    * clickHandler
    */
   public clickHandler() {
-    let number = this.currentNumber(this.expression)
-    number = number.slice(-1).includes('.')
-      ? number.slice(0, -1)
-      : number.includes('.')
-      ? number
-      : number.includes('%')
-      ? number.replace('%', '').concat('.%')
-      : number
-      ? number.concat('.')
-      : number
+    let strNumber: string = this.currentStrNumber(this.expression)
+    strNumber = strNumber.slice(-1).includes('.')
+      ? strNumber.slice(0, -1)
+      : strNumber.includes('.')
+      ? strNumber
+      : strNumber.includes('%')
+      ? strNumber.replace('%', '').concat('.%')
+      : strNumber
+      ? strNumber.concat('.')
+      : strNumber
 
     const expression: Expression =
-      this.expression.secondNumber || this.expression.sign
-        ? { ...this.expression, secondNumber: number }
-        : { ...this.expression, firstNumber: number }
+      this.expression.strSecondNumber || this.expression.sign
+        ? { ...this.expression, strSecondNumber: strNumber }
+        : { ...this.expression, strFirstNumber: strNumber }
 
     return expression
   }

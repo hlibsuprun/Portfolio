@@ -1,18 +1,16 @@
 import React, { FC } from 'react'
+import { useSelector } from 'react-redux'
 
-import { Expression } from '../App'
-import { solutionCalculation } from '../helpers/solutionCalculation'
+import { Expression, selectExpression, selectSolution } from "../app/slices/expressionSlice";
+
 import { Icon } from './Icon'
 import { StyledProblem } from './styles/Problem.styled'
 import { StyledScreen } from './styles/Screen.styled'
 import { StyledSolution } from './styles/Solution.styled'
-import { ThemeSwitcher } from './ThemeSwitcher'
 
-type ScreenProps = {
-  expression: Expression
-}
+export const Screen: FC = () => {
+  const expression: Expression = useSelector(selectExpression)
 
-export const Screen: FC<ScreenProps> = ({ expression }) => {
   const signs = {
     '/': <Icon iconName='division' />,
     '*': <Icon iconName='multiplication' />,
@@ -23,14 +21,13 @@ export const Screen: FC<ScreenProps> = ({ expression }) => {
 
   return (
     <StyledScreen>
-      <ThemeSwitcher />
       <StyledProblem data-testid='problem'>
-        {expression.firstNumber}
+        {expression.strFirstNumber}
         {signs[expression.sign]}
-        {expression.secondNumber}
+        {expression.strSecondNumber}
       </StyledProblem>
       <StyledSolution data-testid='solution'>
-        {solutionCalculation(expression)}
+        {useSelector(selectSolution)}
       </StyledSolution>
     </StyledScreen>
   )

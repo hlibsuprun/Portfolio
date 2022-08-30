@@ -1,26 +1,27 @@
-import { Expression } from '../App'
-import { solutionCalculation } from '../helpers/solutionCalculation'
+import { Expression } from '../app/slices/expressionSlice'
 import { Button } from './Button'
 
 export class Plus extends Button {
   expression: Expression
+  solution: number
 
-  constructor(expression: Expression) {
+  constructor(expression: Expression, solution: number) {
     super()
     this.expression = expression
+    this.solution = solution
   }
 
   /**
    * clickHandler
    */
   public clickHandler() {
-    const expression: Expression = this.expression.secondNumber
+    const expression: Expression = this.expression.strSecondNumber
       ? {
-          firstNumber: String(solutionCalculation(this.expression)),
+          strFirstNumber: String(this.solution),
           sign: '+',
-          secondNumber: ''
+          strSecondNumber: ''
         }
-      : this.expression.firstNumber
+      : this.expression.strFirstNumber
       ? { ...this.expression, sign: '+' }
       : this.expression
 

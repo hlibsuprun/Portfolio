@@ -1,7 +1,7 @@
 import { Expression } from '../app/slices/expressionSlice'
 import { Button } from './Button'
 
-export class Percent extends Button {
+export class Reverse extends Button {
   expression: Expression
 
   constructor(expression: Expression) {
@@ -14,11 +14,12 @@ export class Percent extends Button {
    */
   public clickHandler() {
     let strNumber: string = this.currentStrNumber(this.expression)
-    strNumber = strNumber
-      ? strNumber.includes('%')
-        ? strNumber.replace('%', '')
-        : strNumber.concat('%')
-      : strNumber
+    strNumber =
+      strNumber.length && strNumber.includes('%')
+        ? `${parseFloat(strNumber) * -1}%`
+        : strNumber.length
+        ? String(+strNumber * -1)
+        : strNumber
 
     const expression: Expression =
       this.expression.strSecondNumber || this.expression.sign

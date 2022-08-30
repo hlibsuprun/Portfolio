@@ -1,13 +1,14 @@
-import { Expression } from '../App'
-import { solutionCalculation } from '../helpers/solutionCalculation'
+import { Expression } from '../app/slices/expressionSlice'
 import { Button } from './Button'
 
 export class Equals extends Button {
   expression: Expression
+  solution: number
 
-  constructor(expression: Expression) {
+  constructor(expression: Expression, solution: number) {
     super()
     this.expression = expression
+    this.solution = solution
   }
 
   /**
@@ -15,11 +16,9 @@ export class Equals extends Button {
    */
   public clickHandler() {
     const expression: Expression = {
-      firstNumber: solutionCalculation(this.expression)
-        ? String(solutionCalculation(this.expression))
-        : '',
+      strFirstNumber: this.solution ? String(this.solution) : '',
       sign: '',
-      secondNumber: ''
+      strSecondNumber: ''
     }
 
     return expression

@@ -1,11 +1,9 @@
-import { Expression } from '../App'
+import { Expression } from '../app/slices/expressionSlice'
 
 export class Button {
-  public currentNumber({
-    firstNumber,
-    sign,
-    secondNumber
-  }: Expression): string {
-    return secondNumber ? secondNumber : sign ? '' : firstNumber
+  public currentStrNumber(expression: Expression): string {
+    const { strFirstNumber, sign, strSecondNumber } = expression
+
+    return strSecondNumber ? strSecondNumber : sign ? '' : strFirstNumber
   }
 }

@@ -1,4 +1,4 @@
-import { Expression } from '../App'
+import { Expression } from '../app/slices/expressionSlice'
 import { Button } from './Button'
 
 export class Invert extends Button {
@@ -13,7 +13,7 @@ export class Invert extends Button {
    * clickHandler
    */
   public clickHandler() {
-    let number = this.currentNumber(this.expression)
+    let number = this.currentStrNumber(this.expression)
     number =
       number.length && number.includes('%')
         ? `${parseFloat(number) * -1}%`
@@ -22,9 +22,9 @@ export class Invert extends Button {
         : number
 
     const expression: Expression =
-      this.expression.secondNumber || this.expression.sign
-        ? { ...this.expression, secondNumber: number }
-        : { ...this.expression, firstNumber: number }
+      this.expression.strSecondNumber || this.expression.sign
+        ? { ...this.expression, strSecondNumber: number }
+        : { ...this.expression, strSecondNumber: number }
 
     return expression
   }

@@ -1,8 +1,6 @@
-import { MouseEvent } from 'react'
-
-import { Expression } from '../App'
+import { Expression } from '../app/slices/expressionSlice'
 import { Button } from './Button'
-import { dotAfterZero } from './helper/dotAfterZero'
+import { pointAfterZero } from './helper/pointAfterZero'
 
 export class Number extends Button {
   expression: Expression
@@ -15,24 +13,21 @@ export class Number extends Button {
   /**
    * clickHandler
    */
-  public clickHandler(event: MouseEvent<HTMLButtonElement>) {
-    event.preventDefault()
-    const value = (event.target as HTMLTextAreaElement).innerHTML
+  public clickHandler(strEnteredNumber: string) {
+    let strNumber: string = this.currentStrNumber(this.expression)
 
-    let number = this.currentNumber(this.expression)
-
-    if (number.length <= 10) {
-      number =
-        number.length && (number === '0' || number === '0%')
-          ? dotAfterZero(number, value)
-          : number.includes('%')
-          ? number.replace('%', '').concat(value, '%')
-          : number.concat(value)
+    if (strNumber.replace(/\D+/g, '').length < 5) {
+      strNumber =
+        strNumber.length && strNumber.match(/^[0%]+$/)
+          ? pointAfterZero(strNumber, strEnteredNumber)
+          : strNumber.includes('%')
+          ? strNumber.replace('%', '').concat(strEnteredNumber, '%')
+          : strNumber.concat(strEnteredNumber)
 
       const expression: Expression =
-        this.expression.secondNumber || this.expression.sign
-          ? { ...this.expression, secondNumber: number }
-          : { ...this.expression, firstNumber: number }
+        this.expression.strSecondNumber || this.expression.sign
+          ? { ...this.expression, strSecondNumber: strNumber }
+          : { ...this.expression, strFirstNumber: strNumber }
 
       return expression
     }

@@ -5,7 +5,7 @@ export const StyledThemeSwitcher = styled.div`
   margin: 0px auto 10vh auto;
   border-radius: 10px;
   width: fit-content;
-  background-color: ${({ theme }) => theme.numpadBackground};
+  background-color: ${({ theme }) => theme.blocksBackgroundColor};
 
   & > button {
     transition: all 0.3s ease;
