@@ -6,7 +6,7 @@
       :key="button.value"
       @click="button.onClick"
     >
-      <span>{{ /^\d+$/.test(button.value) ? button.value : '' }}</span>
+      {{ /^\d+$/.test(button.value) ? button.value : '' }}
       <Icon :name="button.value" />
     </button>
   </div>

@@ -9,7 +9,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
-    "test:e2e": "npx cypress open",
+    "test:e2e": "cypress open -b chrome --e2e",
     "lint": "eslint src --ext .ts,.vue --fix"
   },
   "dependencies": {

@@ -1,3 +1,5 @@
+import { themes } from '@/stores/theme'
+
 describe('', () => {
   const getByTestId = (dataTestId: string) => {
     return cy.get(`[data-testid='${dataTestId}']`)
@@ -14,13 +16,24 @@ describe('', () => {
 
   it('entering numbers', () => {
     cy.get('button').each($el => {
-      if ($el.text().match(/^\d+$/)) {
+      if ($el.text().match(/^[78945]/)) {
         cy.wrap($el).click()
       }
     })
 
-    getByTestId('strFirstNumber').should('have.text', '7894561230')
-    getByTestId('solution').should('have.text', '7894561230')
+    getByTestId('strFirstNumber').should('have.text', '78945')
+    getByTestId('solution').should('have.text', '78945')
+  })
+
+  it('entering numbers', () => {
+    cy.get('button').each($el => {
+      if ($el.text().match(/^[61230]/)) {
+        cy.wrap($el).click()
+      }
+    })
+
+    getByTestId('strFirstNumber').should('have.text', '61230')
+    getByTestId('solution').should('have.text', '61230')
   })
 
   it('entering sings without a number', () => {
@@ -53,63 +66,80 @@ describe('', () => {
     cy.get('#plus').click()
 
     cy.get('button').each($el => {
-      if ($el.text().match(/^\d+$/)) {
+      if ($el.text().match(/^[78945]/)) {
         cy.wrap($el).click()
       }
     })
 
     getByTestId('strFirstNumber').should('have.text', '1')
     getByTestId('problem').find('svg')
-    getByTestId('strSecondNumber').should('have.text', '7894561230')
+    getByTestId('strSecondNumber').should('have.text', '78945')
 
-    getByTestId('solution').should('have.text', '7894561231')
+    getByTestId('solution').should('have.text', '78946')
+  })
+
+  it('entering the numbers after sign', () => {
+    cy.contains('button', '1').click()
+    cy.get('#plus').click()
+
+    cy.get('button').each($el => {
+      if ($el.text().match(/^[61230]/)) {
+        cy.wrap($el).click()
+      }
+    })
+
+    getByTestId('strFirstNumber').should('have.text', '1')
+    getByTestId('problem').find('svg')
+    getByTestId('strSecondNumber').should('have.text', '61230')
+
+    getByTestId('solution').should('have.text', '61231')
   })
 
   it('toggle dark theme', () => {
     cy.get('#dark').click()
 
-    cy.get('.container').should('have.css', 'background-color', 'rgb(34, 37, 45)')
+    cy.get('.container').should('have.css', 'background-color', themes.dark.containerBackgroundColor)
 
-    cy.get('.theme-switcher').should('have.css', 'background-color', 'rgb(42, 45, 55)')
-    cy.get('#light').should('have.css', 'stroke', 'rgb(115, 119, 127)')
-    cy.get('#dark').should('have.css', 'fill', 'rgb(255, 255, 255)')
+    cy.get('.theme-switcher').should('have.css', 'background-color', themes.dark.blocksBackgroundColor)
+    cy.get('#light').should('have.css', 'stroke', themes.dark.lightTheme)
+    cy.get('#dark').should('have.css', 'fill', themes.dark.darkTheme)
 
-    getByTestId('strFirstNumber').should('have.css', 'color', 'rgb(255, 255, 255)')
-    getByTestId('strSecondNumber').should('have.css', 'color', 'rgb(255, 255, 255)')
-    getByTestId('solution').should('have.css', 'color', 'rgb(255, 255, 255)')
+    getByTestId('strFirstNumber').should('have.css', 'color', themes.dark.textColor)
+    getByTestId('strSecondNumber').should('have.css', 'color', themes.dark.textColor)
+    getByTestId('solution').should('have.css', 'color', themes.dark.textColor)
 
-    cy.get('.numpad').should('have.css', 'background-color', 'rgb(42, 45, 55)')
+    cy.get('.numpad').should('have.css', 'background-color', themes.dark.blocksBackgroundColor)
     cy.get('button').each($el => {
       if ($el.text().match(/^\d+$/)) {
-        expect($el).to.have.css('color', 'rgb(255, 255, 255)')
-        expect($el).to.have.css('background-color', 'rgb(40, 43, 51)')
+        expect($el).to.have.css('color', themes.dark.textColor)
+        expect($el).to.have.css('background-color', themes.dark.buttonBackgroundColor)
       }
     })
-    cy.get('#backspace').should('have.css', 'stroke', 'rgb(255, 255, 255)')
-    cy.get('#point').should('have.css', 'fill', 'rgb(255, 255, 255)')
+    cy.get('#backspace').should('have.css', 'stroke', themes.dark.textColor)
+    cy.get('#point').should('have.css', 'fill', themes.dark.textColor)
   })
 
   it('toggle light theme', () => {
     cy.get('#light').click()
 
-    cy.get('.container').should('have.css', 'background-color', 'rgb(255, 255, 255)')
+    cy.get('.container').should('have.css', 'background-color', themes.light.containerBackgroundColor)
 
-    cy.get('.theme-switcher').should('have.css', 'background-color', 'rgb(249, 249, 249)')
-    cy.get('#light').should('have.css', 'stroke', 'rgb(60, 61, 68)')
-    cy.get('#dark').should('have.css', 'fill', 'rgb(223, 223, 223)')
+    cy.get('.theme-switcher').should('have.css', 'background-color', themes.light.blocksBackgroundColor)
+    cy.get('#light').should('have.css', 'stroke', themes.light.lightTheme)
+    cy.get('#dark').should('have.css', 'fill', themes.light.darkTheme)
 
-    getByTestId('strFirstNumber').should('have.css', 'color', 'rgb(52, 54, 60)')
-    getByTestId('strSecondNumber').should('have.css', 'color', 'rgb(52, 54, 60)')
-    getByTestId('solution').should('have.css', 'color', 'rgb(52, 54, 60)')
+    getByTestId('strFirstNumber').should('have.css', 'color', themes.light.textColor)
+    getByTestId('strSecondNumber').should('have.css', 'color', themes.light.textColor)
+    getByTestId('solution').should('have.css', 'color', themes.light.textColor)
 
-    cy.get('.numpad').should('have.css', 'background-color', 'rgb(249, 249, 249)')
+    cy.get('.numpad').should('have.css', 'background-color', themes.light.blocksBackgroundColor)
     cy.get('button').each($el => {
       if ($el.text().match(/^\d+$/)) {
-        expect($el).to.have.css('color', 'rgb(52, 54, 60)')
-        expect($el).to.have.css('background-color', 'rgb(247, 247, 247)')
+        expect($el).to.have.css('color', themes.light.textColor)
+        expect($el).to.have.css('background-color', themes.light.buttonBackgroundColor)
       }
     })
-    cy.get('#backspace').should('have.css', 'stroke', 'rgb(52, 54, 60)')
-    cy.get('#point').should('have.css', 'fill', 'rgb(52, 54, 60)')
+    cy.get('#backspace').should('have.css', 'stroke', themes.light.textColor)
+    cy.get('#point').should('have.css', 'fill', themes.light.textColor)
   })
 })

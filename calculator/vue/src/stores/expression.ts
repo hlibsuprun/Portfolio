@@ -40,7 +40,7 @@ export const useExpressionStore = defineStore({
 
       if (!strSecondNumber || (sign === '/' && strSecondNumber.match(/^[0.%]+$/))) {
         return strFirstNumber.includes('%')
-          ? +percent(strFirstNumber).toFixed(3)
+          ? percent(strFirstNumber)
           : +strFirstNumber
       }
 

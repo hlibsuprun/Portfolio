@@ -16,12 +16,13 @@ export class Number extends Button {
   public clickHandler(strEnteredNumber: string) {
     let strNumber: string = this.currentStrNumber(this.expression)
 
-    if (strNumber.replace(/\D+/g, '').length < 10) {
-      strNumber = strNumber.length && strNumber.match(/^[0%]+$/)
-        ? pointAfterZero(strNumber, strEnteredNumber)
-        : strNumber.includes('%')
-        ? strNumber.replace('%', '').concat(strEnteredNumber, '%')
-        : strNumber.concat(strEnteredNumber)
+    if (strNumber.replace(/\D+/g, '').length < 5) {
+      strNumber =
+        strNumber.length && strNumber.match(/^[0%]+$/)
+          ? pointAfterZero(strNumber, strEnteredNumber)
+          : strNumber.includes('%')
+          ? strNumber.replace('%', '').concat(strEnteredNumber, '%')
+          : strNumber.concat(strEnteredNumber)
 
       const expression: Expression =
         this.expression.strSecondNumber || this.expression.sign
