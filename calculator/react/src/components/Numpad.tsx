@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   acClickHandler,
   backspaceClickHandler,
-  divisionClickHandler,
+  divideClickHandler,
   equalsClickHandler,
   minusClickHandler,
-  multiplicationClickHandler,
+  multipleClickHandler,
   numberClickHandler as clickHandler,
   percentClickHandler,
   plusClickHandler,
@@ -30,20 +30,14 @@ export const Numpad: FC = () => {
   }
 
   const buttons = [
-    {
-      value: <Icon iconName='ac' />,
-      onClick: acClickHandler
-    },
-    {
-      value: <Icon iconName='plus-slash-minus' />,
-      onClick: reverseClickHandler
-    },
-    { value: <Icon iconName='percent' />, onClick: percentClickHandler },
-    { value: <Icon iconName='division' />, onClick: divisionClickHandler(solution) },
+    { value: <Icon iconName='ac' />, onClick: acClickHandler() },
+    { value: <Icon iconName='reverse' />, onClick: reverseClickHandler() },
+    { value: <Icon iconName='percent' />, onClick: percentClickHandler() },
+    { value: <Icon iconName='divide' />, onClick: divideClickHandler(solution) },
     { value: '7' },
     { value: '8' },
     { value: '9' },
-    { value: <Icon iconName='multiplication' />, onClick: multiplicationClickHandler(solution) },
+    { value: <Icon iconName='multiple' />, onClick: multipleClickHandler(solution) },
     { value: '4' },
     { value: '5' },
     { value: '6' },
@@ -52,18 +46,17 @@ export const Numpad: FC = () => {
     { value: '2' },
     { value: '3' },
     { value: <Icon iconName='plus' />, onClick: plusClickHandler(solution) },
-    { value: <Icon iconName='backspace' />, id: 'backspace', onClick: backspaceClickHandler() },
+    { value: <Icon iconName='backspace' />, onClick: backspaceClickHandler() },
     { value: '0' },
-    { value: <Icon iconName='point' />, id: 'point', onClick: pointClickHandler() },
+    { value: <Icon iconName='point' />, onClick: pointClickHandler() },
     { value: <Icon iconName='equals' />, onClick: equalsClickHandler(solution) }
   ]
 
   return (
-    <StyledNumpad>
-      {buttons.map(({ value, onClick, id }, index) => (
+    <StyledNumpad data-testid='numpad'>
+      {buttons.map(({ value, onClick }, index) => (
         <button
           key={index}
-          id={id}
           onClick={(event: MouseEvent<HTMLButtonElement>) => onClick ? dispatch(onClick) : numberClickHandler(event) }
         >
           {value}

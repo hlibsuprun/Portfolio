@@ -32,6 +32,7 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:cypress/recommended",
     "plugin:prettier/recommended"
   ],
   "plugins": ["simple-import-sort", "prettier", "testing-library"],

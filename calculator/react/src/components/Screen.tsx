@@ -1,19 +1,19 @@
 import React, { FC } from 'react'
 import { useSelector } from 'react-redux'
 
-import { Expression, selectExpression, selectSolution } from "../app/slices/expressionSlice";
-
+import { selectExpression, selectSolution } from '../app/slices/expressionSlice'
 import { Icon } from './Icon'
 import { StyledProblem } from './styles/Problem.styled'
 import { StyledScreen } from './styles/Screen.styled'
 import { StyledSolution } from './styles/Solution.styled'
 
 export const Screen: FC = () => {
-  const expression: Expression = useSelector(selectExpression)
+  const { strFirstNumber, sign, strSecondNumber } = useSelector(selectExpression)
+  const solution = useSelector(selectSolution)
 
   const signs = {
-    '/': <Icon iconName='division' />,
-    '*': <Icon iconName='multiplication' />,
+    '/': <Icon iconName='divide' />,
+    '*': <Icon iconName='multiple' />,
     '-': <Icon iconName='minus' />,
     '+': <Icon iconName='plus' />,
     '': ''
@@ -22,12 +22,12 @@ export const Screen: FC = () => {
   return (
     <StyledScreen>
       <StyledProblem data-testid='problem'>
-        {expression.strFirstNumber}
-        {signs[expression.sign]}
-        {expression.strSecondNumber}
+        <span data-testid='strFirstNumber'>{strFirstNumber}</span>
+        {signs[sign]}
+        <span data-testid='strSecondNumber'>{strSecondNumber}</span>
       </StyledProblem>
       <StyledSolution data-testid='solution'>
-        {useSelector(selectSolution)}
+        {solution}
       </StyledSolution>
     </StyledScreen>
   )

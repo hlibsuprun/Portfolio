@@ -16,7 +16,7 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyled />
-        <StyledContainer>
+        <StyledContainer data-testid='container'>
           <ThemeSwitcher />
           <Screen />
           <Numpad />

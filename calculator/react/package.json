@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=development webpack serve --config ./config/webpack.config.js --mode development",
     "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.js --mode production",
     "prod": "npm run build && http-server ./dist -a localhost -p 8000 -c-1",
-    "test:unit": "jest 'src/__tests__/unit/**/*.spec.ts' --watch",
+    "test:unit": "jest --testPathPattern=src/__tests__/unit/ --watch",
     "test:e2e": "cypress open -b chrome --e2e",
     "lint": "eslint src --ext .ts,.vue --fix"
   },
@@ -43,6 +43,7 @@
     "cypress": "^10.6.0",
     "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-prettier": "^4.2.1",

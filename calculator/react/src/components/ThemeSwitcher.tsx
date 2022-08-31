@@ -9,12 +9,12 @@ export const ThemeSwitcher: FC = () => {
   const dispatch = useDispatch()
 
   return (
-    <StyledThemeSwitcher>
+    <StyledThemeSwitcher data-testid='theme-switcher'>
       <button onClick={() => dispatch(toggleLightTheme())}>
-        <Icon className='light' iconName='light' />
+        <Icon iconName='light' />
       </button>
       <button onClick={() => dispatch(toggleDarkTheme())}>
-        <Icon className='dark' iconName='dark' />
+        <Icon iconName='dark' />
       </button>
     </StyledThemeSwitcher>
   )

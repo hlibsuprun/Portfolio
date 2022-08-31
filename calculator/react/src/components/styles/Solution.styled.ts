@@ -4,12 +4,9 @@ export const StyledSolution = styled.div`
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-
   overflow-x: scroll;
   transition: all 0.3s ease;
-
   max-width: 186px;
-
   font-size: 40px;
   font-family: 'Inter', sans-serif;
   font-weight: 500;
@@ -24,11 +21,10 @@ export const StyledSolution = styled.div`
     background-color: ${({ theme }) => theme.textColor};
   }
 
-  @media (min-width: 2560px) {
+  @media (min-width: 1900px) {
     max-width: 340px;
-
-    font-size: 45px;
-
+    font-size: 75px;
+    
     &::-webkit-scrollbar {
       height: 5px;
     }

@@ -1,12 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { useSelector } from 'react-redux'
 
 import { Ac } from '../../models/Ac'
 import { Backspace } from '../../models/Backspace'
-import { Division } from '../../models/Division'
+import { Divide } from '../../models/Divide'
 import { Equals } from '../../models/Equals'
 import { Minus } from '../../models/Minus'
-import { Multiplication } from '../../models/Multiplication'
+import { Multiple } from '../../models/Multiple'
 import { Number } from '../../models/Number'
 import { Percent } from '../../models/Percent'
 import { Plus } from '../../models/Plus'
@@ -75,8 +74,8 @@ export const expressionSlice = createSlice({
     backspaceClickHandler: state => {
       state.expression = new Backspace(state.expression).clickHandler()
     },
-    divisionClickHandler: (state, action: PayloadAction<number>) => {
-      state.expression = new Division(state.expression, action.payload).clickHandler()
+    divideClickHandler: (state, action: PayloadAction<number>) => {
+      state.expression = new Divide(state.expression, action.payload).clickHandler()
     },
     equalsClickHandler: (state, action: PayloadAction<number>) => {
       state.expression = new Equals(state.expression, action.payload).clickHandler()
@@ -84,8 +83,8 @@ export const expressionSlice = createSlice({
     minusClickHandler: (state, action: PayloadAction<number>) => {
       state.expression = new Minus(state.expression, action.payload).clickHandler()
     },
-    multiplicationClickHandler: (state, action: PayloadAction<number>) => {
-      state.expression = new Multiplication(state.expression, action.payload).clickHandler()
+    multipleClickHandler: (state, action: PayloadAction<number>) => {
+      state.expression = new Multiple(state.expression, action.payload).clickHandler()
     },
     numberClickHandler: (state, action: PayloadAction<string>) => {
       state.expression = new Number(state.expression).clickHandler(action.payload)
@@ -108,10 +107,10 @@ export const expressionSlice = createSlice({
 export const {
   acClickHandler,
   backspaceClickHandler,
-  divisionClickHandler,
+  divideClickHandler,
   equalsClickHandler,
   minusClickHandler,
-  multiplicationClickHandler,
+  multipleClickHandler,
   numberClickHandler,
   percentClickHandler,
   plusClickHandler,

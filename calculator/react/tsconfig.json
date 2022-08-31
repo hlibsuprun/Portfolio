@@ -5,8 +5,9 @@
     "module": "es6",
     "target": "es5",
     "jsx": "react",
+    "types": ["jest", "cypress", "node"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "Node"
   }
 }

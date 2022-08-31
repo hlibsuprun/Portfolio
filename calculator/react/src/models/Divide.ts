@@ -1,7 +1,7 @@
 import { Expression } from '../app/slices/expressionSlice'
 import { Button } from './Button'
 
-export class Division extends Button {
+export class Divide extends Button {
   expression: Expression
   solution: number
 
