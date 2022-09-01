@@ -4,9 +4,9 @@ const acButton = document.querySelector('.numpad__button.ac')
 
 acButton.addEventListener('click', () => {
   const expression = {
-    firstNumber: '',
+    strFirstNumber: '',
     sign: '',
-    secondNumber: '',
+    strSecondNumber: '',
   }
 
   assignExpressionValues(expression)

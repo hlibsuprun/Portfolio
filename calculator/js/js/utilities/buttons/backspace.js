@@ -1,25 +1,25 @@
 import { assignExpressionValues, expressionObject } from './helpers/expression.js'
-import { definitionOfNumber } from './helpers/definitionOfNumber.js'
+import { currentStrNumber } from './helpers/currentStrNumber.js'
 
-const backspaceButton = document.querySelector('.numpad__button.back')
+const backspaceButton = document.querySelector('.numpad__button.backspace')
 
 backspaceButton.addEventListener('click', () => {
-  const { sign, secondNumber } = expressionObject
+  const { sign, strSecondNumber } = expressionObject
 
-  let number = definitionOfNumber()
-    number = 
-      isNaN(+number[number.length - 2]) && number[number.length - 2] !== '.'
+  let strNumber = currentStrNumber()
+    strNumber =
+      isNaN(+strNumber[strNumber.length - 2]) && strNumber[strNumber.length - 2] !== '.'
       ? ''
-      : number.length
-      ? number.slice(0, -1)
+      : strNumber.length
+      ? strNumber.slice(0, -1)
       : '';
 
   const expression = 
-    secondNumber
-      ? { ...expressionObject, secondNumber: number }
-      : sign && secondNumber === '' 
+    strSecondNumber
+      ? { ...expressionObject, strSecondNumber: strNumber }
+      : sign && strSecondNumber === ''
       ? { ...expressionObject, sign: '' }
-      : { ...expressionObject, firstNumber: number }
+      : { ...expressionObject, strFirstNumber: strNumber }
 
   assignExpressionValues(expression)
 })

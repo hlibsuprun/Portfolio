@@ -1,1 +1,5 @@
-export const percent = (firstNumber, secondNumber = '1') => (parseFloat(firstNumber) / Math.pow(100, 1)) * parseFloat(secondNumber)
+export function percent(strFirstNumber, strSecondNumber = '1') {
+    const calculation = (parseFloat(strFirstNumber) / Math.pow(100, 1)) * parseFloat(strSecondNumber)
+
+    return +calculation.toFixed(3)
+}

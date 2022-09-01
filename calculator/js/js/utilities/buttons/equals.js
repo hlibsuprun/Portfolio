@@ -1,13 +1,13 @@
 import { assignExpressionValues } from './helpers/expression.js'
-import { solutionValue } from './helpers/solutionValue.js'
+import { solution } from './helpers/solution.js'
 
 const equalsButton = document.querySelector('.numpad__button.equals')
 
 equalsButton.addEventListener('click', () => {
   const expression = {
-    firstNumber: solutionValue() ? String(solutionValue()) : '',
+    strFirstNumber: solution() ? String(solution()) : '',
     sign: '',
-    secondNumber: '',
+    strSecondNumber: '',
   }
 
   assignExpressionValues(expression)

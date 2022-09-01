@@ -6,8 +6,8 @@
 
 .wrapper {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
 
   display: flex;
   justify-content: center;
@@ -24,42 +24,48 @@
  */
 .calculator__container {
   user-select: none;
-  transition: all .3s ease;
-
+  transition: all 0.3s ease;
   border-radius: 25px;
-
+  padding-top: 30px;
   background-color: var(--bg-calculator);
+}
+
+@media (min-width: 1900px) {
+  .calculator__container {
+    border-radius: 50px;
+    padding-top: 40px;
+  }
 }
 
 /**
  * SCREEN
  */
 .calculator__screen {
-  padding: 40px 25px 25px 25px;
+  padding: 0 25px 25px 25px;
+}
+
+@media (min-width: 1900px) {
+  .calculator__screen {
+    padding: 0 25px 25px 25px;
+  }
 }
 
 /* themes */
 .screen__themes {
-  margin: 0px auto 50px auto;
+  margin: 0 auto 10vh auto;
 }
 
 .screen__themes.themes {
-  transition: all .3s ease;
-
-  border-radius: 15px;
-
+  transition: all 0.3s ease;
+  border-radius: 10px;
   width: fit-content;
-
-  background-color: var(--bg-numpad);
+  background-color: var(--bg-blocks);
 }
 
 .themes__button {
-  transition: all .3s ease;
-
-  border: 0px;
-
-  padding: 0px;
-
+  transition: all 0.3s ease;
+  border: 0;
+  padding: 0;
   background-color: transparent;
 }
 
@@ -68,37 +74,67 @@
 }
 
 .themes__icon {
-  transition: all .3s ease;
+  transition: all 0.3s ease;
+  max-width: 45px;
+  max-height: 35px;
+}
 
-  width: 45px;
-  height: 35px;
+@media (min-width: 1600px) {
+  .screen__themes.themes {
+    border-radius: 15px;
+  }
+}
+
+@media (min-width: 1900px) {
+  .screen__themes.themes {
+    border-radius: 20px;
+  }
+
+  .themes__icon {
+    max-width: 75px;
+    max-height: 65px;
+  }
 }
 
 /* problem */
 .screen__problem {
-  margin: 0px 0px 5px 0px;
+  margin-bottom: 5px;
 }
 
 .screen__problem.problem {
   display: flex;
   justify-content: right;
   align-items: center;
-
   overflow: auto;
-  transition: all .3s ease;
-
-  max-width: 206px;
+  transition: all 0.3s ease;
+  max-width: 186px;
   height: 25px;
-
-  font-size: 21px;
-  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
-  color: var(--number-color);
+  color: var(--text-color);
 }
 
 .problem__icon {
-  width: 25px;
-  height: 25px;
+  max-width: 25px;
+  max-height: 25px;
+}
+
+@media (min-width: 1900px) {
+  .screen__problem {
+    margin-bottom: 10px;
+  }
+
+  .screen__problem.problem {
+    max-width: 340px;
+    height: 50px;
+    font-size: 40px;
+  }
+
+  .problem__icon {
+    max-width: 40px;
+    max-height: 40px;
+  }
 }
 
 /* solution */
@@ -106,25 +142,33 @@
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-
   overflow-x: scroll;
-  transition: all .3s ease;
-
-  max-width: 206px;
-
-  font-size: 44px;
-  font-family: "Inter", sans-serif;
+  transition: all 0.3s ease;
+  max-width: 186px;
+  font-size: 40px;
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
-  color: var(--number-color);
+  color: var(--text-color);
 }
 
 .screen__solution::-webkit-scrollbar {
-  width: 206px;
+  width: 368px;
   height: 2.5px;
 }
 
 .screen__solution::-webkit-scrollbar-thumb {
-  background-color: var(--number-color);
+  background-color: var(--text-color);
+}
+
+@media (min-width: 1900px) {
+  .screen__solution {
+    max-width: 340px;
+    font-size: 75px;
+  }
+
+  .screen__solution::-webkit-scrollbar {
+   height: 5px;
+ }
 }
 
 /**
@@ -141,23 +185,23 @@ table {
 
   padding: 30px 10px;
 
-  background-color: var(--bg-numpad);
+  background-color: var(--bg-blocks);
 }
 
 .numpad__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: all 0.3s ease;
-
-  border: 0px;
-  border-radius: 10px;
-
-  padding: 0px;
-
+  border: 0;
+  border-radius: 5px;
+  padding: 0;
   background-color: var(--bg-button);
 }
 
 .numpad__button:hover {
   transition: all .3s ease;
-  box-shadow: 0px 4px 4px var(--button-hover);
+  box-shadow: 0 4px 4px var(--hover-button);
   cursor: pointer;
 }
 
@@ -168,247 +212,59 @@ table {
 
   transition: all .3s ease;
 
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
 
-  font-size: 18px;
+  font-size: 14px;
   font-family: "Inter", sans-serif;
   font-weight: 400;
-  color: var(--number-color);
+  color: var(--text-color);
 }
 
 .numpad__icon {
-  max-width: 45px;
-  max-height: 45px;
+  max-width: 40px;
+  max-height: 40px;
 }
 
 .numpad__button.point svg {
-  fill: var(--number-color);
+  fill: var(--text-color);
   transition: all .3s ease;
 }
 
-.numpad__button.back svg {
-  stroke: var(--number-color);
+.numpad__button.backspace svg {
+  stroke: var(--text-color);
   transition: all .3s ease;
 }
 
-/**
- * LITTLE ADAPTABILITY
- */
-@media only screen and (min-width: 1440px) {
-  /**
-   * SCREEN
-   */
-  .calculator__screen {
-    padding: 30px 25px 25px 25px;
-  }
-
-  /* themes */
-  .screen__themes {
-    margin: 0px auto 10vh auto;
-  }
-
-  .screen__themes.themes {
-    border-radius: 10px;
-  }
-
-  .themes__icon {
-    width: 45px;
-    height: 35px;
-  }
-
-  /* problem */
-  .screen__problem {
-    margin: 0px 0px 5px 0px;
-  }
-
-  .screen__problem.problem {
-    max-width: 186px;
-    height: 25px;
-
-    font-size: 20px;
-  }
-
-  /* solution */
-  .screen__solution {
-    max-width: 186px;
-
-    font-size: 40px;
-  }
-
-  .screen__solution::-webkit-scrollbar {
-    width: 368px;
-    height: 2.5px;
-  }
-
-  /**
-   * NUMPAD
-   */
-  table {
-    border-spacing: 10px;
-  }
-
-  .numpad__button {
-    border-radius: 5px;
-  }
-
-  .numpad__button.number {  
-    width: 40px;
-    height: 40px;
-  
-    font-size: 14px;
-  }
-  
-  .numpad__icon {
-    max-width: 40px;
-    max-height: 40px;
-  }
-}
-
-@media only screen and (min-width: 1600px) {
-  /**
-   * SCREEN
-   */
-  .calculator__screen {
-    padding: 30px 25px 25px 25px;
-  }
-
-  /* themes */
-  .screen__themes {
-    margin: 0px auto 60px auto;
-  }
-  
-  .screen__themes.themes {
-    border-radius: 15px;
-  }
-
-  .themes__icon {
-    width: 45px;
-    height: 35px;
-  }
-
-  /* problem */
-  .screen__problem {
-    margin: 0px 0px 5px 0px;
-  }
-
-  .screen__problem.problem {
-    max-width: 186px;
-    height: 25px;
-
-    font-size: 20px;
-  }
-
-  /* solution */
-  .screen__solution {
-    max-width: 186px;
-
-    font-size: 40px;
-  }
-
-  .screen__solution::-webkit-scrollbar {
-    width: 368px;
-    height: 2.5px;
-  }
-
-  /**
-   * NUMPAD
-   */
-  table {
-    border-spacing: 10px;
-  }
-  
+@media (min-width: 1600px) {
   .numpad__button {
     border-radius: 10px;
   }
 
-  .numpad__button.number {  
-    width: 40px;
-    height: 40px;
-  
+  .numpad__button.number {
     font-size: 16px;
   }
-  
-  .numpad__icon {
-    max-width: 40px;
-    max-height: 40px;
-  }
 }
 
-@media only screen and (min-width: 2560px) {
-  /**
-   * CONTAINER
-   */
-  .calculator__container {
-    border-radius: 50px;
-  }
-  
-  /**
-   * SCREEN
-   */
-  .calculator__screen {
-    padding: 40px 25px 25px 25px;
-  }
-
-  /* themes */
-  .screen__themes {
-    margin: 0px auto 120px auto;
-  }
-  
-  .screen__themes.themes {
-    border-radius: 20px;
-  }
-
-  .themes__icon {
-    width: 75px;
-    height: 65px;
-  }
-
-  /* problem */
-  .screen__problem {
-    margin: 0px 0px 10px 0px;
-  }
-
-  .screen__problem.problem {
-    max-width: 358px;
-    height: 25px;
-
-    font-size: 25px;
-  }
-
-  /* solution */
-  .screen__solution {
-    max-width: 358px;
-
-    font-size: 45px;
-  }
-
-  .screen__solution::-webkit-scrollbar {
-    width: 368px;
-    height: 5px;
-  }
-
-  /**
-   * NUMPAD
-   */
+@media (min-width: 1900px) {
   table {
-    border-spacing: 20px;
+    grid-gap: 20px;
   }
+
   .calculator__numpad {
     border-radius: 60px 60px 50px 50px;
   }
-  
+
   .numpad__button {
     border-radius: 20px;
   }
 
-  .numpad__button.number {  
+  .numpad__button.number {
     width: 70px;
     height: 70px;
-  
     font-size: 25px;
   }
-  
+
   .numpad__icon {
     max-width: 70px;
     max-height: 70px;

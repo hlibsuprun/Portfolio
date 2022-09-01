@@ -1,30 +1,30 @@
 import { assignExpressionValues, expressionObject } from './helpers/expression.js'
-import { dotAfterZero } from './helpers/dotAfterZero.js'
-import { definitionOfNumber } from './helpers/definitionOfNumber.js'
+import { pointAfterZero } from './helpers/pointAfterZero.js'
+import { currentStrNumber } from './helpers/currentStrNumber.js'
 
 const numberButtons = document.querySelectorAll('.numpad__button.number')
 
 for(const button of numberButtons) {
   button.addEventListener('click', (event) => {
     event.preventDefault()
-    const value = event.target.innerHTML
+    const strEnteredNumber = event.target.innerHTML
     
-    const { sign, secondNumber } = expressionObject
+    const { sign, strSecondNumber } = expressionObject
 
-    let number = definitionOfNumber()
+    let strNumber = currentStrNumber()
 
-    if (number.length < 4) {
-      number = 
-        number.length && (number === '0' || number === '0%')
-          ? dotAfterZero(number, value)
-          : number.includes('%')
-          ? number.replace('%', '').concat(value, '%')
-          : number.concat(value)
+    if (strNumber.replace(/\D+/g, '').length < 5) {
+      strNumber =
+        strNumber.length && (strNumber === '0' || strNumber === '0%')
+          ? pointAfterZero(strNumber, strEnteredNumber)
+          : strNumber.includes('%')
+          ? strNumber.replace('%', '').concat(strEnteredNumber, '%')
+          : strNumber.concat(strEnteredNumber)
 
       const expression = 
-        secondNumber || sign 
-          ? { ...expressionObject, secondNumber: number } 
-          : { ...expressionObject, firstNumber: number }
+        strSecondNumber || sign
+          ? { ...expressionObject, strSecondNumber: strNumber }
+          : { ...expressionObject, strFirstNumber: strNumber }
 
       assignExpressionValues(expression)
     }

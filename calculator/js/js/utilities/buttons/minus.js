@@ -1,15 +1,15 @@
 import { assignExpressionValues, expressionObject } from './helpers/expression.js'
-import { solutionValue } from './helpers/solutionValue.js'
+import { solution } from './helpers/solution.js'
 
 const minusButton = document.querySelector('.numpad__button.minus')
 
 minusButton.addEventListener('click', () => { 
-  const { firstNumber, secondNumber } = expressionObject
+  const { strFirstNumber, strSecondNumber } = expressionObject
 
   const expression = 
-    secondNumber
-      ? { firstNumber: String(solutionValue()), sign: '-', secondNumber: '' }
-      : firstNumber
+    strSecondNumber
+      ? { strFirstNumber: String(solution()), sign: '-', strSecondNumber: '' }
+      : strFirstNumber
       ? { ...expressionObject, sign: '-' }
       : expressionObject
 

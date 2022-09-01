@@ -1,32 +1,32 @@
-import { solutionValue } from './solutionValue.js'
+import { solution } from './solution.js'
 
-const problem = document.querySelector('.screen__problem')
-const solution = document.querySelector('.screen__solution')
+const problemDiv = document.querySelector('.screen__problem')
+const solutionDiv = document.querySelector('.screen__solution')
 
 const signs = {
-  '/': '<svg class="problem__icon"><use href="icons.svg#division"/></svg>',
-  '*': '<svg class="problem__icon"><use href="icons.svg#multiplication"/></svg>',
+  '/': '<svg class="problem__icon"><use href="icons.svg#divide"/></svg>',
+  '*': '<svg class="problem__icon"><use href="icons.svg#multiple"/></svg>',
   '-': '<svg class="problem__icon"><use href="icons.svg#minus"/></svg>',
   '+': '<svg class="problem__icon"><use href="icons.svg#plus"/></svg>'
 }
 
-export function assignExpressionValues({firstNumber, sign, secondNumber}) {
-  expressionProxy.firstNumber = firstNumber
+export function assignExpressionValues({strFirstNumber, sign, strSecondNumber}) {
+  expressionProxy.strFirstNumber = strFirstNumber
   expressionProxy.sign = sign
-  expressionProxy.secondNumber = secondNumber
+  expressionProxy.strSecondNumber = strSecondNumber
 }
 
 export const expressionObject = {
-  firstNumber: '',
+  strFirstNumber: '',
   sign: '',
-  secondNumber: ''
+  strSecondNumber: ''
 }
 
 let expressionProxy = new Proxy(expressionObject, {
   set: (expression, key, value) => {
     expression[key] = value
-    problem.innerHTML = (`${expression.firstNumber} ${signs[expression.sign] || ''} ${expression.secondNumber}`)
-    solution.innerHTML = (solutionValue())
+    problemDiv.innerHTML = (`${expression.strFirstNumber} ${signs[expression.sign] || ''} ${expression.strSecondNumber}`)
+    solutionDiv.innerHTML = (solution())
     return true
   }
 })

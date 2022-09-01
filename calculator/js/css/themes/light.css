@@ -1,16 +1,16 @@
 :root {
   --bg-calculator: #FFFFFF;
 
-  --bg-numpad: #F9F9F9;
+  --bg-blocks: #F9F9F9;
 
   --bg-button: #F7F7F7;
-  --button-hover: rgba(8, 8, 8, 0.1);
-  --number-color: #34363C;
+  --hover-button: rgba(8, 8, 8, 0.1);
+  --text-color: #34363C;
   
   --light-theme: #3C3D44;
 
   --dark-theme: #DFDFDF;
-  --dark-theme-hover: #3C3D44;
+  --hover-dark-theme: #3C3D44;
 }
 
 .themes__button.light svg {
@@ -22,5 +22,5 @@
 }
 
 .themes__button.dark:hover svg {
-  fill: var(--dark-theme-hover);
+  fill: var(--hover-dark-theme);
 }

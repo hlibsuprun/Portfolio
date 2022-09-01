@@ -1,27 +1,27 @@
-import { definitionOfNumber } from './helpers/definitionOfNumber.js'
+import { currentStrNumber } from './helpers/currentStrNumber.js'
 import { assignExpressionValues, expressionObject } from './helpers/expression.js'
 
 const pointButton = document.querySelector('.numpad__button.point')
 
 pointButton.addEventListener('click', () => {
-    const { sign, secondNumber } = expressionObject
+    const { sign, strSecondNumber } = expressionObject
 
-    let number = definitionOfNumber()
-    number = 
-      number.slice(-1).includes('.')
-        ? number.slice(0, -1)
-        : number.includes('.')
-        ? number
-        : number.includes('%')
-        ? number.replace('%', '').concat('.%')
-        : number
-        ? number.concat('.')
-        : number
+    let strNumber = currentStrNumber()
+    strNumber =
+      strNumber.slice(-1).includes('.')
+        ? strNumber.slice(0, -1)
+        : strNumber.includes('.')
+        ? strNumber
+        : strNumber.includes('%')
+        ? strNumber.replace('%', '').concat('.%')
+        : strNumber
+        ? strNumber.concat('.')
+        : strNumber
 
     const expression = 
-      secondNumber || sign 
-        ? { ...expressionObject, secondNumber: number } 
-        : { ...expressionObject, firstNumber: number }
+      strSecondNumber || sign
+        ? { ...expressionObject, strSecondNumber: strNumber }
+        : { ...expressionObject, strFirstNumber: strNumber }
 
     assignExpressionValues(expression)
 })
