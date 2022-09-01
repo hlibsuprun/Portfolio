@@ -1,7 +1,7 @@
 import { Button } from '@/models/Button'
 import { Expression } from '@/stores/expression'
 
-export class Multiplication extends Button {
+export class Multiple extends Button {
   expression: Expression
   solution: number
 

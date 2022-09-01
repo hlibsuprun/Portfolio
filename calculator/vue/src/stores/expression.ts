@@ -2,11 +2,11 @@ import { defineStore } from 'pinia'
 
 import { Ac } from '@/models/Ac'
 import { Backspace } from '@/models/Backspace'
-import { Division } from '@/models/Division'
+import { Divide } from '@/models/Divide'
 import { Equals } from '@/models/Equals'
 import { Reverse } from '@/models/Reverse'
 import { Minus } from '@/models/Minus'
-import { Multiplication } from '@/models/Multiplication'
+import { Multiple } from '@/models/Multiple'
 import { Number } from '@/models/Number'
 import { Percent } from '@/models/Percent'
 import { Plus } from '@/models/Plus'
@@ -71,8 +71,8 @@ export const useExpressionStore = defineStore({
     backspaceClickHandler(): void {
       this.expression = new Backspace(this.expression).clickHandler()
     },
-    divisionClickHandler(): void {
-      this.expression = new Division(this.expression, this.solution).clickHandler()
+    divideClickHandler(): void {
+      this.expression = new Divide(this.expression, this.solution).clickHandler()
     },
     equalsClickHandler(): void {
       this.expression = new Equals(this.expression, this.solution).clickHandler()
@@ -80,8 +80,8 @@ export const useExpressionStore = defineStore({
     minusClickHandler(): void {
       this.expression = new Minus(this.expression, this.solution).clickHandler()
     },
-    multiplicationClickHandler(): void {
-      this.expression = new Multiplication(this.expression, this.solution).clickHandler()
+    multipleClickHandler(): void {
+      this.expression = new Multiple(this.expression, this.solution).clickHandler()
     },
     numberClickHandler(strEnteredNumber: string): void {
       this.expression = new Number(this.expression).clickHandler(strEnteredNumber)

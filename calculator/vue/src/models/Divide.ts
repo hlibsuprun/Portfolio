@@ -1,7 +1,7 @@
 import { Button } from '@/models/Button'
 import { Expression } from '@/stores/expression'
 
-export class Division extends Button {
+export class Divide extends Button {
   expression: Expression
   solution: number
 

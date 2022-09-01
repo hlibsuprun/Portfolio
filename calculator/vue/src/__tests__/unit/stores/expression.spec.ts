@@ -154,14 +154,14 @@ describe('Expression Store', () => {
     })
 
     /*
-     * divisionClickHandler
+     * divideClickHandler
      */
-    describe('divisionClickHandler', () => {
+    describe('divideClickHandler', () => {
       it('when there is no first number', () => {
         const expressionStore = useExpressionStore()
         const expression = { ...expressionStore.expression }
 
-        expressionStore.divisionClickHandler()
+        expressionStore.divideClickHandler()
 
         expect(expressionStore.expression).toEqual(expression)
       })
@@ -171,7 +171,7 @@ describe('Expression Store', () => {
         const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
-        expressionStore.divisionClickHandler()
+        expressionStore.divideClickHandler()
 
         expect(expressionStore.expression).toEqual({ ...expression, sign: '/' })
       })
@@ -181,8 +181,8 @@ describe('Expression Store', () => {
         const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
-        expressionStore.divisionClickHandler()
-        expressionStore.divisionClickHandler()
+        expressionStore.divideClickHandler()
+        expressionStore.divideClickHandler()
 
         expect(expressionStore.expression).toEqual({ ...expression, sign: '/' })
       })
@@ -192,7 +192,7 @@ describe('Expression Store', () => {
         const expression = { strFirstNumber: '1', sign: '/', strSecondNumber: '1' }
         expressionStore.expression = expression
 
-        expressionStore.divisionClickHandler()
+        expressionStore.divideClickHandler()
 
         expect(expressionStore.expression).toEqual({ ...expression, strSecondNumber: '' })
       })
@@ -257,14 +257,14 @@ describe('Expression Store', () => {
     })
 
     /*
-     * multiplicationClickHandler
+     * multipleClickHandler
      */
-    describe('multiplicationClickHandler', () => {
+    describe('multipleClickHandler', () => {
       it('when there is no first number', () => {
         const expressionStore = useExpressionStore()
         const expression = { ...expressionStore.expression }
 
-        expressionStore.multiplicationClickHandler()
+        expressionStore.multipleClickHandler()
 
         expect(expressionStore.expression).toEqual(expression)
       })
@@ -274,7 +274,7 @@ describe('Expression Store', () => {
         const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
-        expressionStore.multiplicationClickHandler()
+        expressionStore.multipleClickHandler()
 
         expect(expressionStore.expression).toEqual({ ...expression, sign: '*' })
       })
@@ -284,8 +284,8 @@ describe('Expression Store', () => {
         const expression = { ...expressionStore.expression, strFirstNumber: '1' }
         expressionStore.expression = expression
 
-        expressionStore.multiplicationClickHandler()
-        expressionStore.multiplicationClickHandler()
+        expressionStore.multipleClickHandler()
+        expressionStore.multipleClickHandler()
 
         expect(expressionStore.expression).toEqual({ ...expression, sign: '*' })
       })
@@ -295,7 +295,7 @@ describe('Expression Store', () => {
         const expression = { strFirstNumber: '1', sign: '*', strSecondNumber: '1' }
         expressionStore.expression = expression
 
-        expressionStore.multiplicationClickHandler()
+        expressionStore.multipleClickHandler()
 
         expect(expressionStore.expression).toEqual({ ...expression, strFirstNumber: '1', strSecondNumber: '' })
       })
