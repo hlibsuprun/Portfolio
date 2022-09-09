@@ -9,18 +9,18 @@ export const themes = {
     textColor: 'rgb(255, 255, 255)',
     lightTheme: 'rgb(115, 119, 127)',
     darkTheme: 'rgb(255, 255, 255)',
-    hoverTheme: 'rgb(255, 255, 255)'
+    hoverTheme: 'rgb(255, 255, 255)',
   },
   light: {
     containerBackgroundColor: 'rgb(255, 255, 255)',
-    blocksBackgroundColor: 'rgb(249, 249, 249)',
-    buttonBackgroundColor: 'rgb(247, 247, 247)',
+    blocksBackgroundColor: 'rgb(240, 245, 255)',
+    buttonBackgroundColor: 'rgb(255, 255, 255)',
     hoverButton: 'rgba(8, 8, 8, 0.1)',
     textColor: 'rgb(52, 54, 60)',
     lightTheme: 'rgb(60, 61, 68)',
-    darkTheme: 'rgb(223, 223, 223)',
-    hoverTheme: 'rgb(60, 61, 68)'
-  }
+    darkTheme: 'rgb(200, 200, 200)',
+    hoverTheme: 'rgb(60, 61, 68)',
+  },
 }
 
 export type Theme = {
