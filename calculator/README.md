@@ -12,14 +12,29 @@ A simple calculator, the first practice of modern web development.
 - React:
   - `npm install`
   - `npm start`
+- Vue:
+  - `npm install`
+  - `npm run dev`
+- Angular:
+  - `npm install`
+  - `ng serve`
 
 ### Technologies:
 - HTML
 - CSS
+- Scss
+- Styled components
 - JavaScript
+- TypeScript
+- Jest
+- Vitest
+- Cypress
 - React
 - Redux
-- Styled components
+- Vue
+- Pinia
+- Angular
+- NgRx
 - Webpack
 
 By [Gleb Suprun](https://github.com/glebsuprun), [MIT License](https://github.com/glebsuprun/Portfolio/blob/main/calculator/LICENSE)
