@@ -1,0 +1,12 @@
+<div class="numpad" [style]="cssVariables">
+  <button
+    class="numpad__button"
+    *ngFor='let button of buttons'
+    (click)="button.value.length > 1 ? button.onClick() : button.onClick($event)"
+  >
+    {{ button.value.length === 1 ? button.value : '' }}
+    <svg class='numpad__icon' *ngIf='button.value.length > 1' [id]='button.value'>
+      <use [attr.href]="'assets/sprite.svg#'.concat(button.value)"></use>
+    </svg>
+  </button>
+</div>

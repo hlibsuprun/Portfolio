@@ -1,0 +1,15 @@
+<div *ngIf="(expression$ | async) as expression" class="screen" [style]="cssVariables">
+  <div class="screen__problem">
+    {{ expression.strFirstNumber }}
+    <svg *ngIf='expression.sign' class="screen__icon">
+      <use *ngIf="expression.sign === '/'" xlink:href="assets/sprite.svg#divide"></use>
+      <use *ngIf="expression.sign === '-'" xlink:href="assets/sprite.svg#minus"></use>
+      <use *ngIf="expression.sign === '*'" xlink:href="assets/sprite.svg#multiple"></use>
+      <use *ngIf="expression.sign === '+'" xlink:href="assets/sprite.svg#plus"></use>
+    </svg>
+    {{ expression.strSecondNumber }}
+  </div>
+  <div *ngIf="(solution$ | async) as solution" class="screen__solution">
+    {{ solution }}
+  </div>
+</div>
