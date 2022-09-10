@@ -3,7 +3,7 @@ The script was created to replace manual filtering of Steam accounts with automa
 
 ### Tasks set:
 - filtering accounts by requirements: recent activity, level 0, no ban, at least 1 item in inventory
-- improved performance in relation to manual filtering
+- improved performance in relation to manually filtering
 - compliance with the order of counting id
 
 ### How to use?
