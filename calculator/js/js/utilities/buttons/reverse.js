@@ -17,7 +17,7 @@ reverseButton.addEventListener('click', () => {
   const expression = 
     strSecondNumber || sign
       ? { ...expressionObject, strSecondNumber: strNumber }
-      : { ...expressionObject, strFirstNumbers: strNumber }
-  
+      : { ...expressionObject, strFirstNumber: strNumber }
+
   assignExpressionValues(expression)
 })
