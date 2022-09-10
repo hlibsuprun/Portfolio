@@ -1,6 +1,8 @@
 # Calculator
 A simple calculator, the first practice of modern web development.
 
+![Preview](preview.jpg)
+
 ### Tasks set: 
 - try out frameworks
 - to consolidate fundamental knowledge
