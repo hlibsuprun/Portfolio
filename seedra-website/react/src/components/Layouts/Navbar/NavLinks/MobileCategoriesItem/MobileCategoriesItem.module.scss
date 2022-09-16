@@ -1,0 +1,107 @@
+@import "@/assets/styles/base/mixins.scss";
+@import "@/assets/styles/variables.scss";
+
+.item {
+  position: relative;
+  padding-bottom: 10px;
+
+  &:not(:first-child) {
+    padding-top: 10px;
+  }
+
+  &:not(&.last)::after {
+    position: absolute;
+    display: block;
+    right: 0;
+    bottom: 0;
+    content: '';
+    background-color: $lightGray;
+    height: 1px;
+    width: 100%;
+  }
+}
+
+.link {
+  display: block;
+  width: 50%;
+  height: 16px;
+  transition: color 0.1s ease;
+  font-family: $fontFamily;
+  font-size: rem(16);
+  &:hover {
+    color: $primary;
+  }
+
+  &.name {
+    font-weight: 500;
+    color: $textPrimary;
+  }
+  &.product {
+    font-weight: 300;
+    color: $textSecondary;
+    margin-top: 15px;
+    width: 100%;
+  }
+}
+
+.button {
+  position: absolute;
+  top: 18px;
+  translate: 0 -50%;
+  right: 0;
+  width: 50%;
+  height: 16px;
+
+  &::before, &::after {
+    transition: all 0.1s ease;
+    position: absolute;
+    translate: 0 -75%;
+    right: 0;
+    margin: 3px;
+    content: '';
+    width: 3px;
+    height: 10px;
+    border-radius: 3px;
+    background-color: $textSecondary;
+  }
+  &::before {
+    right: 5.2px;
+    rotate: -45deg;
+  }
+  &::after {
+    right: 0;
+    rotate: 45deg;
+  }
+}
+
+.products {
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.open {
+  .name {
+    color: $primary;
+  }
+
+  .button {
+    &::before, &::after {
+      background-color: $primary;
+    }
+    &::before {
+      rotate: 45deg
+    }
+    &::after {
+      rotate: -45deg
+    }
+  }
+
+  .products {
+    height: auto;
+    overflow-x: auto;
+  }
+}

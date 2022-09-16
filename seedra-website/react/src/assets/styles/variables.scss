@@ -1,0 +1,64 @@
+/*
+ * Colors
+ */
+$white: rgb(255, 255, 255);
+$yellow: rgb(255, 207, 85);
+
+$lightGray: rgb(239, 239, 239);
+$lightGreen: rgb(234, 241, 235);
+$lightBlue: rgb(239, 242, 248);
+
+$invisibleGreen: rgba(53, 151, 64, 0.8);
+
+$primary: rgb(79, 160, 131);
+$warning: rgb(229, 92, 92);
+
+$brand: rgb(53, 151, 64);
+
+$textPrimary: rgb(31, 37, 51);
+$textSecondary: rgb(112, 115, 124);
+
+$discoverStandardTextColor: $brand;
+$discoverStandard: $white;
+$discoverHover: $invisibleGreen;
+$discoverActive: $invisibleGreen;
+$discoverActiveStroke: $brand;
+
+$cartStandardIconFill: $brand;
+$cartStandard: $white;
+$cartStandardStroke: $lightGray;
+$cartHover: $invisibleGreen;
+$cartActiveIconFill: $white;
+$cartActive: $brand;
+$cartActiveStroke: $brand;
+
+$bundlesStandardTextColor: $textPrimary;
+$bundlesStandardStroke: $lightGray;
+$bundlesHoverStroke: $invisibleGreen;
+$bundlesActiveTextColor: $brand;
+$bundlesActiveStroke: $brand;
+
+/*
+ * Default font
+ */
+$fontFamily: 'Lexend', sans-serif;
+
+/*
+ * Settings
+ */
+$minWidth: 320;
+$maxWidth: 1920;
+
+$maxWidthContainer: 1110;
+$containerPadding: 30;
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+$pc: em($containerWidth);
+$tablet: em(991.98);
+$mobile: em(767.98);
+$mobileSmall: em(374.98);
+
+// Adaptive type:
+// 1 = responsive (container has no breakpoints),
+// 2 = by break points (container changes its width by break points)
+$responsiveType: 1;

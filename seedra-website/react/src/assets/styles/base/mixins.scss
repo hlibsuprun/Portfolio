@@ -1,0 +1,62 @@
+@use "sass:math";
+
+@import '../variables.scss';
+
+// percent
+@function percent($px, $from) {
+  $result: math.div($px, $from) * 100%;
+  @return $result;
+}
+
+// rem
+@function rem($px) {
+  $result: math.div($px, 16) + rem;
+  @return $result;
+}
+
+// em
+@function em($px, $current: 16) {
+  $result: math.div($px, $current) + em;
+  @return $result;
+}
+
+// adaptive value
+@mixin adaptiveValue($property, $startSize, $minSize, $widthFrom: $containerWidth, $widthTo: 374.98) {
+  @if ($startSize == 0) {
+    $startSize: 0.000001;
+  }
+  @if ($minSize == 0) {
+    $minSize: 0.000001;
+  }
+
+  // calc();
+  $addSize: math.div($startSize - $minSize, 16);
+
+  // breakpoints (em)
+  $widthFromMedia: em($widthFrom);
+  $widthToMedia: em($widthTo);
+
+  // float formula
+  $slope: math.div(($startSize - $minSize), ($widthFrom - $widthTo));
+  $yIntersection: -$widthTo * $slope + $minSize;
+  @if ($yIntersection == 0) {
+    $yIntersection: 0.000001;
+  }
+  $flyValue: #{rem($yIntersection)}" + " #{$slope * 100}vw;
+
+  // floating value
+  $propertyValue: #{"clamp(" rem($minSize) "," $flyValue "," rem($startSize) ")"};
+  // if value is negative
+  @if ($minSize > $startSize) {
+    $propertyValue: #{"clamp(" rem($startSize) "," $flyValue "," rem($minSize) ")"};
+  }
+
+  // if clamp() is supported
+  @supports (#{$property}: $propertyValue) {
+    #{$property}: $propertyValue;
+  }
+  // if clamp() is not supported
+  @supports not (#{$property}: $propertyValue) {
+    #{$property}: calc(#{rem($minSize)} + #{$addSize} * (100vw - #{rem($widthTo)}) / #{math.div($widthFrom, 16) - math.div($widthTo, 16)});
+  }
+}

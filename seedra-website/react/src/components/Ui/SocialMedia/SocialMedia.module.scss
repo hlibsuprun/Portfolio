@@ -1,0 +1,27 @@
+@import "@/assets/styles/variables.scss";
+
+.div {
+  display: flex;
+  margin-right: 15px;
+
+  @supports (gap: 8px) {
+    gap: 8px;
+  }
+
+  @supports not (gap: 8px) {
+    a:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+
+  svg {
+    transition: fill 0.3s ease;
+    fill: $textSecondary;
+    width: 24px;
+    height: 24px;
+
+    &:hover {
+      fill: $brand;
+    }
+  }
+}
