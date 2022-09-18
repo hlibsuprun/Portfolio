@@ -1,44 +1,39 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "node": true
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": "next",
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+        "jsx": true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "settings": {
-        "import/resolver": {
-            "node": {
-                "paths": ["src"],
-                "extensions": [".ts", ".tsx"]
-            }
-        }
-    },
-    "plugins": [
-        "prettier",
-        "react",
-        "@typescript-eslint",
-        "import",
-        "simple-import-sort"
-    ],
-    "rules": {
-        "prettier/prettier": ["error"],
-        "sort-imports": "off",
-        "simple-import-sort/imports": "error",
-        "simple-import-sort/exports": "error",
-        "import/newline-after-import": "error",
-        "import/no-duplicates": "error"
-    }
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "settings": {
+      "import/resolver": {
+          "node": {
+              "paths": ["src"],
+              "extensions": [".ts", ".tsx"]
+          }
+      }
+  },
+  "plugins": [
+      "prettier",
+      "react",
+      "@typescript-eslint",
+      "import",
+      "simple-import-sort"
+  ],
+  "rules": {
+      "prettier/prettier": ["error", { "endOfLine": "auto" }],
+      "sort-imports": "off",
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error",
+      "import/newline-after-import": "error",
+      "import/no-duplicates": "error"
+  }
 }

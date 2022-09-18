@@ -6,26 +6,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
 
-body {
-  .lock & {
-    overflow: hidden;
-    touch-action: none;
-  }
-}
-
-.app {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  // Press the footer to the bottom
-  > main {
-    flex: 1 1 auto;
-  }
-  // Fix for sliders
-  > * {
-    min-width: 0;
-  }
+.wrapper {
+  padding-top: 75px;
 }
 
 @if ($responsiveType == 1) {
