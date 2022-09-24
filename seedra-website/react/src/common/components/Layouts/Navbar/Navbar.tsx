@@ -2,11 +2,11 @@ import React, { FC, memo, useState } from 'react';
 
 import { FavoriteAndCart } from '@/common/components/Layouts/Navbar/FavoriteAndCart/FavoriteAndCart';
 import { Logo } from '@/common/components/Layouts/Navbar/Logo/Logo';
-import { NavLinks } from '@/common/components/Layouts/Navbar/NavLinks/NavLinks';
 import { Icon } from '@/common/components/UI/Icon/Icon';
 import { SocialMedia } from '@/common/components/UI/SocialMedia/SocialMedia';
 import { useWindowSize } from '@/common/hooks/useWindowSize';
-import { Search } from '@/modules/search/search';
+import { NavLinks } from '@/modules/categories/components/NavLinks/NavLinks';
+import { SearchForm } from '@/modules/products/components/SearchForm/SearchForm';
 
 import styles from './Navbar.module.scss';
 
@@ -21,14 +21,14 @@ export const Navbar: FC = memo(() => {
     <div className={styles.pc}>
       <NavLinks handleCloseMenu={handleCloseMenu} />
       <SocialMedia />
-      <Search />
+      <SearchForm />
     </div>
   );
 
   const mobileOrder = (
     <div className={`${styles.mobile} ${open ? styles.open : ''}`}>
       <div className={styles.mobile__container}>
-        <Search />
+        <SearchForm />
         <NavLinks handleCloseMenu={handleCloseMenu} />
         <hr />
         <SocialMedia />

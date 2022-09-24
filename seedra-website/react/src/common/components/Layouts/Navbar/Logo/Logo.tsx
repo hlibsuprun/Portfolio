@@ -11,11 +11,13 @@ interface LogoProps {
 
 export const Logo: FC<LogoProps> = memo(({ handleCloseMenu }) => {
   return (
-    <Link href="/" passHref>
-      <a className={styles.link} onClick={handleCloseMenu}>
-        <LogoSVG />
-      </a>
-    </Link>
+    <div className={styles.div}>
+      <Link href="/" passHref>
+        <a className={styles.link} onClick={handleCloseMenu}>
+          <LogoSVG />
+        </a>
+      </Link>
+    </div>
   );
 });
 

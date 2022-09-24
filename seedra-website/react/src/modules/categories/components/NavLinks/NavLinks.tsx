@@ -1,11 +1,12 @@
-import React, { FC, memo, useState } from 'react';
+import { Category } from '@prisma/client';
+import React, { FC, memo, useEffect, useState } from 'react';
 
-import { categories } from '@/common/components/Layouts/Navbar/NavLinks/categories';
-import { MobileCategoriesItem } from '@/common/components/Layouts/Navbar/NavLinks/MobileCategoriesItem/MobileCategoriesItem';
-import { MobilePagesItem } from '@/common/components/Layouts/Navbar/NavLinks/MobilePagesItem/MobilePagesItem';
-import { PcPagesItem } from '@/common/components/Layouts/Navbar/NavLinks/PcPagesItem/PcPagesItem';
 import { useWindowSize } from '@/common/hooks/useWindowSize';
+import { MobileCategoriesItem } from '@/modules/categories/components/NavLinks/MobileCategoriesItem/MobileCategoriesItem';
+import { MobilePagesItem } from '@/modules/categories/components/NavLinks/MobilePagesItem/MobilePagesItem';
+import { PcPagesItem } from '@/modules/categories/components/NavLinks/PcPagesItem/PcPagesItem';
 
+import { useGetCategories } from '../../hooks/useGetCategories';
 import styles from './NavLinks.module.scss';
 
 interface NavLinksProps {
@@ -14,6 +15,7 @@ interface NavLinksProps {
 
 export const NavLinks: FC<NavLinksProps> = memo(({ handleCloseMenu }) => {
   const { width } = useWindowSize();
+  const categories = useGetCategories();
   const [clicked, setClicked] = useState<number | ''>();
 
   const handleToggleAccordion = (index: number) => {
@@ -33,19 +35,21 @@ export const NavLinks: FC<NavLinksProps> = memo(({ handleCloseMenu }) => {
 
   const mobileNavLinks = (
     <ul className={`${styles.list} ${styles.mobile}`}>
-      {categories.map((category, index) => (
-        <MobileCategoriesItem
-          key={category.name}
-          lastItem={categories.length - 1 === index}
-          category={category}
-          handleToggleAccordion={() => handleToggleAccordion(index)}
-          open={clicked === index}
-          handleCloseMenu={handleCloseMenu}
-        />
-      ))}
+      {categories &&
+        categories.map((category, index) => (
+          <MobileCategoriesItem
+            key={category.name}
+            firstItem={index === 0}
+            lastItem={index === categories.length - 1}
+            category={category}
+            handleToggleAccordion={() => handleToggleAccordion(index)}
+            open={clicked === index}
+            handleCloseMenu={handleCloseMenu}
+          />
+        ))}
       <hr />
       <ul className={`${styles.list} ${styles.mobile} ${styles.pages}`}>
-        {['Our blog', 'About Seedra'].map((pageName) => (
+        {['All products', 'About Seedra', 'Our blog'].map((pageName) => (
           <MobilePagesItem
             key={pageName}
             pageName={pageName}
