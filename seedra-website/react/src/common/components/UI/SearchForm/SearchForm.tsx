@@ -1,8 +1,8 @@
 import React, { FC, memo } from 'react';
 
-import { Icon } from '@/common/components/UI/Icon/Icon';
-
 import styles from './SearchForm.module.scss';
+
+import { Icon } from '@components/UI/Icon/Icon';
 
 export const SearchForm: FC = memo(() => {
   return (

@@ -21,19 +21,8 @@
           }
       }
   },
-  "plugins": [
-      "prettier",
-      "react",
-      "@typescript-eslint",
-      "import",
-      "simple-import-sort"
-  ],
+  "plugins": ["prettier", "react", "@typescript-eslint"],
   "rules": {
-      "prettier/prettier": ["error", { "endOfLine": "auto" }],
-      "sort-imports": "off",
-      "simple-import-sort/imports": "error",
-      "simple-import-sort/exports": "error",
-      "import/newline-after-import": "error",
-      "import/no-duplicates": "error"
+      "prettier/prettier": ["error", { "endOfLine": "auto" }]
   }
 }

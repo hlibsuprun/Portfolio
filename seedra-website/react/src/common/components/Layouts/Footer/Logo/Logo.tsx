@@ -5,15 +5,11 @@ import LogoSVG from '@images/logo.svg';
 
 import styles from './Logo.module.scss';
 
-interface LogoProps {
-  handleCloseMenu: () => void;
-}
-
-export const Logo: FC<LogoProps> = memo(({ handleCloseMenu }) => {
+export const Logo: FC = memo(() => {
   return (
     <div className={styles.div}>
       <Link href="/" passHref>
-        <a className={styles.link} onClick={handleCloseMenu}>
+        <a className={styles.link}>
           <LogoSVG />
         </a>
       </Link>

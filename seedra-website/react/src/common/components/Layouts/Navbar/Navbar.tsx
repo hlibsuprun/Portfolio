@@ -1,14 +1,15 @@
 import React, { FC, memo, useState } from 'react';
 
-import { FavoriteAndCart } from '@/common/components/Layouts/Navbar/FavoriteAndCart/FavoriteAndCart';
-import { Logo } from '@/common/components/Layouts/Navbar/Logo/Logo';
-import { Icon } from '@/common/components/UI/Icon/Icon';
-import { SocialMedia } from '@/common/components/UI/SocialMedia/SocialMedia';
-import { useWindowSize } from '@/common/hooks/useWindowSize';
-import { NavLinks } from '@/modules/categories/components/NavLinks/NavLinks';
-import { SearchForm } from '@/modules/products/components/SearchForm/SearchForm';
-
 import styles from './Navbar.module.scss';
+
+import { useWindowSize } from '@hooks/useWindowSize';
+
+import { FavoriteAndCart } from '@components/Layouts/Navbar/FavoriteAndCart/FavoriteAndCart';
+import { Logo } from '@components/Layouts/Navbar/Logo/Logo';
+import { NavLinks } from '@components/Layouts/Navbar/NavLinks/NavLinks';
+import { Icon } from '@components/UI/Icon/Icon';
+import { SearchForm } from '@components/UI/SearchForm/SearchForm';
+import { SocialMedia } from '@components/UI/SocialMedia/SocialMedia';
 
 export const Navbar: FC = memo(() => {
   const { width } = useWindowSize();
@@ -38,7 +39,10 @@ export const Navbar: FC = memo(() => {
 
   return (
     <nav
-      className={`${styles.navbar} ${width < 991.98 && open && styles.open}`}>
+      className={`
+        ${styles.navbar}
+        ${width < 991.98 && open ? styles.open : ''}
+      `}>
       <div className={styles.navbar__container}>
         <Logo handleCloseMenu={handleCloseMenu} />
         {width > 991.98 && pcOrder}

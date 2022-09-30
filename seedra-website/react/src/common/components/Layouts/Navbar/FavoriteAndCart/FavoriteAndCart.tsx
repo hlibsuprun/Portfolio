@@ -1,8 +1,8 @@
 import React, { FC, memo } from 'react';
 
-import { Icon } from '@/common/components/UI/Icon/Icon';
-
 import styles from './FavoriteAndCart.module.scss';
+
+import { Icon } from '@components/UI/Icon/Icon';
 
 export const FavoriteAndCart: FC = memo(() => {
   return (

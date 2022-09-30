@@ -1,0 +1,86 @@
+@import "@styles/base/mixins.scss";
+@import "@styles/variables.scss";
+
+.footer {
+  &__container {
+    font-family: $fontFamily;
+
+    hr {
+      background-color: $brand;
+      opacity: 30%;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .list {
+        display: flex;
+        align-items: center;
+        gap: 48px;
+      }
+
+      .item {
+        position: relative;
+
+        &:not(:last-child)::after {
+          position: absolute;
+          display: block;
+          top: 50%;
+          translate: 0 -50%;
+          content: '';
+          background-color: $brand;
+          height: 25px;
+          width: 1px;
+          right: -24px;
+        }
+      }
+
+      .link {
+        transition: color 0.3s ease;
+        font-family: $fontFamily;
+        white-space: nowrap;
+        font-weight: 400;
+        font-size: rem(14);
+        color: $textSecondary;
+
+        &:hover {
+          color: $brand;
+        }
+
+        &.active {
+          color: $brand;
+        }
+      }
+
+      .uppercase {
+        text-transform: uppercase;
+      }
+    }
+
+    .other {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .rights {
+        cursor: pointer;
+        transition: color 0.3s ease;
+        font-family: $fontFamily;
+        white-space: nowrap;
+        font-weight: 400;
+        font-size: rem(14);
+        color: $textSecondary;
+
+        &:hover {
+          color: $brand;
+        }
+
+        &.active {
+          color: $brand;
+        }
+      }
+    }
+  }
+}

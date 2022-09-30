@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { memo } from 'react';
 
-import { Head } from '@/common/components/Layouts/Head/Head';
+import { Head } from '@components/Layouts/Head/Head';
 
 const AllProducts: NextPage = memo(() => {
   return (

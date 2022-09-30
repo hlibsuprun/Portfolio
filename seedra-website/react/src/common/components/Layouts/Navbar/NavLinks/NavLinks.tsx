@@ -1,13 +1,13 @@
-import { Category } from '@prisma/client';
-import React, { FC, memo, useEffect, useState } from 'react';
+import React, { FC, memo, useState } from 'react';
 
-import { useWindowSize } from '@/common/hooks/useWindowSize';
-import { MobileCategoriesItem } from '@/modules/categories/components/NavLinks/MobileCategoriesItem/MobileCategoriesItem';
-import { MobilePagesItem } from '@/modules/categories/components/NavLinks/MobilePagesItem/MobilePagesItem';
-import { PcPagesItem } from '@/modules/categories/components/NavLinks/PcPagesItem/PcPagesItem';
-
-import { useGetCategories } from '../../hooks/useGetCategories';
 import styles from './NavLinks.module.scss';
+
+import { useGetCategories } from '@hooks/useGetCategories';
+import { useWindowSize } from '@hooks/useWindowSize';
+
+import { MobileCategoriesItem } from '@components/Layouts/Navbar/NavLinks/MobileCategoriesItem/MobileCategoriesItem';
+import { MobilePagesItem } from '@components/Layouts/Navbar/NavLinks/MobilePagesItem/MobilePagesItem';
+import { PcPagesItem } from '@components/Layouts/Navbar/NavLinks/PcPagesItem/PcPagesItem';
 
 interface NavLinksProps {
   handleCloseMenu: () => void;
