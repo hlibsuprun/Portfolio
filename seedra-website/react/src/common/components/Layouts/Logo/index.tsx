@@ -8,7 +8,7 @@ import { em } from '@styles/mixins';
 interface Props {
   width: number;
   height: number;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const Logo: FC<Props> = memo(({ width, height, onClick }) => {

@@ -14,6 +14,7 @@ import {
   SearchFormBlock
 } from './Navbar.styled';
 
+import { useGetCategories } from '@hooks/useGetCategories';
 import { useWindowSize } from '@hooks/useWindowSize';
 
 import { Logo } from '@components/Layouts/Logo';
@@ -26,6 +27,7 @@ import { Favorite } from './Favorite';
 import { Cart } from './Cart';
 
 export const Navbar: FC = memo(() => {
+  const { categories } = useGetCategories();
   const { width } = useWindowSize();
   const [open, setOpen] = useState<boolean>(false);
 
@@ -61,7 +63,10 @@ export const Navbar: FC = memo(() => {
         <MobileMenu>
           <MobileMenuContainer>
             <SearchForm />
-            <Navigation handleCloseMenu={handleCloseMenu} />
+            <Navigation
+              handleCloseMenu={handleCloseMenu}
+              categories={categories}
+            />
             <Line />
             <SocialMedia />
           </MobileMenuContainer>

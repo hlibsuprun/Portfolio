@@ -7,7 +7,9 @@ const OurBlog: NextPage = memo(() => {
   return (
     <>
       <Head title="Our blog" />
-      <div>This is the Our Blog Page</div>
+      <main>
+        <div>This is the Our Blog Page</div>
+      </main>
     </>
   );
 });

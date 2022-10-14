@@ -7,12 +7,14 @@ import { useWindowSize } from '@hooks/useWindowSize';
 
 import { PageList } from './PageList';
 import { CategoryList } from './CategoryList';
+import { Category } from '@prisma/client';
 
 interface Props {
   handleCloseMenu?: () => void;
+  categories?: Category[];
 }
 
-export const Navigation: FC<Props> = memo(({ handleCloseMenu }) => {
+export const Navigation: FC<Props> = memo(({ handleCloseMenu, categories }) => {
   const { width } = useWindowSize();
 
   const pc = (
@@ -23,7 +25,10 @@ export const Navigation: FC<Props> = memo(({ handleCloseMenu }) => {
 
   const mobile = (
     <NavigationStyled>
-      <CategoryList handleCloseMenu={handleCloseMenu} />
+      <CategoryList
+        handleCloseMenu={handleCloseMenu}
+        categories={categories || []}
+      />
       <Line />
       <PageList handleCloseMenu={handleCloseMenu} />
     </NavigationStyled>

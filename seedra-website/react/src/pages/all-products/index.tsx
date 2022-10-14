@@ -7,7 +7,9 @@ const AllProducts: NextPage = memo(() => {
   return (
     <>
       <Head title="All products" />
-      <div>This is the All products Page</div>
+      <main>
+        <div>This is the All products Page</div>
+      </main>
     </>
   );
 });

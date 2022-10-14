@@ -10,6 +10,7 @@ export const Navbar = styled.div`
   height: ${em(72)};
   background-color: ${colors.white};
   box-shadow: 0 ${em(4)} ${em(12)} rgba(207, 207, 207, 0.25);
+  z-index: 100;
 `;
 
 export const NavbarContainer = styled.div`
