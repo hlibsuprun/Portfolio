@@ -33,6 +33,7 @@ export const font = {
     lexend: 'Lexend, sans-serif'
   },
   sizes: {
+    default: 16,
     h1: {
       pc: 48,
       mobile: 28

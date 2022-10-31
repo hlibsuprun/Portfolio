@@ -19,7 +19,7 @@ import { useWindowSize } from '@hooks/useWindowSize';
 
 import { Logo } from '@components/Layouts/Logo';
 import { SocialMedia } from '@components/Layouts/SocialMedia';
-import { SearchForm } from '@components/UI/Forms/Search';
+import { Search } from '@components/UI/Forms/Search';
 import { Icon } from '@components/UI/Icon';
 
 import { Navigation } from './Navigation';
@@ -45,7 +45,7 @@ export const Navbar: FC = memo(() => {
             <Navigation />
             <SocialMedia />
             <SearchFormBlock>
-              <SearchForm />
+              <Search />
             </SearchFormBlock>
           </>
         )}
@@ -59,10 +59,10 @@ export const Navbar: FC = memo(() => {
           </MenuButton>
         )}
       </NavbarContainer>
-      {width < sizes.screens.tablet && open && (
-        <MobileMenu>
+      {width < sizes.screens.tablet && (
+        <MobileMenu className={open ? 'open' : ''}>
           <MobileMenuContainer>
-            <SearchForm />
+            <Search />
             <Navigation
               handleCloseMenu={handleCloseMenu}
               categories={categories}

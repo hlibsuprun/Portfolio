@@ -31,6 +31,10 @@ export const CategoryName = styled.span`
   font-size: ${rem(16)};
   font-weight: 500;
   text-transform: capitalize;
+  &::selection {
+    color: ${colors.white};
+    background-color: ${colors.invisible.green};
+  }
 
   &.open {
     color: ${colors.primary};
@@ -87,4 +91,8 @@ export const SubcategoryLink = styled.div`
   font-size: ${rem(16)};
   font-weight: 300;
   text-transform: capitalize;
+  &::selection {
+    color: ${colors.white};
+    background-color: ${colors.invisible.green};
+  }
 `;

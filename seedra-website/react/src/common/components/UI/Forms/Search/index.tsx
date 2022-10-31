@@ -1,18 +1,43 @@
-import React, { FC, memo } from 'react';
+import React, { ChangeEvent, FC, memo, useRef, useState } from 'react';
 
-import { Button, Form, Input } from './Search.styled';
+import { Search as SearchStyled } from './Search.styled';
 
-import { Icon } from '@components/UI/Icon';
+import { Form } from './Form';
+import { Products } from './Products';
 
-export const SearchForm: FC = memo(() => {
+import { useOnClickOutside } from '@hooks/useOnClickOutside';
+
+export const Search: FC = memo(() => {
+  const [searchProduct, setSearchProduct] = useState<string>('');
+  const [showProducts, setShowProducts] = useState<boolean>(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const productsRef = useRef<HTMLDivElement>(null);
+
+  useOnClickOutside({
+    ref: productsRef,
+    handler: () => setShowProducts(false),
+    otherRef: formRef
+  });
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    setSearchProduct(event.target.value);
+  };
+
+  const handleShowProducts = () => setShowProducts(true);
+
   return (
-    <Form>
-      <Input type="text" placeholder="Search" />
-      <Button type="submit">
-        <Icon iconName="search" />
-      </Button>
-    </Form>
+    <SearchStyled>
+      <Form
+        ref={formRef}
+        onFocus={handleShowProducts}
+        onChange={handleChange}
+        value={searchProduct}
+      />
+      {showProducts && (
+        <Products searchProduct={searchProduct} ref={productsRef} />
+      )}
+    </SearchStyled>
   );
 });
 
-SearchForm.displayName = 'SearchForm';
+Search.displayName = 'Search';

@@ -3,6 +3,7 @@ import React, { FC, memo } from 'react';
 import {
   Footer as FooterStyled,
   FooterContainer,
+  Line,
   OtherBlock,
   Rights
 } from './Footer.styled';
@@ -11,14 +12,12 @@ import { SocialMedia } from '@components/Layouts/SocialMedia';
 
 import { Navigation } from './Navigation';
 
-interface Props {}
-
-export const Footer: FC<Props> = memo(() => {
+export const Footer: FC = memo(() => {
   return (
     <FooterStyled>
       <FooterContainer>
         <Navigation />
-        <hr />
+        <Line />
         <OtherBlock>
           <SocialMedia />
           <Rights>All rights reserved</Rights>

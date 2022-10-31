@@ -43,6 +43,10 @@ export const Link = styled.a`
   &:hover {
     color: ${colors.brand};
   }
+  &::selection {
+    color: ${colors.white};
+    background-color: ${colors.invisible.green};
+  }
 `;
 
 export const Arrow = styled.div`

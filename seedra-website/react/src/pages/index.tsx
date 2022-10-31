@@ -3,12 +3,14 @@ import { memo } from 'react';
 
 import { Head } from '@components/Layouts/Head';
 
+import { Header } from './home/components/Layouts/Header';
+
 const Home: NextPage = memo(() => {
   return (
     <>
       <Head title="Home"></Head>
       <main>
-        <div>This is the Home Page</div>
+        <Header></Header>
       </main>
     </>
   );

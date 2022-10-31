@@ -25,10 +25,15 @@ export const NavbarContainer = styled.div`
 export const MobileMenu = styled.div`
   position: relative;
   right: 0;
+  display: none;
   width: 100vw;
   height: calc(100vh - ${em(72)});
   background-color: rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
+
+  &.open {
+    display: block;
+  }
 `;
 
 export const MobileMenuContainer = styled.div`

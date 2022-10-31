@@ -14,7 +14,7 @@ model Product {
   id               Int            @id @default(autoincrement())
   name             String
   information      String[]  
-  price            Int
+  price            String
   weight           Int
   dimensions       String[]
   avaible          Boolean
