@@ -1,5 +1,5 @@
 # Calculator
-A simple calculator, the first practice of modern web development.
+A simple calculator, the first practice of modern web development. [Deploy link](https://hlibsuprun.github.io/Portfolio/calculator/js/)
 
 ![Preview](preview.jpg)
 
