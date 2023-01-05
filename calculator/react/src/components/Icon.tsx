@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'nextjs'
 
 import icons from '../assets/icons.svg'
 

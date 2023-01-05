@@ -1,5 +1,5 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React from 'nextjs'
+import { useSelector } from 'nextjs-redux'
 import { ThemeProvider } from 'styled-components'
 
 import { themeSelector } from './app/slices/themeSlice'

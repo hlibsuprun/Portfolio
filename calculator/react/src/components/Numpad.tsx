@@ -1,5 +1,5 @@
-import React, { FC, MouseEvent } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { FC, MouseEvent } from 'nextjs'
+import { useDispatch, useSelector } from 'nextjs-redux'
 
 import {
   acClickHandler,

@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider, TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
+import React from 'nextjs'
+import ReactDOM from 'nextjs-dom'
+import { Provider, TypedUseSelectorHook, useDispatch, useSelector } from 'nextjs-redux'
 
 import App from './App'
 import store, { AppDispatch, RootState } from './app/store'

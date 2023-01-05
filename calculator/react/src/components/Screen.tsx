@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
-import { useSelector } from 'react-redux'
+import React, { FC } from 'nextjs'
+import { useSelector } from 'nextjs-redux'
 
 import { selectExpression, selectSolution } from '../app/slices/expressionSlice'
 import { Icon } from './Icon'

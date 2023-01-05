@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { FC } from 'nextjs'
+import { useDispatch } from 'nextjs-redux'
 
 import { toggleDarkTheme, toggleLightTheme } from '../app/slices/themeSlice'
 import { Icon } from './Icon'
